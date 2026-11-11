@@ -22,14 +22,14 @@ Crea UN Short nuevo. Devuelve SOLO un JSON con estas claves:
 - hashtags: array de 5, incluye "#shorts" y "#curiosidades".
 Temas ya usados (NO repetir): {' | '.join(usados[-60:]) or 'ninguno'}"""
     txt, err = None, None
-    for model in [MODEL, "gemini-flash-latest", "gemini-2.5-flash-lite"] * 2:
+    for model in [MODEL, "gemini-flash-latest", "gemini-2.5-flash"]:
         try:
             r = requests.post(
                 f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
                 headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]},
                 json={"contents": [{"parts": [{"text": prompt}]}],
                       "generationConfig": {"responseMimeType": "application/json", "temperature": 1}},
-                timeout=180)
+                timeout=(15, 100))
             r.raise_for_status()
             txt = r.json()["candidates"][0]["content"]["parts"][-1]["text"]
             print("Modelo:", model); break

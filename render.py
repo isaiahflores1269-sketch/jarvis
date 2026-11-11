@@ -125,7 +125,7 @@ def main(payload_path="payload.json", out="out.mp4"):
     text = d["guion"].strip()
     mp3, ass, bg = TMP / "voz.mp3", TMP / "subs.ass", TMP / "bg.mp4"
 
-    words = asyncio.run(tts(text, mp3))
+    words = asyncio.run(asyncio.wait_for(tts(text, mp3), 120))
     total = dur(mp3) + 0.6
     make_ass(words, ass, total)
 
