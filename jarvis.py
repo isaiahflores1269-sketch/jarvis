@@ -3,11 +3,11 @@ JARVIS - Orquestador 100% GitHub Actions (gratis)
 1) Gemini escribe el guion  2) render.py monta el Short  3) se sube a YouTube
 Secrets: GEMINI_API_KEY, PEXELS_API_KEY, YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN
 """
-import json, os, pathlib, re, requests
+import json, os, pathlib, re, time, requests
 import render
 
 TEMAS = pathlib.Path("temas.json")
-MODEL = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
+MODEL = os.getenv("GEMINI_MODEL", "gemini-flash-lite-latest")
 PRIVACY = os.getenv("YT_PRIVACY", "public")
 
 
@@ -21,14 +21,22 @@ Crea UN Short nuevo. Devuelve SOLO un JSON con estas claves:
 - descripcion: 2 frases.
 - hashtags: array de 5, incluye "#shorts" y "#curiosidades".
 Temas ya usados (NO repetir): {' | '.join(usados[-60:]) or 'ninguno'}"""
-    r = requests.post(
-        f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent",
-        headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]},
-        json={"contents": [{"parts": [{"text": prompt}]}],
-              "generationConfig": {"responseMimeType": "application/json", "temperature": 1}},
-        timeout=90)
-    r.raise_for_status()
-    txt = r.json()["candidates"][0]["content"]["parts"][0]["text"]
+    txt, err = None, None
+    for model in [MODEL, "gemini-flash-latest", "gemini-2.5-flash-lite"] * 2:
+        try:
+            r = requests.post(
+                f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]},
+                json={"contents": [{"parts": [{"text": prompt}]}],
+                      "generationConfig": {"responseMimeType": "application/json", "temperature": 1}},
+                timeout=180)
+            r.raise_for_status()
+            txt = r.json()["candidates"][0]["content"]["parts"][-1]["text"]
+            print("Modelo:", model); break
+        except Exception as e:
+            err = e; print("Gemini fallo con", model, "->", str(e)[:200]); time.sleep(10)
+    if txt is None:
+        raise RuntimeError(f"Gemini no respondió: {err}")
     d = json.loads(re.sub(r"```(json)?", "", txt).strip())
     TEMAS.write_text(json.dumps((usados + [d["titulo"]])[-150:], ensure_ascii=False, indent=1), "utf-8")
     return d
