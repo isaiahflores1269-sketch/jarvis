@@ -73,10 +73,41 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     pathlib.Path(path).write_text(head + "\n".join(lines), encoding="utf-8")
 
 
-# ---------- 3. CLIPS de Pexels (verticales) ----------
+# ---------- 3. CLIPS de stock (Pixabay o Pexels) ----------
+def pixabay_clips(keywords, need):
+    key = os.getenv("PIXABAY_API_KEY", "")
+    if not key:
+        return []
+    got, seen = [], set()
+    for kw in keywords + ["nature", "space", "science"]:
+        try:
+            r = requests.get("https://pixabay.com/api/videos/",
+                             params={"key": key, "q": kw, "per_page": 10, "safesearch": "true"}, timeout=30)
+            hits = r.json().get("hits", [])
+        except Exception as e:
+            print("pixabay error", e); continue
+        # preferir verticales
+        hits.sort(key=lambda h: h["videos"]["medium"].get("width", 1) > h["videos"]["medium"].get("height", 1))
+        for h in hits[:3]:
+            if h["id"] in seen:
+                continue
+            v = h["videos"].get("large") or {}
+            if not v.get("url"):
+                v = h["videos"]["medium"]
+            try:
+                p = TMP / f"clip{len(got)}.mp4"
+                p.write_bytes(requests.get(v["url"], timeout=120).content)
+            except Exception as e:
+                print("descarga error", e); continue
+            seen.add(h["id"]); got.append(p)
+            if len(got) >= need:
+                return got
+    return got
+
+
 def pexels_clips(keywords, need):
     if not PEXELS_KEY:
-        return []
+        return pixabay_clips(keywords, need)
     got, seen = [], set()
     for kw in keywords + ["nature", "space", "science"]:
         try:
