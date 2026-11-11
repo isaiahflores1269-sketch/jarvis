@@ -22,7 +22,7 @@ Crea UN Short nuevo. Devuelve SOLO un JSON con estas claves:
 - hashtags: array de 5, incluye "#shorts" y "#curiosidades".
 Temas ya usados (NO repetir): {' | '.join(usados[-60:]) or 'ninguno'}"""
     txt, err = None, None
-    for model in [MODEL, "gemini-flash-latest", "gemini-2.5-flash"]:
+    for intento, model in enumerate([MODEL, "gemini-flash-latest"] * 4):
         try:
             r = requests.post(
                 f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
@@ -34,7 +34,7 @@ Temas ya usados (NO repetir): {' | '.join(usados[-60:]) or 'ninguno'}"""
             txt = r.json()["candidates"][0]["content"]["parts"][-1]["text"]
             print("Modelo:", model); break
         except Exception as e:
-            err = e; print("Gemini fallo con", model, "->", str(e)[:200]); time.sleep(10)
+            err = e; print("Gemini fallo con", model, "->", str(e)[:200]); time.sleep(15 + 15 * intento)
     if txt is None:
         raise RuntimeError(f"Gemini no respondió: {err}")
     d = json.loads(re.sub(r"```(json)?", "", txt).strip())
