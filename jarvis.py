@@ -100,7 +100,7 @@ def subir_instagram(video_url, d):
     tok, uid = os.getenv("IG_TOKEN"), os.getenv("IG_USER_ID")
     if not (tok and uid and video_url):
         print("Instagram: sin configurar"); return
-    g = "https://graph.instagram.com/v21.0"
+    g = os.getenv("IG_GRAPH", "https://graph.facebook.com/v27.0")
     c = requests.post(f"{g}/{uid}/media", timeout=60, data={
         "media_type": "REELS", "video_url": video_url, "caption": caption(d),
         "share_to_feed": "true", "access_token": tok})
@@ -116,12 +116,6 @@ def subir_instagram(video_url, d):
     p = requests.post(f"{g}/{uid}/media_publish", data={"creation_id": cid, "access_token": tok}, timeout=60)
     p.raise_for_status()
     print("INSTAGRAM -> publicado", p.json().get("id"))
-    # alargar validez del token (60 días más)
-    try:
-        requests.get("https://graph.instagram.com/refresh_access_token",
-                     params={"grant_type": "ig_refresh_token", "access_token": tok}, timeout=30)
-    except Exception:
-        pass
 
 
 if __name__ == "__main__":
