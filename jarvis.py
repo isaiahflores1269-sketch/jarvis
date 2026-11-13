@@ -16,11 +16,12 @@ def _json(txt):
     return json.loads(t[t.find("{"):t.rfind("}") + 1])
 
 
-def llm(prompt):
+def llm(prompt, modelos=None):
     """Gemini -> Gemma -> Pollinations. Devuelve dict JSON."""
     key, err = os.environ["GEMINI_API_KEY"], None
     base = "https://generativelanguage.googleapis.com/v1beta/models"
-    intentos = [(m, True) for m in [MODEL, "gemini-flash-latest"] * 2] + \
+    modelos = modelos or [MODEL, "gemini-flash-latest"]
+    intentos = [(m, True) for m in modelos * 2] + \
                [(m, False) for m in ["gemma-3-27b-it", "gemma-3-12b-it", "gemma-3-27b-it"]]
     for i, (model, json_mode) in enumerate(intentos):
         try:
@@ -51,18 +52,23 @@ def llm(prompt):
 CLAVES = ("titulo", "guion", "keywords", "descripcion", "hashtags", "texto_miniatura")
 
 
+ESCRITOR = ["gemini-flash-latest", "gemini-flash-lite-latest"]
+REVISOR = ["gemini-flash-lite-latest", "gemini-flash-latest"]
+
+
 def guion(evitar_extra=()):
     usados = json.loads(TEMAS.read_text("utf-8")) if TEMAS.exists() else []
     prompt = f"""Eres JARVIS, guionista experto en YouTube Shorts virales en español de España sobre curiosidades y datos sorprendentes (ciencia, animales, historia, cuerpo humano, espacio, tecnología).
 Crea UN Short nuevo pensado para retener y ganar suscriptores. Devuelve SOLO un JSON con estas claves:
-- titulo: máx 60 caracteres, despierta curiosidad sin mentir (sin clickbait falso), sin hashtags.
+- titulo: máx 60 caracteres, despierta curiosidad SIN exagerar ni engañar, sin hashtags. Debe coincidir exactamente con lo que dice el guion.
 - texto_miniatura: 2-4 palabras MUY potentes para la portada (ej: "NO DEBERÍA EXISTIR"), distinto del título.
-- guion: 110-140 palabras para leer en voz alta. La 1ª frase (máx 12 palabras) es el GANCHO: una afirmación o pregunta impactante que obligue a seguir viendo. Frases cortas. Pon un giro o dato extra a mitad. Solo datos verídicos y comprobables, sin exagerar cifras. Termina con una llamada a suscribirse breve, por ejemplo "Suscríbete para más curiosidades."
+- guion: 110-140 palabras para leer en voz alta. La 1ª frase (máx 12 palabras) es el GANCHO: una afirmación concreta y sorprendente (no una pregunta genérica tipo "¿sabías que...?"). Frases cortas. Un giro o dato extra a mitad. Termina con "Suscríbete para más curiosidades."
+REGLA DE ORO: usa SOLO datos muy conocidos que aparezcan en cualquier enciclopedia. Nada de cifras discutibles, mitos populares ni exageraciones. Si no estás 100% seguro de un dato, no lo pongas.
 - keywords: array de 4 palabras EN INGLÉS para buscar vídeos de stock (concretas, visuales, relacionadas con el tema).
 - descripcion: 2 frases.
 - hashtags: array de 5, incluye "#shorts" y "#curiosidades".
 Temas ya usados (NO repetir): {' | '.join(list(usados[-60:]) + list(evitar_extra)) or 'ninguno'}"""
-    d = llm(prompt)
+    d = llm(prompt, ESCRITOR)
     falta = [k for k in CLAVES if k not in d]
     if falta:
         raise RuntimeError(f"JSON incompleto, faltan {falta}")
@@ -70,42 +76,70 @@ Temas ya usados (NO repetir): {' | '.join(list(usados[-60:]) + list(evitar_extra
 
 
 def revisar_guion(d):
-    """Editor IA: puntúa gancho, retención y veracidad; devuelve correcciones."""
-    prompt = f"""Eres el editor jefe de un canal de YouTube Shorts de curiosidades. Sé exigente.
+    """Editor IA: solo puntúa y señala problemas."""
+    prompt = f"""Eres el editor jefe de un canal de YouTube Shorts de curiosidades.
 Revisa este Short antes de publicarlo:
 TÍTULO: {d['titulo']}
 TEXTO MINIATURA: {d['texto_miniatura']}
 GUION: {d['guion']}
 
-Evalúa del 1 al 10: gancho (¿la 1ª frase obliga a seguir viendo en 1 segundo?), retencion (ritmo, giro a mitad, frases cortas), titulo_miniatura (¿dan ganas de pulsar?), veracidad (¿todos los datos son correctos y comprobables? 10 = seguro).
-Devuelve SOLO JSON con: gancho, retencion, titulo_miniatura, veracidad (números), problemas (lista de textos cortos), datos_dudosos (lista de afirmaciones posiblemente falsas, vacía si ninguna), y una versión mejorada: titulo, texto_miniatura, guion (110-140 palabras, mismo tema, corrige datos dudosos, gancho más fuerte, termina con "Suscríbete para más curiosidades.")."""
-    return llm(prompt)
+Puntúa del 1 al 10: gancho (¿la 1ª frase engancha en 1 segundo?), retencion (ritmo y giro), titulo_miniatura (¿dan ganas de pulsar?), veracidad (10 = todo es un hecho conocido y correcto).
+Lista en datos_dudosos SOLO afirmaciones que sean falsas o claramente exageradas (no marques simplificaciones normales de divulgación).
+Devuelve SOLO JSON: gancho, retencion, titulo_miniatura, veracidad, problemas (lista corta), datos_dudosos (lista)."""
+    return llm(prompt, REVISOR)
+
+
+def reescribir(d, rv):
+    prompt = f"""Reescribe este Short de YouTube corrigiendo los fallos del editor.
+TÍTULO: {d['titulo']}
+TEXTO MINIATURA: {d['texto_miniatura']}
+GUION: {d['guion']}
+PROBLEMAS: {rv.get('problemas')}
+DATOS DUDOSOS (ELIMÍNALOS por completo, no los reformules; sustitúyelos por hechos conocidos y seguros del mismo tema): {rv.get('datos_dudosos')}
+Reglas: mismo tema; 1ª frase = gancho concreto y sorprendente (máx 12 palabras, no una pregunta genérica); título coherente con el guion y sin exagerar; guion de 110-140 palabras que termina con "Suscríbete para más curiosidades."
+Devuelve SOLO JSON con: titulo, texto_miniatura, guion."""
+    nv = llm(prompt, ESCRITOR)
+    for k in ("titulo", "texto_miniatura", "guion"):
+        if nv.get(k):
+            d[k] = nv[k]
+    return d
+
+
+def _num(x):
+    try:
+        return float(x)
+    except Exception:
+        return 0.0
 
 
 def preparar_guion():
-    """Genera y revisa hasta que pase el control de calidad (máx 3 temas)."""
-    descartados = []
+    """Genera, revisa y corrige. Publica solo si los datos son fiables."""
+    descartados, mejor = [], None
     for tema in range(3):
         d = guion(descartados)
         print(f"TEMA {tema+1}:", d["titulo"])
-        for ronda in range(2):
+        for ronda in range(3):
             rv = revisar_guion(d)
-            notas = {k: rv.get(k, 0) for k in ("gancho", "retencion", "titulo_miniatura", "veracidad")}
-            print(f"  revisión {ronda+1}: {notas} problemas={rv.get('problemas')} dudosos={rv.get('datos_dudosos')}")
-            ok = min(notas.values()) >= 8 and not rv.get("datos_dudosos")
-            if ok:
+            notas = {k: _num(rv.get(k)) for k in ("gancho", "retencion", "titulo_miniatura", "veracidad")}
+            dudosos = rv.get("datos_dudosos") or []
+            print(f"  revisión {ronda+1}: {notas} dudosos={dudosos} problemas={rv.get('problemas')}")
+            fiable = notas["veracidad"] >= 8 and not dudosos
+            if fiable and min(notas.values()) >= 8:
                 d["revision"] = notas
                 return d
-            # aplicar la versión mejorada del editor
-            for k in ("titulo", "texto_miniatura", "guion"):
-                if rv.get(k):
-                    d[k] = rv[k]
-        if rv.get("veracidad", 0) >= 8 and min(notas.values()) >= 7:
-            d["revision"] = notas  # suficientemente bueno tras mejoras
-            return d
-        print("  descartado: no alcanza la calidad mínima")
+            if fiable:
+                score = sum(notas.values())
+                if not mejor or score > mejor[0]:
+                    mejor = (score, dict(d, revision=notas))
+            if ronda < 2:
+                d = reescribir(d, rv)
         descartados.append(d["titulo"])
-    raise RuntimeError("Ningún guion superó la revisión de calidad")
+        if mejor and mejor[0] >= 30:  # bueno y fiable: no gastar más
+            break
+    if mejor:
+        print("  publicando el mejor candidato fiable:", mejor[1]["titulo"], mejor[1]["revision"])
+        return mejor[1]
+    raise RuntimeError("Ningún guion con datos fiables: no se publica")
 
 
 def registrar_tema(titulo):
