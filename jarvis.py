@@ -30,7 +30,7 @@ def llm(prompt, modelos=None):
                 cfg["responseMimeType"] = "application/json"
             r = requests.post(f"{base}/{model}:generateContent", headers={"x-goog-api-key": key},
                               json={"contents": [{"parts": [{"text": prompt + "\nResponde SOLO con el JSON."}]}],
-                                    "generationConfig": cfg}, timeout=(15, 120))
+                                    "generationConfig": cfg}, timeout=(15, 75))
             r.raise_for_status()
             d = _json(r.json()["candidates"][0]["content"]["parts"][-1]["text"])
             print("  IA:", model); return d
@@ -52,7 +52,7 @@ def llm(prompt, modelos=None):
 CLAVES = ("titulo", "guion", "keywords", "descripcion", "hashtags", "texto_miniatura")
 
 
-ESCRITOR = ["gemini-flash-latest", "gemini-flash-lite-latest"]
+ESCRITOR = ["gemini-flash-lite-latest", "gemini-flash-latest"]
 REVISOR = ["gemini-flash-lite-latest", "gemini-flash-latest"]
 
 
