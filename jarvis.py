@@ -22,7 +22,7 @@ Crea UN Short nuevo. Devuelve SOLO un JSON con estas claves:
 - hashtags: array de 5, incluye "#shorts" y "#curiosidades".
 Temas ya usados (NO repetir): {' | '.join(usados[-60:]) or 'ninguno'}"""
     txt, err = None, None
-    for intento, model in enumerate([MODEL, "gemini-flash-latest"] * 4):
+    for intento, model in enumerate([MODEL, "gemini-flash-latest"] * 2):
         try:
             r = requests.post(
                 f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
@@ -35,9 +35,45 @@ Temas ya usados (NO repetir): {' | '.join(usados[-60:]) or 'ninguno'}"""
             print("Modelo:", model); break
         except Exception as e:
             err = e; print("Gemini fallo con", model, "->", str(e)[:200]); time.sleep(15 + 15 * intento)
+    # Plan B: Gemma (gratis, misma clave, otra capacidad)
+    for model in ["gemma-3-27b-it", "gemma-3-12b-it", "gemma-3-27b-it"]:
+        if txt is not None:
+            break
+        try:
+            r = requests.post(
+                f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]},
+                json={"contents": [{"parts": [{"text": prompt + "\nResponde SOLO con el JSON, sin texto extra."}]}],
+                      "generationConfig": {"temperature": 1}},
+                timeout=(15, 120))
+            r.raise_for_status()
+            t = r.json()["candidates"][0]["content"]["parts"][-1]["text"]
+            t = t[t.find("{"):t.rfind("}") + 1]
+            json.loads(t)
+            txt = t; print("Modelo:", model, "(plan B)")
+        except Exception as e:
+            err = e; print("Plan B fallo con", model, "->", str(e)[:200]); time.sleep(20)
+    # Plan C gratis y sin clave: Pollinations (compatible OpenAI)
+    for intento in range(4):
+        if txt is not None:
+            break
+        try:
+            r = requests.post("https://text.pollinations.ai/openai", timeout=(15, 120), json={
+                "model": "openai", "temperature": 1,
+                "messages": [{"role": "system", "content": "Responde solo con JSON válido."},
+                             {"role": "user", "content": prompt}],
+                "response_format": {"type": "json_object"}})
+            r.raise_for_status()
+            txt = r.json()["choices"][0]["message"]["content"]
+            json.loads(re.sub(r"```(json)?", "", txt).strip())  # validar
+            print("Modelo: pollinations (plan B)")
+        except Exception as e:
+            txt = None; err = e; print("Plan B fallo ->", str(e)[:200]); time.sleep(20)
     if txt is None:
-        raise RuntimeError(f"Gemini no respondió: {err}")
+        raise RuntimeError(f"Ninguna IA respondió: {err}")
     d = json.loads(re.sub(r"```(json)?", "", txt).strip())
+    if not all(k in d for k in ("titulo", "guion", "keywords", "descripcion", "hashtags")):
+        raise RuntimeError(f"JSON incompleto: {list(d)}")
     TEMAS.write_text(json.dumps((usados + [d["titulo"]])[-150:], ensure_ascii=False, indent=1), "utf-8")
     return d
 
