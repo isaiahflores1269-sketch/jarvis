@@ -11,71 +11,106 @@ MODEL = os.getenv("GEMINI_MODEL", "gemini-flash-lite-latest")
 PRIVACY = os.getenv("YT_PRIVACY", "public")
 
 
-def guion():
-    usados = json.loads(TEMAS.read_text("utf-8")) if TEMAS.exists() else []
-    prompt = f"""Eres JARVIS, guionista de un canal de YouTube Shorts en español de España sobre curiosidades y datos sorprendentes (ciencia, animales, historia, cuerpo humano, espacio, tecnología).
-Crea UN Short nuevo. Devuelve SOLO un JSON con estas claves:
-- titulo: máx 70 caracteres, con gancho, sin hashtags.
-- guion: 110-140 palabras para leer en voz alta. Primera frase = gancho brutal. Frases cortas. Solo datos verídicos y comprobables. Termina con "Sígueme para más curiosidades."
-- keywords: array de 4 palabras EN INGLÉS para buscar vídeos de stock en Pexels (concretas y visuales).
-- descripcion: 2 frases.
-- hashtags: array de 5, incluye "#shorts" y "#curiosidades".
-Temas ya usados (NO repetir): {' | '.join(usados[-60:]) or 'ninguno'}"""
-    txt, err = None, None
-    for intento, model in enumerate([MODEL, "gemini-flash-latest"] * 2):
+def _json(txt):
+    t = re.sub(r"```(json)?", "", txt).strip()
+    return json.loads(t[t.find("{"):t.rfind("}") + 1])
+
+
+def llm(prompt):
+    """Gemini -> Gemma -> Pollinations. Devuelve dict JSON."""
+    key, err = os.environ["GEMINI_API_KEY"], None
+    base = "https://generativelanguage.googleapis.com/v1beta/models"
+    intentos = [(m, True) for m in [MODEL, "gemini-flash-latest"] * 2] + \
+               [(m, False) for m in ["gemma-3-27b-it", "gemma-3-12b-it", "gemma-3-27b-it"]]
+    for i, (model, json_mode) in enumerate(intentos):
         try:
-            r = requests.post(
-                f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-                headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]},
-                json={"contents": [{"parts": [{"text": prompt}]}],
-                      "generationConfig": {"responseMimeType": "application/json", "temperature": 1}},
-                timeout=(15, 100))
+            cfg = {"temperature": 1}
+            if json_mode:
+                cfg["responseMimeType"] = "application/json"
+            r = requests.post(f"{base}/{model}:generateContent", headers={"x-goog-api-key": key},
+                              json={"contents": [{"parts": [{"text": prompt + "\nResponde SOLO con el JSON."}]}],
+                                    "generationConfig": cfg}, timeout=(15, 120))
             r.raise_for_status()
-            txt = r.json()["candidates"][0]["content"]["parts"][-1]["text"]
-            print("Modelo:", model); break
+            d = _json(r.json()["candidates"][0]["content"]["parts"][-1]["text"])
+            print("  IA:", model); return d
         except Exception as e:
-            err = e; print("Gemini fallo con", model, "->", str(e)[:200]); time.sleep(15 + 15 * intento)
-    # Plan B: Gemma (gratis, misma clave, otra capacidad)
-    for model in ["gemma-3-27b-it", "gemma-3-12b-it", "gemma-3-27b-it"]:
-        if txt is not None:
-            break
-        try:
-            r = requests.post(
-                f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-                headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]},
-                json={"contents": [{"parts": [{"text": prompt + "\nResponde SOLO con el JSON, sin texto extra."}]}],
-                      "generationConfig": {"temperature": 1}},
-                timeout=(15, 120))
-            r.raise_for_status()
-            t = r.json()["candidates"][0]["content"]["parts"][-1]["text"]
-            t = t[t.find("{"):t.rfind("}") + 1]
-            json.loads(t)
-            txt = t; print("Modelo:", model, "(plan B)")
-        except Exception as e:
-            err = e; print("Plan B fallo con", model, "->", str(e)[:200]); time.sleep(20)
-    # Plan C gratis y sin clave: Pollinations (compatible OpenAI)
-    for intento in range(4):
-        if txt is not None:
-            break
+            err = e; print("  fallo", model, "->", str(e)[:150]); time.sleep(min(15 + 10 * i, 45))
+    for _ in range(3):  # plan C sin clave
         try:
             r = requests.post("https://text.pollinations.ai/openai", timeout=(15, 120), json={
-                "model": "openai", "temperature": 1,
-                "messages": [{"role": "system", "content": "Responde solo con JSON válido."},
-                             {"role": "user", "content": prompt}],
+                "model": "openai", "messages": [{"role": "user", "content": prompt + "\nResponde SOLO con JSON."}],
                 "response_format": {"type": "json_object"}})
             r.raise_for_status()
-            txt = r.json()["choices"][0]["message"]["content"]
-            json.loads(re.sub(r"```(json)?", "", txt).strip())  # validar
-            print("Modelo: pollinations (plan B)")
+            d = _json(r.json()["choices"][0]["message"]["content"])
+            print("  IA: pollinations"); return d
         except Exception as e:
-            txt = None; err = e; print("Plan B fallo ->", str(e)[:200]); time.sleep(20)
-    if txt is None:
-        raise RuntimeError(f"Ninguna IA respondió: {err}")
-    d = json.loads(re.sub(r"```(json)?", "", txt).strip())
-    if not all(k in d for k in ("titulo", "guion", "keywords", "descripcion", "hashtags")):
-        raise RuntimeError(f"JSON incompleto: {list(d)}")
-    TEMAS.write_text(json.dumps((usados + [d["titulo"]])[-150:], ensure_ascii=False, indent=1), "utf-8")
+            err = e; print("  fallo pollinations ->", str(e)[:150]); time.sleep(20)
+    raise RuntimeError(f"Ninguna IA respondió: {err}")
+
+
+CLAVES = ("titulo", "guion", "keywords", "descripcion", "hashtags", "texto_miniatura")
+
+
+def guion(evitar_extra=()):
+    usados = json.loads(TEMAS.read_text("utf-8")) if TEMAS.exists() else []
+    prompt = f"""Eres JARVIS, guionista experto en YouTube Shorts virales en español de España sobre curiosidades y datos sorprendentes (ciencia, animales, historia, cuerpo humano, espacio, tecnología).
+Crea UN Short nuevo pensado para retener y ganar suscriptores. Devuelve SOLO un JSON con estas claves:
+- titulo: máx 60 caracteres, despierta curiosidad sin mentir (sin clickbait falso), sin hashtags.
+- texto_miniatura: 2-4 palabras MUY potentes para la portada (ej: "NO DEBERÍA EXISTIR"), distinto del título.
+- guion: 110-140 palabras para leer en voz alta. La 1ª frase (máx 12 palabras) es el GANCHO: una afirmación o pregunta impactante que obligue a seguir viendo. Frases cortas. Pon un giro o dato extra a mitad. Solo datos verídicos y comprobables, sin exagerar cifras. Termina con una llamada a suscribirse breve, por ejemplo "Suscríbete para más curiosidades."
+- keywords: array de 4 palabras EN INGLÉS para buscar vídeos de stock (concretas, visuales, relacionadas con el tema).
+- descripcion: 2 frases.
+- hashtags: array de 5, incluye "#shorts" y "#curiosidades".
+Temas ya usados (NO repetir): {' | '.join(list(usados[-60:]) + list(evitar_extra)) or 'ninguno'}"""
+    d = llm(prompt)
+    falta = [k for k in CLAVES if k not in d]
+    if falta:
+        raise RuntimeError(f"JSON incompleto, faltan {falta}")
     return d
+
+
+def revisar_guion(d):
+    """Editor IA: puntúa gancho, retención y veracidad; devuelve correcciones."""
+    prompt = f"""Eres el editor jefe de un canal de YouTube Shorts de curiosidades. Sé exigente.
+Revisa este Short antes de publicarlo:
+TÍTULO: {d['titulo']}
+TEXTO MINIATURA: {d['texto_miniatura']}
+GUION: {d['guion']}
+
+Evalúa del 1 al 10: gancho (¿la 1ª frase obliga a seguir viendo en 1 segundo?), retencion (ritmo, giro a mitad, frases cortas), titulo_miniatura (¿dan ganas de pulsar?), veracidad (¿todos los datos son correctos y comprobables? 10 = seguro).
+Devuelve SOLO JSON con: gancho, retencion, titulo_miniatura, veracidad (números), problemas (lista de textos cortos), datos_dudosos (lista de afirmaciones posiblemente falsas, vacía si ninguna), y una versión mejorada: titulo, texto_miniatura, guion (110-140 palabras, mismo tema, corrige datos dudosos, gancho más fuerte, termina con "Suscríbete para más curiosidades.")."""
+    return llm(prompt)
+
+
+def preparar_guion():
+    """Genera y revisa hasta que pase el control de calidad (máx 3 temas)."""
+    descartados = []
+    for tema in range(3):
+        d = guion(descartados)
+        print(f"TEMA {tema+1}:", d["titulo"])
+        for ronda in range(2):
+            rv = revisar_guion(d)
+            notas = {k: rv.get(k, 0) for k in ("gancho", "retencion", "titulo_miniatura", "veracidad")}
+            print(f"  revisión {ronda+1}: {notas} problemas={rv.get('problemas')} dudosos={rv.get('datos_dudosos')}")
+            ok = min(notas.values()) >= 8 and not rv.get("datos_dudosos")
+            if ok:
+                d["revision"] = notas
+                return d
+            # aplicar la versión mejorada del editor
+            for k in ("titulo", "texto_miniatura", "guion"):
+                if rv.get(k):
+                    d[k] = rv[k]
+        if rv.get("veracidad", 0) >= 8 and min(notas.values()) >= 7:
+            d["revision"] = notas  # suficientemente bueno tras mejoras
+            return d
+        print("  descartado: no alcanza la calidad mínima")
+        descartados.append(d["titulo"])
+    raise RuntimeError("Ningún guion superó la revisión de calidad")
+
+
+def registrar_tema(titulo):
+    usados = json.loads(TEMAS.read_text("utf-8")) if TEMAS.exists() else []
+    TEMAS.write_text(json.dumps((usados + [titulo])[-150:], ensure_ascii=False, indent=1), "utf-8")
 
 
 def subir_youtube(path, d):
@@ -98,6 +133,14 @@ def subir_youtube(path, d):
     up.raise_for_status()
     vid = up.json()["id"]
     print(f"SUBIDO -> https://youtube.com/shorts/{vid}  ({up.json()['status']['privacyStatus']})")
+    if os.path.exists("thumb.jpg"):
+        try:
+            t = requests.post(f"https://www.googleapis.com/upload/youtube/v3/thumbnails/set?videoId={vid}",
+                              headers={**h, "Content-Type": "image/jpeg"}, data=open("thumb.jpg", "rb"), timeout=60)
+            print("MINIATURA ->", "ok" if t.ok else f"no aplicada ({t.status_code}: {t.text[:120]})")
+        except Exception as e:
+            print("MINIATURA -> error", e)
+    return vid
 
 
 def caption(d):
@@ -113,13 +156,18 @@ def publicar_release(path, d):
     tag = time.strftime("short-%Y%m%d-%H%M")
     r = requests.post(f"https://api.github.com/repos/{repo}/releases", headers=h, timeout=30,
                       json={"tag_name": tag, "name": d["titulo"],
-                            "body": "📱 Texto para TikTok / Instagram:\n\n" + caption(d)})
+                            "body": "📱 Texto para TikTok / Instagram:\n\n" + caption(d)
+                                    + f"\n\n🖼️ Texto portada: {d.get('texto_miniatura','')}"
+                                    + f"\n✅ Revisión IA: {d.get('revision','')}"})
     r.raise_for_status()
     up_url = r.json()["upload_url"].split("{")[0]
     a = requests.post(f"{up_url}?name=short.mp4", headers={**h, "Content-Type": "video/mp4"},
                       data=open(path, "rb"), timeout=300)
     a.raise_for_status()
     url = a.json()["browser_download_url"]
+    if os.path.exists("thumb.jpg"):
+        requests.post(f"{up_url}?name=portada.jpg", headers={**h, "Content-Type": "image/jpeg"},
+                      data=open("thumb.jpg", "rb"), timeout=60)
     print("RELEASE ->", r.json()["html_url"])
     # limpiar releases antiguas (dejar las 30 últimas)
     try:
@@ -155,10 +203,22 @@ def subir_instagram(video_url, d):
 
 
 if __name__ == "__main__":
-    d = guion()
-    print("TEMA:", d["titulo"])
+    import qa
+    d = preparar_guion()
+    print("GUION APROBADO:", d["titulo"], "| portada:", d["texto_miniatura"])
     pathlib.Path("payload.json").write_text(json.dumps(d, ensure_ascii=False), "utf-8")
-    render.main("payload.json", "out.mp4")
+    for intento in range(2):
+        info = render.main("payload.json", "out.mp4")
+        problemas = qa.revisar_video("out.mp4", info)
+        print("CONTROL VÍDEO:", "OK" if not problemas else problemas)
+        if not problemas:
+            break
+        if intento == 0:  # reintento con palabras clave genéricas
+            d["keywords"] = d["keywords"][:2] + ["nature", "science"]
+            pathlib.Path("payload.json").write_text(json.dumps(d, ensure_ascii=False), "utf-8")
+    else:
+        raise SystemExit(f"NO SE PUBLICA: el vídeo no pasó el control de calidad -> {problemas}")
+    registrar_tema(d["titulo"])
     if os.getenv("YT_REFRESH_TOKEN"):
         subir_youtube("out.mp4", d)
     else:

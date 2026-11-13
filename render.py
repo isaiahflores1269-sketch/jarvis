@@ -47,7 +47,7 @@ def ts(t):
     return f"{h}:{m:02d}:{t % 60:05.2f}"
 
 
-def make_ass(words, path, total):
+def make_ass(words, path, total, hook=""):
     head = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {W}
@@ -57,6 +57,7 @@ PlayResY: {H}
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Main,DejaVu Sans,92,&H00FFFFFF,&H000000FF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
 Style: Hot,DejaVu Sans,92,&H0000E5FF,&H000000FF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
+Style: Hook,DejaVu Sans,128,&H0000E5FF,&H000000FF,&H00000000,&HA0000000,-1,0,0,0,100,100,0,0,3,10,0,8,70,70,260,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -70,6 +71,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         style = "Hot" if (i // 3) % 2 else "Main"
         lines.append(f"Dialogue: 0,{ts(start)},{ts(end)},{style},,0,0,0,,{{\\fad(60,0)}}{txt}")
         i += 3
+    if hook:  # texto gancho/miniatura arriba durante los primeros 2,5 s
+        lines.insert(0, f"Dialogue: 1,{ts(0)},{ts(2.5)},Hook,,0,0,0,,{{\\fad(0,250)}}{hook.upper()}")
     pathlib.Path(path).write_text(head + "\n".join(lines), encoding="utf-8")
 
 
@@ -158,16 +161,20 @@ def main(payload_path="payload.json", out="out.mp4"):
 
     words = asyncio.run(asyncio.wait_for(tts(text, mp3), 120))
     total = dur(mp3) + 0.6
-    make_ass(words, ass, total)
+    make_ass(words, ass, total, d.get("texto_miniatura", ""))
 
     n = max(3, min(8, int(total // 6)))
-    build_background(pexels_clips(d.get("keywords", []), n), total, bg)
+    clips = pexels_clips(d.get("keywords", []), n)
+    build_background(clips, total, bg)
 
     sh(["ffmpeg", "-y", "-i", str(bg), "-i", str(mp3),
         "-vf", f"eq=brightness=-0.06,ass={ass}", "-t", f"{total:.2f}",
         "-c:v", "libx264", "-preset", "medium", "-crf", "21", "-pix_fmt", "yuv420p",
         "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", out])
-    print(f"OK -> {out}  ({total:.1f}s, {os.path.getsize(out)/1e6:.1f} MB)")
+    # miniatura: fotograma a 0,8 s (lleva el texto gancho)
+    sh(["ffmpeg", "-y", "-ss", "0.8", "-i", out, "-frames:v", "1", "-vf", "scale=720:1280", "-q:v", "3", "thumb.jpg"])
+    print(f"OK -> {out}  ({total:.1f}s, {os.path.getsize(out)/1e6:.1f} MB, {len(clips)} clips)")
+    return {"duracion": total, "clips": len(clips), "palabras": len(words)}
 
 
 if __name__ == "__main__":
