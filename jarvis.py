@@ -3,7 +3,8 @@ JARVIS - Orquestador 100% GitHub Actions (gratis)
 1) Gemini escribe el guion  2) render.py monta el Short  3) se sube a YouTube
 Secrets: GEMINI_API_KEY, PEXELS_API_KEY, YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN
 """
-import json, os, pathlib, re, time, requests
+import calendar, json, os, pathlib, re, time, requests
+import xml.etree.ElementTree as ET
 import render
 
 TEMAS = pathlib.Path("temas.json")
@@ -16,13 +17,39 @@ def _json(txt):
     return json.loads(t[t.find("{"):t.rfind("}") + 1])
 
 
+_DISPONIBLES = None
+
+
+def modelos_disponibles():
+    """Pregunta a Google qué modelos hay HOY (los nombres cambian)."""
+    global _DISPONIBLES
+    if _DISPONIBLES is None:
+        try:
+            r = requests.get("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200",
+                             headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"]}, timeout=30)
+            _DISPONIBLES = [m["name"].split("/")[-1] for m in r.json().get("models", [])
+                            if "generateContent" in m.get("supportedGenerationMethods", [])]
+        except Exception as e:
+            print("  no se pudo listar modelos:", e); _DISPONIBLES = []
+    return _DISPONIBLES
+
+
+def _plan_b():
+    """Otros modelos gratis de Google con su propia capacidad (flash, flash-lite, gemma...)."""
+    disp = modelos_disponibles()
+    malos = ("embedding", "image", "tts", "audio", "live", "vision", "native", "robotics", "computer", "aqa")
+    cand = [m for m in disp if not any(x in m for x in malos)]
+    pref = lambda m: (0 if "flash" in m and "gemini" in m else 1 if "gemma" in m else 2, -len(m))
+    return [m for m in sorted(cand, key=pref) if "pro" not in m][:6]
+
+
 def llm(prompt, modelos=None):
-    """Gemini -> Gemma -> Pollinations. Devuelve dict JSON."""
+    """Gemini -> otros modelos de Google -> Pollinations. Devuelve dict JSON."""
     key, err = os.environ["GEMINI_API_KEY"], None
     base = "https://generativelanguage.googleapis.com/v1beta/models"
     modelos = modelos or [MODEL, "gemini-flash-latest"]
-    intentos = [(m, True) for m in modelos * 2] + \
-               [(m, False) for m in ["gemma-3-27b-it", "gemma-3-12b-it", "gemma-3-27b-it"]]
+    extra = [m for m in _plan_b() if m not in modelos]
+    intentos = [(m, True) for m in modelos * 2] + [(m, "gemma" not in m) for m in extra]
     for i, (model, json_mode) in enumerate(intentos):
         try:
             cfg = {"temperature": 1}
@@ -35,14 +62,13 @@ def llm(prompt, modelos=None):
             d = _json(r.json()["candidates"][0]["content"]["parts"][-1]["text"])
             print("  IA:", model); return d
         except Exception as e:
-            err = e; print("  fallo", model, "->", str(e)[:150]); time.sleep(min(15 + 10 * i, 45))
+            err = e; print("  fallo", model, "->", str(e)[:150]); time.sleep(min(10 + 5 * i, 30))
     for _ in range(3):  # plan C sin clave
         try:
-            r = requests.post("https://text.pollinations.ai/openai", timeout=(15, 120), json={
-                "model": "openai", "messages": [{"role": "user", "content": prompt + "\nResponde SOLO con JSON."}],
-                "response_format": {"type": "json_object"}})
+            r = requests.post("https://text.pollinations.ai/", timeout=(15, 120), json={
+                "messages": [{"role": "user", "content": prompt + "\nResponde SOLO con JSON válido."}]})
             r.raise_for_status()
-            d = _json(r.json()["choices"][0]["message"]["content"])
+            d = _json(r.text)
             print("  IA: pollinations"); return d
         except Exception as e:
             err = e; print("  fallo pollinations ->", str(e)[:150]); time.sleep(20)
@@ -52,11 +78,55 @@ def llm(prompt, modelos=None):
 CLAVES = ("titulo", "guion", "keywords", "descripcion", "hashtags", "texto_miniatura")
 
 
+CANAL = os.getenv("YT_CHANNEL_ID", "UCsopoWr4pom9WjQlnqGP-RA")
+STATS = pathlib.Path("stats.json")
+
+
+def estudio_canal():
+    """Lee las estadísticas públicas del canal (RSS) y ordena los Shorts por rendimiento."""
+    try:
+        x = requests.get(f"https://www.youtube.com/feeds/videos.xml?channel_id={CANAL}", timeout=30).text
+        ns = {"a": "http://www.w3.org/2005/Atom", "m": "http://search.yahoo.com/mrss/"}
+        now, vids = time.time(), []
+        for e in ET.fromstring(x).findall("a:entry", ns):
+            titulo = e.find("a:title", ns).text.replace("#shorts", "").strip()
+            pub = calendar.timegm(time.strptime(e.find("a:published", ns).text[:19], "%Y-%m-%dT%H:%M:%S"))
+            com = e.find("m:group/m:community", ns)
+            vistas = int(com.find("m:statistics", ns).get("views", 0))
+            likes = int(com.find("m:starRating", ns).get("count", 0))
+            horas = (now - pub) / 3600
+            if horas < 6:
+                continue  # demasiado reciente para juzgarlo
+            vids.append({"titulo": titulo, "vistas": vistas, "likes": likes, "horas": round(horas),
+                         "vph": round(vistas / min(horas, 72), 1),  # vistas/hora en sus primeras 72 h
+                         "like_ratio": round(likes / vistas * 100, 1) if vistas else 0})
+        vids.sort(key=lambda v: v["vph"], reverse=True)
+        STATS.write_text(json.dumps(vids, ensure_ascii=False, indent=1), "utf-8")
+        print("ESTUDIO CANAL:", [(v["titulo"][:35], v["vistas"], v["vph"]) for v in vids])
+        return vids
+    except Exception as e:
+        print("Estudio del canal falló:", str(e)[:200])
+        return []
+
+
+def contexto_audiencia(vids):
+    if len(vids) < 3:
+        return ""
+    fmt = lambda v: f'"{v["titulo"]}" ({v["vistas"]} vistas, {v["vph"]} vistas/h, {v["like_ratio"]}% likes)'
+    k = min(3, len(vids) // 2)
+    top, low = vids[:k], vids[-k:]
+    return f"""
+DATOS REALES DE NUESTRO CANAL (úsalos para decidir el tema y el estilo):
+- Los que MÁS funcionaron: {'; '.join(fmt(v) for v in top)}
+- Los que MENOS funcionaron: {'; '.join(fmt(v) for v in low)}
+Analiza qué tienen en común los ganadores (categoría de tema, tipo de gancho, emoción: miedo, asombro, asco, misterio...) y crea un Short de ese estilo ganador, SIN repetir ninguno de esos temas. Evita el estilo de los que menos funcionaron."""
+
+
 ESCRITOR = ["gemini-flash-lite-latest", "gemini-flash-latest"]
 REVISOR = ["gemini-flash-lite-latest", "gemini-flash-latest"]
 
 
-def guion(evitar_extra=()):
+def guion(evitar_extra=(), audiencia=""):
     usados = json.loads(TEMAS.read_text("utf-8")) if TEMAS.exists() else []
     prompt = f"""Eres JARVIS, guionista experto en YouTube Shorts virales en español de España sobre curiosidades y datos sorprendentes (ciencia, animales, historia, cuerpo humano, espacio, tecnología).
 Crea UN Short nuevo pensado para retener y ganar suscriptores. Devuelve SOLO un JSON con estas claves:
@@ -67,7 +137,8 @@ REGLA DE ORO: usa SOLO datos muy conocidos que aparezcan en cualquier encicloped
 - keywords: array de 4 palabras EN INGLÉS para buscar vídeos de stock (concretas, visuales, relacionadas con el tema).
 - descripcion: 2 frases.
 - hashtags: array de 5, incluye "#shorts" y "#curiosidades".
-Temas ya usados (NO repetir): {' | '.join(list(usados[-60:]) + list(evitar_extra)) or 'ninguno'}"""
+- pregunta: una pregunta corta y divertida para el primer comentario que invite a la gente a opinar (ej: "¿Tú lo sabías? 👀").
+Temas ya usados (NO repetir): {' | '.join(list(usados[-60:]) + list(evitar_extra)) or 'ninguno'}{audiencia}"""
     d = llm(prompt, ESCRITOR)
     falta = [k for k in CLAVES if k not in d]
     if falta:
@@ -115,15 +186,22 @@ def _num(x):
 def preparar_guion():
     """Genera, revisa y corrige. Publica solo si los datos son fiables."""
     descartados, mejor = [], None
+    audiencia = contexto_audiencia(estudio_canal())
     for tema in range(3):
-        d = guion(descartados)
+        d = guion(descartados, audiencia)
         print(f"TEMA {tema+1}:", d["titulo"])
         for ronda in range(3):
             rv = revisar_guion(d)
             notas = {k: _num(rv.get(k)) for k in ("gancho", "retencion", "titulo_miniatura", "veracidad")}
             dudosos = rv.get("datos_dudosos") or []
             print(f"  revisión {ronda+1}: {notas} dudosos={dudosos} problemas={rv.get('problemas')}")
-            fiable = notas["veracidad"] >= 8 and not dudosos
+            n_pal = len(d["guion"].split())
+            if not 95 <= n_pal <= 165:
+                dudosos = list(dudosos)
+                rv["problemas"] = list(rv.get("problemas") or []) + [
+                    f"El guion tiene {n_pal} palabras: DEBE tener entre 110 y 140 palabras exactas"]
+                notas["retencion"] = min(notas["retencion"], 5)
+            fiable = notas["veracidad"] >= 8 and not dudosos and 95 <= n_pal <= 165
             if fiable and min(notas.values()) >= 8:
                 d["revision"] = notas
                 return d
@@ -147,12 +225,74 @@ def registrar_tema(titulo):
     TEMAS.write_text(json.dumps((usados + [titulo])[-150:], ensure_ascii=False, indent=1), "utf-8")
 
 
-def subir_youtube(path, d):
+def yt_headers():
     tok = requests.post("https://oauth2.googleapis.com/token", data={
         "client_id": os.environ["YT_CLIENT_ID"], "client_secret": os.environ["YT_CLIENT_SECRET"],
         "refresh_token": os.environ["YT_REFRESH_TOKEN"], "grant_type": "refresh_token"}, timeout=30)
     tok.raise_for_status()
-    h = {"Authorization": f"Bearer {tok.json()['access_token']}"}
+    return {"Authorization": f"Bearer {tok.json()['access_token']}"}
+
+
+YT = "https://www.googleapis.com/youtube/v3"
+RESPONDIDOS = pathlib.Path("respondidos.json")
+MAX_RESPUESTAS = int(os.getenv("MAX_RESPUESTAS", "4"))  # cuota diaria de YouTube limitada
+
+
+def primer_comentario(vid, d):
+    """Publica un comentario del canal con una pregunta para animar a comentar."""
+    texto = d.get("pregunta") or "¿Lo sabías? Te leo en los comentarios 👇"
+    texto += "\n\nSuscríbete para una curiosidad nueva cada día 🔔"
+    r = requests.post(f"{YT}/commentThreads?part=snippet", headers=yt_headers(), timeout=30,
+                      json={"snippet": {"videoId": vid, "topLevelComment": {"snippet": {"textOriginal": texto}}}})
+    print("PRIMER COMENTARIO ->", "ok" if r.ok else f"no ({r.status_code}: {r.text[:150]})")
+
+
+def responder_comentarios():
+    """Responde con IA a comentarios nuevos de los espectadores (sin spam, máx. MAX_RESPUESTAS)."""
+    h = yt_headers()
+    r = requests.get(f"{YT}/commentThreads", headers=h, timeout=30, params={
+        "part": "snippet", "allThreadsRelatedToChannelId": CANAL, "order": "time",
+        "maxResults": 50, "moderationStatus": "published", "textFormat": "plainText"})
+    if not r.ok:
+        print("COMENTARIOS -> no se pudieron leer", r.status_code, r.text[:150]); return
+    hechos = set(json.loads(RESPONDIDOS.read_text("utf-8"))) if RESPONDIDOS.exists() else set()
+    pend = []
+    for t in r.json().get("items", []):
+        sn = t["snippet"]; c = sn["topLevelComment"]["snippet"]
+        autor = c.get("authorChannelId", {}).get("value")
+        if t["id"] in hechos or autor == CANAL or sn.get("totalReplyCount", 0) > 0:
+            continue
+        pend.append({"id": t["id"], "texto": c.get("textDisplay", "")[:300]})
+    pend = pend[:MAX_RESPUESTAS * 2]
+    if not pend:
+        print("COMENTARIOS -> nada nuevo"); return
+    prompt = f"""Eres el community manager del canal de YouTube "Sabías Que Curiosidades" (curiosidades en español de España).
+Para cada comentario escribe una respuesta breve (máx. 20 palabras), cercana, natural y variada, con algún emoji ocasional. Si hacen una pregunta, respóndela con un dato correcto. Anima a seguir viendo el canal sin sonar a robot ni repetir siempre lo mismo.
+Si el comentario es spam, insultos, enlaces, contenido sexual o sin sentido, la respuesta debe ser "" (no responder).
+Comentarios: {json.dumps(pend, ensure_ascii=False)}
+Devuelve SOLO JSON: {{"respuestas": [{{"id": "...", "respuesta": "..."}}]}}"""
+    try:
+        res = llm(prompt, REVISOR).get("respuestas", [])
+    except Exception as e:
+        print("COMENTARIOS -> IA no disponible", e); return
+    n = 0
+    for it in res:
+        if n >= MAX_RESPUESTAS:
+            break
+        txt = (it.get("respuesta") or "").strip()
+        hechos.add(it.get("id"))
+        if not txt or it.get("id") not in {p["id"] for p in pend}:
+            continue
+        q = requests.post(f"{YT}/comments?part=snippet", headers=h, timeout=30,
+                          json={"snippet": {"parentId": it["id"], "textOriginal": txt}})
+        print("  respuesta ->", "ok" if q.ok else f"fallo {q.status_code}", "|", txt)
+        n += q.ok
+    RESPONDIDOS.write_text(json.dumps(sorted(x for x in hechos if x)[-2000:]), "utf-8")
+    print(f"COMENTARIOS -> {n} respuestas publicadas")
+
+
+def subir_youtube(path, d):
+    h = yt_headers()
     meta = {"snippet": {"title": (d["titulo"] + " #shorts")[:100],
                         "description": f"{d['descripcion']}\n\n{' '.join(d['hashtags'])}",
                         "tags": [t.lstrip('#') for t in d["hashtags"]],
@@ -238,7 +378,14 @@ def subir_instagram(video_url, d):
 
 if __name__ == "__main__":
     import qa
-    d = preparar_guion()
+    try:
+        d = preparar_guion()
+    except RuntimeError as e:
+        if "Ninguna IA" not in str(e):
+            raise
+        print("Las IA están saturadas: espero 4 minutos y reintento...")
+        time.sleep(240)
+        d = preparar_guion()
     print("GUION APROBADO:", d["titulo"], "| portada:", d["texto_miniatura"])
     pathlib.Path("payload.json").write_text(json.dumps(d, ensure_ascii=False), "utf-8")
     for intento in range(2):
@@ -254,7 +401,12 @@ if __name__ == "__main__":
         raise SystemExit(f"NO SE PUBLICA: el vídeo no pasó el control de calidad -> {problemas}")
     registrar_tema(d["titulo"])
     if os.getenv("YT_REFRESH_TOKEN"):
-        subir_youtube("out.mp4", d)
+        vid = subir_youtube("out.mp4", d)
+        for paso in (lambda: primer_comentario(vid, d), responder_comentarios):
+            try:
+                paso()
+            except Exception as e:
+                print("Comentarios falló (¿falta permiso youtube.force-ssl?):", str(e)[:200])
     else:
         print("Sin credenciales de YouTube: vídeo solo en Artifacts")
     url = None
