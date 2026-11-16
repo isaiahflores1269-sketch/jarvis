@@ -86,7 +86,8 @@ def estudio_canal():
     """Lee las estadísticas públicas del canal (RSS) y ordena los Shorts por rendimiento."""
     try:
         x = requests.get(f"https://www.youtube.com/feeds/videos.xml?channel_id={CANAL}", timeout=30).text
-        ns = {"a": "http://www.w3.org/2005/Atom", "m": "http://search.yahoo.com/mrss/"}
+        ns = {"a": "http://www.w3.org/2005/Atom", "m": "http://search.yahoo.com/mrss/",
+              "yt": "http://www.youtube.com/xml/schemas/2015"}
         now, vids = time.time(), []
         for e in ET.fromstring(x).findall("a:entry", ns):
             titulo = e.find("a:title", ns).text.replace("#shorts", "").strip()
@@ -97,11 +98,18 @@ def estudio_canal():
             horas = (now - pub) / 3600
             if horas < 6:
                 continue  # demasiado reciente para juzgarlo
-            vids.append({"titulo": titulo, "vistas": vistas, "likes": likes, "horas": round(horas),
+            vids.append({"id": e.find("yt:videoId", ns).text, "titulo": titulo, "vistas": vistas, "likes": likes, "horas": round(horas),
                          "vph": round(vistas / min(horas, 72), 1),  # vistas/hora en sus primeras 72 h
                          "like_ratio": round(likes / vistas * 100, 1) if vistas else 0})
         vids.sort(key=lambda v: v["vph"], reverse=True)
         STATS.write_text(json.dumps(vids, ensure_ascii=False, indent=1), "utf-8")
+        hist = _leer(HISTORIAL, [])
+        por_id = {v["id"]: v for v in vids}
+        for h in hist:
+            if h.get("id") in por_id:
+                v = por_id[h["id"]]
+                h.update(vistas=v["vistas"], likes=v["likes"], horas=v["horas"], vph=v["vph"])
+        HISTORIAL.write_text(json.dumps(hist[-1500:], ensure_ascii=False, indent=1), "utf-8")
         print("ESTUDIO CANAL:", [(v["titulo"][:35], v["vistas"], v["vph"]) for v in vids])
         return vids
     except Exception as e:
@@ -122,11 +130,55 @@ DATOS REALES DE NUESTRO CANAL (úsalos para decidir el tema y el estilo):
 Analiza qué tienen en común los ganadores (categoría de tema, tipo de gancho, emoción: miedo, asombro, asco, misterio...) y crea un Short de ese estilo ganador, SIN repetir ninguno de esos temas. Evita el estilo de los que menos funcionaron."""
 
 
+ESTRATEGIA = pathlib.Path("estrategia.json")
+HISTORIAL = pathlib.Path("historial.json")
+COMENTARIOS = pathlib.Path("comentarios.json")
+VARIANTES = {
+    "categoria": ["animales", "cuerpo humano", "espacio", "historia", "ciencia cotidiana",
+                  "tecnología", "naturaleza extrema", "misterios sin resolver"],
+    "gancho": ["afirmación impactante", "dato con número sorprendente", "reto al espectador (apuesto a que no sabías...)",
+               "contradicción (todo lo que creías sobre X es falso)", "peligro o miedo"],
+    "voz": ["es-ES-AlvaroNeural", "es-ES-ElviraNeural", "es-MX-JorgeNeural"],
+}
+EXPLORAR = 0.3  # 30% de vídeos prueban opciones al azar; 70% usan lo que mejor funciona
+
+
+def _leer(path, defecto):
+    try:
+        return json.loads(path.read_text("utf-8"))
+    except Exception:
+        return defecto
+
+
+def elegir_variante():
+    import random
+    pesos = _leer(ESTRATEGIA, {}).get("pesos", {})
+    v = {}
+    for dim, opciones in VARIANTES.items():
+        w = pesos.get(dim, {})
+        if random.random() < EXPLORAR or not w:
+            v[dim] = random.choice(opciones)
+        else:
+            v[dim] = random.choices(opciones, weights=[max(w.get(o, 1.0), 0.05) for o in opciones])[0]
+    return v
+
+
+def contexto_estrategia():
+    e = _leer(ESTRATEGIA, {})
+    txt = ""
+    if e.get("lecciones"):
+        txt += "\nLECCIONES APRENDIDAS DEL CANAL (cúmplelas):\n- " + "\n- ".join(e["lecciones"][:8])
+    if e.get("ideas"):
+        txt += "\nIDEAS PEDIDAS POR LA AUDIENCIA O CON POTENCIAL (elige una si encaja y no está repetida): " + " | ".join(e["ideas"][:10])
+    return txt
+
+
 ESCRITOR = ["gemini-flash-lite-latest", "gemini-flash-latest"]
 REVISOR = ["gemini-flash-lite-latest", "gemini-flash-latest"]
 
 
-def guion(evitar_extra=(), audiencia=""):
+def guion(evitar_extra=(), audiencia="", var=None):
+    var = var or elegir_variante()
     usados = json.loads(TEMAS.read_text("utf-8")) if TEMAS.exists() else []
     prompt = f"""Eres JARVIS, guionista experto en YouTube Shorts virales en español de España sobre curiosidades y datos sorprendentes (ciencia, animales, historia, cuerpo humano, espacio, tecnología).
 Crea UN Short nuevo pensado para retener y ganar suscriptores. Devuelve SOLO un JSON con estas claves:
@@ -138,8 +190,11 @@ REGLA DE ORO: usa SOLO datos muy conocidos que aparezcan en cualquier encicloped
 - descripcion: 2 frases.
 - hashtags: array de 5, incluye "#shorts" y "#curiosidades".
 - pregunta: una pregunta corta y divertida para el primer comentario que invite a la gente a opinar (ej: "¿Tú lo sabías? 👀").
-Temas ya usados (NO repetir): {' | '.join(list(usados[-60:]) + list(evitar_extra)) or 'ninguno'}{audiencia}"""
+Temas ya usados (NO repetir): {' | '.join(list(usados[-60:]) + list(evitar_extra)) or 'ninguno'}{audiencia}{contexto_estrategia()}
+EXPERIMENTO DE ESTE VÍDEO (obligatorio): categoría = {var['categoria']}; tipo de gancho = {var['gancho']}."""
     d = llm(prompt, ESCRITOR)
+    d["variante"] = var
+    d["voz"] = var["voz"]
     falta = [k for k in CLAVES if k not in d]
     if falta:
         raise RuntimeError(f"JSON incompleto, faltan {falta}")
@@ -221,8 +276,10 @@ def preparar_guion():
     """Genera, revisa y corrige. Publica solo si los datos son fiables."""
     descartados, mejor = [], None
     audiencia = contexto_audiencia(estudio_canal())
+    var = elegir_variante()
+    print("EXPERIMENTO:", var)
     for tema in range(4):
-        d = guion(descartados, audiencia)
+        d = guion(descartados, audiencia, var)
         print(f"TEMA {tema+1}:", d["titulo"])
         rep = es_repetido(d["titulo"]) or mismo_tema(d["titulo"])
         if rep:
@@ -301,6 +358,10 @@ def responder_comentarios():
         if t["id"] in hechos or autor == CANAL or sn.get("totalReplyCount", 0) > 0:
             continue
         pend.append({"id": t["id"], "texto": c.get("textDisplay", "")[:300]})
+    com = _leer(COMENTARIOS, [])
+    vistos = {c["id"] for c in com}
+    com += [{"id": p["id"], "texto": p["texto"], "fecha": time.strftime("%Y-%m-%d")} for p in pend if p["id"] not in vistos]
+    COMENTARIOS.write_text(json.dumps(com[-400:], ensure_ascii=False, indent=1), "utf-8")
     pend = pend[:MAX_RESPUESTAS * 2]
     if not pend:
         print("COMENTARIOS -> nada nuevo"); return
@@ -440,6 +501,10 @@ if __name__ == "__main__":
     registrar_tema(d["titulo"])
     if os.getenv("YT_REFRESH_TOKEN"):
         vid = subir_youtube("out.mp4", d)
+        hist = _leer(HISTORIAL, [])
+        hist.append({"id": vid, "titulo": d["titulo"], "fecha": time.strftime("%Y-%m-%d %H:%M"),
+                     "variante": d.get("variante", {}), "revision": d.get("revision", {})})
+        HISTORIAL.write_text(json.dumps(hist[-1500:], ensure_ascii=False, indent=1), "utf-8")
         for paso in (lambda: primer_comentario(vid, d), responder_comentarios):
             try:
                 paso()

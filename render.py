@@ -38,11 +38,12 @@ def dur(path):
 
 
 # ---------- 1. VOZ + tiempos de cada palabra ----------
-async def tts(text, mp3):
+async def tts(text, mp3, voice=None):
+    voice = voice or VOICE
     try:
-        com = edge_tts.Communicate(text, VOICE, rate=RATE, boundary="WordBoundary")
+        com = edge_tts.Communicate(text, voice, rate=RATE, boundary="WordBoundary")
     except TypeError:  # versiones antiguas
-        com = edge_tts.Communicate(text, VOICE, rate=RATE)
+        com = edge_tts.Communicate(text, voice, rate=RATE)
     words = []
     with open(mp3, "wb") as f:
         async for ch in com.stream():
@@ -178,7 +179,7 @@ def main(payload_path="payload.json", out="out.mp4"):
     text = d["guion"].strip()
     mp3, ass, bg = TMP / "voz.mp3", TMP / "subs.ass", TMP / "bg.mp4"
 
-    words = asyncio.run(asyncio.wait_for(tts(text, mp3), 120))
+    words = asyncio.run(asyncio.wait_for(tts(text, mp3, d.get("voz")), 120))
     total = dur(mp3) + 0.6
     make_ass(words, ass, total, d.get("texto_miniatura", ""))
 
