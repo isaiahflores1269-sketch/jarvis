@@ -202,6 +202,21 @@ def es_repetido(titulo, extra=()):
     return None
 
 
+def mismo_tema(titulo):
+    """La IA comprueba si es el mismo tema con otras palabras."""
+    usados = json.loads(TEMAS.read_text("utf-8")) if TEMAS.exists() else []
+    if not usados:
+        return None
+    try:
+        r = llm(f"""¿El Short "{titulo}" trata el MISMO dato o tema que alguno de estos ya publicados?
+Cuenta como repetido si el dato central es el mismo aunque cambien las palabras (ej: "la fuerza de las hormigas" y "el insecto que levanta 50 veces su peso").
+Publicados: {json.dumps(usados[-80:], ensure_ascii=False)}
+Devuelve SOLO JSON: {{"repetido": true/false, "cual": "título publicado o vacío"}}""", REVISOR)
+        return r.get("cual") or "repetido" if r.get("repetido") else None
+    except Exception as e:
+        print("  comprobación de tema falló:", e); return None
+
+
 def preparar_guion():
     """Genera, revisa y corrige. Publica solo si los datos son fiables."""
     descartados, mejor = [], None
@@ -209,7 +224,7 @@ def preparar_guion():
     for tema in range(4):
         d = guion(descartados, audiencia)
         print(f"TEMA {tema+1}:", d["titulo"])
-        rep = es_repetido(d["titulo"])
+        rep = es_repetido(d["titulo"]) or mismo_tema(d["titulo"])
         if rep:
             print("  descartado: tema repetido ->", rep)
             descartados.append(d["titulo"]); continue

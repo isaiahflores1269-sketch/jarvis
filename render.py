@@ -11,6 +11,19 @@ VOICE = os.getenv("JARVIS_VOICE", "es-ES-AlvaroNeural")
 RATE = os.getenv("JARVIS_RATE", "+8%")
 PEXELS_KEY = os.getenv("PEXELS_API_KEY", "")
 TMP = pathlib.Path("tmp"); TMP.mkdir(exist_ok=True)
+CLIPS_USADOS = pathlib.Path("clips_usados.json")
+
+
+def _usados():
+    try:
+        return set(json.loads(CLIPS_USADOS.read_text("utf-8")))
+    except Exception:
+        return set()
+
+
+def _guardar_usados(nuevos):
+    todos = list(_usados() | set(nuevos))
+    CLIPS_USADOS.write_text(json.dumps(todos[-600:]), "utf-8")
 
 
 def sh(cmd):
@@ -81,19 +94,21 @@ def pixabay_clips(keywords, need):
     key = os.getenv("PIXABAY_API_KEY", "")
     if not key:
         return []
-    got, seen = [], set()
+    got, seen, usados = [], set(), _usados()
     for kw in keywords + ["nature", "space", "science"]:
-        try:
-            r = requests.get("https://pixabay.com/api/videos/",
-                             params={"key": key, "q": kw, "per_page": 10, "safesearch": "true"}, timeout=30)
-            hits = r.json().get("hits", [])
-        except Exception as e:
-            print("pixabay error", e); continue
-        # preferir verticales
-        hits.sort(key=lambda h: h["videos"]["medium"].get("width", 1) > h["videos"]["medium"].get("height", 1))
-        for h in hits[:3]:
-            if h["id"] in seen:
-                continue
+        hits = []
+        for page in (1, 2):
+            try:
+                r = requests.get("https://pixabay.com/api/videos/", timeout=30, params={
+                    "key": key, "q": kw, "per_page": 20, "page": page, "safesearch": "true"})
+                hits += r.json().get("hits", [])
+            except Exception as e:
+                print("pixabay error", e); break
+        frescos = [h for h in hits if f"px{h['id']}" not in usados and h["id"] not in seen]
+        random.shuffle(frescos)
+        # preferir verticales, pero manteniendo el azar
+        frescos.sort(key=lambda h: h["videos"]["medium"].get("width", 1) > h["videos"]["medium"].get("height", 1))
+        for h in frescos[:2]:
             v = h["videos"].get("large") or {}
             if not v.get("url"):
                 v = h["videos"]["medium"]
@@ -104,7 +119,11 @@ def pixabay_clips(keywords, need):
                 print("descarga error", e); continue
             seen.add(h["id"]); got.append(p)
             if len(got) >= need:
-                return got
+                break
+        if len(got) >= need:
+            break
+    _guardar_usados(f"px{i}" for i in seen)
+    print("clips nuevos:", sorted(seen))
     return got
 
 
