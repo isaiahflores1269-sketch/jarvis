@@ -183,13 +183,36 @@ def _num(x):
         return 0.0
 
 
+_VACIAS = set("el la los las un una unos unas de del al a en y o que tu tus te se su sus es son por para con sin lo le les mas más muy como cada nunca siempre este esta esto ese esa tiene tienen puede pueden hay ser ver tú qué cómo".split())
+
+
+def _palabras(t):
+    t = re.sub(r"[^a-záéíóúñü ]", " ", t.lower())
+    return {w for w in t.split() if len(w) > 3 and w not in _VACIAS}
+
+
+def es_repetido(titulo, extra=()):
+    usados = json.loads(TEMAS.read_text("utf-8")) if TEMAS.exists() else []
+    if STATS.exists():
+        usados += [v["titulo"] for v in json.loads(STATS.read_text("utf-8"))]
+    nuevo = _palabras(titulo)
+    for u in list(usados) + list(extra):
+        if len(nuevo & _palabras(u)) >= 2:
+            return u
+    return None
+
+
 def preparar_guion():
     """Genera, revisa y corrige. Publica solo si los datos son fiables."""
     descartados, mejor = [], None
     audiencia = contexto_audiencia(estudio_canal())
-    for tema in range(3):
+    for tema in range(4):
         d = guion(descartados, audiencia)
         print(f"TEMA {tema+1}:", d["titulo"])
+        rep = es_repetido(d["titulo"])
+        if rep:
+            print("  descartado: tema repetido ->", rep)
+            descartados.append(d["titulo"]); continue
         for ronda in range(3):
             rv = revisar_guion(d)
             notas = {k: _num(rv.get(k)) for k in ("gancho", "retencion", "titulo_miniatura", "veracidad")}
