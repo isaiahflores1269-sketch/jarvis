@@ -1,0 +1,4 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Conexión TikTok</title>
+<style>body{font-family:system-ui;max-width:640px;margin:40px auto;padding:0 16px}code{display:block;background:#eee;padding:12px;word-break:break-all;font-size:14px}</style></head>
+<body><h1>Conexión con TikTok</h1><p id="m">Copia este código y pásaselo a Claude:</p><code id="c"></code>
+<script>const p=new URLSearchParams(location.search);document.getElementById('c').textContent=p.get('code')||('Error: '+(p.get('error_description')||p.get('error')||'sin código'));</script></body></html>

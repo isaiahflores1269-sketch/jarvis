@@ -453,6 +453,52 @@ def publicar_release(path, d):
     return url
 
 
+def _guardar_secreto(nombre, valor):
+    """Actualiza un secret de GitHub (para tokens que rotan). Necesita GH_PAT con permiso Secrets: write."""
+    pat, repo = os.getenv("GH_PAT"), os.getenv("GITHUB_REPOSITORY")
+    if not (pat and repo):
+        print(f"  (no se puede guardar {nombre}: falta GH_PAT)"); return
+    from base64 import b64encode
+    from nacl import encoding, public
+    h = {"Authorization": f"Bearer {pat}", "Accept": "application/vnd.github+json"}
+    k = requests.get(f"https://api.github.com/repos/{repo}/actions/secrets/public-key", headers=h, timeout=30).json()
+    box = public.SealedBox(public.PublicKey(k["key"].encode(), encoding.Base64Encoder()))
+    enc = b64encode(box.encrypt(valor.encode())).decode()
+    r = requests.put(f"https://api.github.com/repos/{repo}/actions/secrets/{nombre}", headers=h, timeout=30,
+                     json={"encrypted_value": enc, "key_id": k["key_id"]})
+    print(f"  secreto {nombre} actualizado" if r.ok else f"  fallo guardando {nombre}: {r.status_code}")
+
+
+def subir_tiktok(path, d):
+    """Content Posting API (Direct Post, subida de archivo). Sin auditar, TikTok solo permite privado."""
+    ck, cs, rt = os.getenv("TT_CLIENT_KEY"), os.getenv("TT_CLIENT_SECRET"), os.getenv("TT_REFRESH_TOKEN")
+    if not (ck and cs and rt):
+        print("TikTok: sin configurar"); return
+    t = requests.post("https://open.tiktokapis.com/v2/oauth/token/", timeout=30, data={
+        "client_key": ck, "client_secret": cs, "grant_type": "refresh_token", "refresh_token": rt},
+        headers={"Content-Type": "application/x-www-form-urlencoded"}).json()
+    if "access_token" not in t:
+        raise RuntimeError(f"token TikTok: {t}")
+    if t.get("refresh_token") and t["refresh_token"] != rt:
+        _guardar_secreto("TT_REFRESH_TOKEN", t["refresh_token"])
+    h = {"Authorization": f"Bearer {t['access_token']}", "Content-Type": "application/json; charset=UTF-8"}
+    info = requests.post("https://open.tiktokapis.com/v2/post/publish/creator_info/query/", headers=h, timeout=30).json()
+    opciones = info.get("data", {}).get("privacy_level_options", ["SELF_ONLY"])
+    privacidad = "PUBLIC_TO_EVERYONE" if "PUBLIC_TO_EVERYONE" in opciones else "SELF_ONLY"
+    size = os.path.getsize(path)
+    init = requests.post("https://open.tiktokapis.com/v2/post/publish/video/init/", headers=h, timeout=60, json={
+        "post_info": {"title": caption(d)[:2200], "privacy_level": privacidad,
+                      "disable_comment": False, "disable_duet": False, "disable_stitch": False,
+                      "video_cover_timestamp_ms": 800},
+        "source_info": {"source": "FILE_UPLOAD", "video_size": size, "chunk_size": size, "total_chunk_count": 1}}).json()
+    if init.get("error", {}).get("code") not in (None, "ok"):
+        raise RuntimeError(f"init TikTok: {init['error']}")
+    up = requests.put(init["data"]["upload_url"], data=open(path, "rb"), timeout=600, headers={
+        "Content-Type": "video/mp4", "Content-Range": f"bytes 0-{size-1}/{size}", "Content-Length": str(size)})
+    up.raise_for_status()
+    print(f"TIKTOK -> subido ({privacidad})", init["data"].get("publish_id"))
+
+
 def subir_instagram(video_url, d):
     tok, uid = os.getenv("IG_TOKEN"), os.getenv("IG_USER_ID")
     if not (tok and uid and video_url):
@@ -517,6 +563,10 @@ if __name__ == "__main__":
         url = publicar_release("out.mp4", d)
     except Exception as e:
         print("Release falló:", str(e)[:300])
+    try:
+        subir_tiktok("out.mp4", d)
+    except Exception as e:
+        print("TikTok falló:", str(e)[:300])
     try:
         subir_instagram(url, d)
     except Exception as e:
