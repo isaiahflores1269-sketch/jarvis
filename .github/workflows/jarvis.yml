@@ -1,6 +1,8 @@
 name: Jarvis
 on:
   workflow_dispatch: {}
+  schedule:
+    - cron: "17 9,14,19 * * *"   # respaldo: 10:17, 15:17 y 20:17 hora España (invierno)
 permissions:
   contents: write
 concurrency:
@@ -12,13 +14,28 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
+        with: { fetch-depth: 30 }
+      - name: Evitar duplicados (solo en horario)
+        id: guard
+        run: |
+          skip=false
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            last=$(git log -1 --grep "Jarvis: nuevo tema" --format=%ct || echo 0)
+            age=$(( $(date +%s) - ${last:-0} ))
+            echo "Ultimo Short hace $((age/60)) min"
+            [ "$age" -lt 9000 ] && skip=true
+          fi
+          echo "skip=$skip" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-python@v5
+        if: steps.guard.outputs.skip != 'true'
         with: { python-version: "3.12" }
       - name: Instalar
+        if: steps.guard.outputs.skip != 'true'
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
           pip install -q -r requirements.txt
       - name: Jarvis crea y sube el Short
+        if: steps.guard.outputs.skip != 'true'
         env:
           PYTHONUNBUFFERED: "1"
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -36,10 +53,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python jarvis.py
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.guard.outputs.skip != 'true'
         with: { name: short, path: out.mp4, retention-days: 7, if-no-files-found: ignore }
       - name: Guardar memoria de temas
-        if: always()
+        if: always() && steps.guard.outputs.skip != 'true'
         run: |
           git config user.name "jarvis-bot"; git config user.email "jarvis@users.noreply.github.com"
           for f in stats.json respondidos.json clips_usados.json historial.json comentarios.json; do [ -f "$f" ] || echo "[]" > "$f"; done
