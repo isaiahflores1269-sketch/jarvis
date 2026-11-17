@@ -515,12 +515,21 @@ def subir_tiktok(path, d):
                       "disable_comment": False, "disable_duet": False, "disable_stitch": False,
                       "video_cover_timestamp_ms": 800},
         "source_info": {"source": "FILE_UPLOAD", "video_size": size, "chunk_size": size, "total_chunk_count": 1}}).json()
+    modo = privacidad
     if init.get("error", {}).get("code") not in (None, "ok"):
-        raise RuntimeError(f"init TikTok: {init['error']}")
+        if "unaudited" not in str(init["error"]):
+            raise RuntimeError(f"init TikTok: {init['error']}")
+        # App aún sin auditar: se envía como BORRADOR a la bandeja de TikTok (publicas con 1 toque)
+        init = requests.post("https://open.tiktokapis.com/v2/post/publish/inbox/video/init/", headers=h, timeout=60,
+                             json={"source_info": {"source": "FILE_UPLOAD", "video_size": size,
+                                                   "chunk_size": size, "total_chunk_count": 1}}).json()
+        if init.get("error", {}).get("code") not in (None, "ok"):
+            raise RuntimeError(f"init TikTok borrador: {init['error']}")
+        modo = "BORRADOR en tu bandeja de TikTok"
     up = requests.put(init["data"]["upload_url"], data=open(path, "rb"), timeout=600, headers={
         "Content-Type": "video/mp4", "Content-Range": f"bytes 0-{size-1}/{size}", "Content-Length": str(size)})
     up.raise_for_status()
-    print(f"TIKTOK -> subido ({privacidad})", init["data"].get("publish_id"))
+    print(f"TIKTOK -> subido ({modo})", init["data"].get("publish_id"))
 
 
 def subir_instagram(video_url, d):
