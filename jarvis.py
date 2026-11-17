@@ -195,7 +195,8 @@ REGLA DE ORO: usa SOLO datos muy conocidos que aparezcan en cualquier encicloped
 - descripcion: 2 frases.
 - hashtags: array de 5, incluye "#shorts" y "#curiosidades".
 - pregunta: una pregunta corta y divertida para el primer comentario que invite a la gente a opinar (ej: "¿Tú lo sabías? 👀").
-Temas ya usados (NO repetir): {' | '.join(list(usados[-60:]) + list(evitar_extra)) or 'ninguno'}{audiencia}{contexto_estrategia()}
+Temas ya usados (NO repetir): {' | '.join(list(usados[-60:]) + list(evitar_extra)) or 'ninguno'}
+{('PROHIBIDO volver a tratar estos temas ni otros parecidos (ya rechazados): ' + ' | '.join(evitar_extra)) if evitar_extra else ''}{audiencia}{contexto_estrategia()}
 EXPERIMENTO DE ESTE VÍDEO (obligatorio): categoría = {var['categoria']}; tipo de gancho = {var['gancho']}."""
     d = llm(prompt, ESCRITOR)
     d["variante"] = var
@@ -289,7 +290,15 @@ def preparar_guion():
         rep = es_repetido(d["titulo"]) or mismo_tema(d["titulo"])
         if rep:
             print("  descartado: tema repetido ->", rep)
-            descartados.append(d["titulo"]); continue
+            descartados += [d["titulo"], rep]
+            # cambiar de categoría para no volver a caer en el mismo tema
+            for _ in range(10):
+                nv = elegir_variante()
+                if nv["categoria"] != var["categoria"]:
+                    break
+            var = dict(nv, voz=var["voz"])
+            print("  nuevo experimento:", var)
+            continue
         for ronda in range(3):
             rv = revisar_guion(d)
             notas = {k: _num(rv.get(k)) for k in ("gancho", "retencion", "titulo_miniatura", "veracidad")}
