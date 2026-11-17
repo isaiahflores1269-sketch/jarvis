@@ -14,10 +14,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 196,
-  "likes": 10,
-  "horas": 11,
-  "vph": 18.1
+  "vistas": 200,
+  "likes": 11,
+  "horas": 14,
+  "vph": 13.9
  },
  {
   "id": "xU08YxI8pxs",
@@ -36,8 +36,8 @@
   },
   "vistas": 4,
   "likes": 0,
-  "horas": 9,
-  "vph": 0.4
+  "horas": 13,
+  "vph": 0.3
  },
  {
   "id": "eRiD1DwyFs8",
@@ -53,7 +53,11 @@
    "retencion": 9.0,
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
-  }
+  },
+  "vistas": 1196,
+  "likes": 37,
+  "horas": 9,
+  "vph": 128.1
  },
  {
   "id": "PKxr2amr-uc",
@@ -69,7 +73,11 @@
    "retencion": 8.0,
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
-  }
+  },
+  "vistas": 28,
+  "likes": 1,
+  "horas": 6,
+  "vph": 4.4
  },
  {
   "id": "dfKtx8mtd0E",
