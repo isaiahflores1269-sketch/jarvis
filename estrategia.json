@@ -2,7 +2,7 @@
  "pesos": {
   "categoria": {"cuerpo humano": 2.2, "animales": 1.6, "ciencia cotidiana": 1.5, "espacio": 1.0, "misterios sin resolver": 1.0, "tecnología": 0.9, "naturaleza extrema": 0.6, "historia": 0.5},
   "gancho": {"contradicción (todo lo que creías sobre X es falso)": 1.8, "reto al espectador (apuesto a que no sabías...)": 1.5, "dato con número sorprendente": 1.3, "afirmación impactante": 1.0, "peligro o miedo": 0.7},
-  "voz": {"es-ES-AlvaroNeural": 1.0, "es-ES-ElviraNeural": 1.0, "es-MX-JorgeNeural": 1.0}
+  "voz": {"es-ES-AlvaroNeural": 1.0, "es-ES-ElviraNeural": 1.0}
  },
  "lecciones": [
   "Habla al espectador en 2ª persona: los títulos con 'tu/tienes' (tu cerebro, tu cuerpo, tu lengua) son los que más vistas por hora consiguen (~26/h frente a ~15/h del resto).",

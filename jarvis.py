@@ -138,7 +138,7 @@ VARIANTES = {
                   "tecnología", "naturaleza extrema", "misterios sin resolver"],
     "gancho": ["afirmación impactante", "dato con número sorprendente", "reto al espectador (apuesto a que no sabías...)",
                "contradicción (todo lo que creías sobre X es falso)", "peligro o miedo"],
-    "voz": ["es-ES-AlvaroNeural", "es-ES-ElviraNeural", "es-MX-JorgeNeural"],
+    "voz": ["es-ES-AlvaroNeural", "es-ES-ElviraNeural"],  # voces de España (el público es español)
 }
 EXPLORAR = 0.3  # 30% de vídeos prueban opciones al azar; 70% usan lo que mejor funciona
 
@@ -182,9 +182,14 @@ def guion(evitar_extra=(), audiencia="", var=None):
     usados = json.loads(TEMAS.read_text("utf-8")) if TEMAS.exists() else []
     prompt = f"""Eres JARVIS, guionista experto en YouTube Shorts virales en español de España sobre curiosidades y datos sorprendentes (ciencia, animales, historia, cuerpo humano, espacio, tecnología).
 Crea UN Short nuevo pensado para retener y ganar suscriptores. Devuelve SOLO un JSON con estas claves:
-- titulo: máx 60 caracteres, despierta curiosidad SIN exagerar ni engañar, sin hashtags. Debe coincidir exactamente con lo que dice el guion.
-- texto_miniatura: 2-4 palabras MUY potentes para la portada (ej: "NO DEBERÍA EXISTIR"), distinto del título.
-- guion: 110-140 palabras para leer en voz alta. La 1ª frase (máx 12 palabras) es el GANCHO: una afirmación concreta y sorprendente (no una pregunta genérica tipo "¿sabías que...?"). Frases cortas. Un giro o dato extra a mitad. Termina con "Suscríbete para más curiosidades."
+- titulo: 35-55 caracteres, sin hashtags ni emojis. Háblale al espectador en 2ª persona cuando encaje ("tu cuerpo", "lo que te enseñaron"). Crea un hueco de curiosidad (que solo se cierre viendo el vídeo) con una palabra concreta y potente, SIN exagerar ni engañar: debe coincidir con lo que dice el guion. Buenos ejemplos: "Lo que tu lengua no te ha contado", "Por qué nunca puedes hacerte cosquillas".
+- texto_miniatura: 2-4 palabras MUY potentes para la portada (ej: "TE HAN MENTIDO", "NO DEBERÍA EXISTIR"), distinto del título.
+- guion: 85-110 palabras para leer en voz alta (unos 30-40 s).
+  · 1ª frase = GANCHO: máx 10 palabras, en 2ª persona, concreta y sorprendente, que obligue a seguir mirando (ej: "Tu cuerpo fabrica un estómago nuevo cada pocos días."). Nunca empieces con "¿Sabías que...?", "Hoy te cuento" ni saludos.
+  · Si el tema es un mito, desmóntalo: "Te enseñaron que X. Es falso."
+  · Frases de 5-12 palabras. Un giro o dato extra a mitad ("Pero lo más raro es...").
+  · Penúltima frase: una pregunta concreta al espectador para que comente (ej: "¿Tú lo sabías o te acabas de enterar?").
+  · Última frase exacta: "Suscríbete para más curiosidades."
 REGLA DE ORO: usa SOLO datos muy conocidos que aparezcan en cualquier enciclopedia. Nada de cifras discutibles, mitos populares ni exageraciones. Si no estás 100% seguro de un dato, no lo pongas.
 - keywords: array de 4 palabras EN INGLÉS para buscar vídeos de stock (concretas, visuales, relacionadas con el tema).
 - descripcion: 2 frases.
@@ -209,7 +214,7 @@ TÍTULO: {d['titulo']}
 TEXTO MINIATURA: {d['texto_miniatura']}
 GUION: {d['guion']}
 
-Puntúa del 1 al 10: gancho (¿la 1ª frase engancha en 1 segundo?), retencion (ritmo y giro), titulo_miniatura (¿dan ganas de pulsar?), veracidad (10 = todo es un hecho conocido y correcto).
+Puntúa del 1 al 10: gancho (¿la 1ª frase, en 2ª persona y de máx 10 palabras, engancha en 1 segundo?), retencion (ritmo y giro), titulo_miniatura (¿dan ganas de pulsar?), veracidad (10 = todo es un hecho conocido y correcto).
 Lista en datos_dudosos SOLO afirmaciones que sean falsas o claramente exageradas (no marques simplificaciones normales de divulgación).
 Devuelve SOLO JSON: gancho, retencion, titulo_miniatura, veracidad, problemas (lista corta), datos_dudosos (lista)."""
     return llm(prompt, REVISOR)
@@ -222,7 +227,7 @@ TEXTO MINIATURA: {d['texto_miniatura']}
 GUION: {d['guion']}
 PROBLEMAS: {rv.get('problemas')}
 DATOS DUDOSOS (ELIMÍNALOS por completo, no los reformules; sustitúyelos por hechos conocidos y seguros del mismo tema): {rv.get('datos_dudosos')}
-Reglas: mismo tema; 1ª frase = gancho concreto y sorprendente (máx 12 palabras, no una pregunta genérica); título coherente con el guion y sin exagerar; guion de 110-140 palabras que termina con "Suscríbete para más curiosidades."
+Reglas: mismo tema; 1ª frase = gancho concreto y sorprendente en 2ª persona (máx 10 palabras, nunca "¿Sabías que...?"); título de 35-55 caracteres coherente con el guion y sin exagerar; guion de 85-110 palabras con una pregunta concreta al espectador justo antes de la frase final "Suscríbete para más curiosidades."
 Devuelve SOLO JSON con: titulo, texto_miniatura, guion."""
     nv = llm(prompt, ESCRITOR)
     for k in ("titulo", "texto_miniatura", "guion"):
@@ -291,12 +296,12 @@ def preparar_guion():
             dudosos = rv.get("datos_dudosos") or []
             print(f"  revisión {ronda+1}: {notas} dudosos={dudosos} problemas={rv.get('problemas')}")
             n_pal = len(d["guion"].split())
-            if not 95 <= n_pal <= 165:
+            if not 75 <= n_pal <= 125:
                 dudosos = list(dudosos)
                 rv["problemas"] = list(rv.get("problemas") or []) + [
-                    f"El guion tiene {n_pal} palabras: DEBE tener entre 110 y 140 palabras exactas"]
+                    f"El guion tiene {n_pal} palabras: DEBE tener entre 85 y 110 palabras"]
                 notas["retencion"] = min(notas["retencion"], 5)
-            fiable = notas["veracidad"] >= 8 and not dudosos and 95 <= n_pal <= 165
+            fiable = notas["veracidad"] >= 8 and not dudosos and 75 <= n_pal <= 125
             if fiable and min(notas.values()) >= 8:
                 d["revision"] = notas
                 return d
