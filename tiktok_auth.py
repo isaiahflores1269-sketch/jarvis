@@ -3,9 +3,11 @@ import os, sys, urllib.parse, requests
 import jarvis
 
 code = urllib.parse.unquote(sys.argv[1].strip())
+ck, cs = os.environ["TT_CLIENT_KEY"].strip(), os.environ["TT_CLIENT_SECRET"].strip()
+print(f"client_key: {len(ck)} caracteres, empieza por '{ck[:4]}' | client_secret: {len(cs)} caracteres")
 r = requests.post("https://open.tiktokapis.com/v2/oauth/token/", timeout=30,
                   headers={"Content-Type": "application/x-www-form-urlencoded"}, data={
-    "client_key": os.environ["TT_CLIENT_KEY"], "client_secret": os.environ["TT_CLIENT_SECRET"],
+    "client_key": ck, "client_secret": cs,
     "code": code, "grant_type": "authorization_code",
     "redirect_uri": "https://isaiahflores1269-sketch.github.io/jarvis/tiktok.html"}).json()
 if "refresh_token" not in r:

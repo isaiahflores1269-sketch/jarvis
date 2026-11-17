@@ -475,7 +475,7 @@ TT_TOKEN = pathlib.Path("tiktok_token.enc")
 def _tt_fernet():
     import base64, hashlib
     from cryptography.fernet import Fernet
-    return Fernet(base64.urlsafe_b64encode(hashlib.sha256(os.environ["TT_CLIENT_SECRET"].encode()).digest()))
+    return Fernet(base64.urlsafe_b64encode(hashlib.sha256(os.environ["TT_CLIENT_SECRET"].strip().encode()).digest()))
 
 
 def tt_guardar_token(rt):
@@ -494,7 +494,7 @@ def tt_leer_token():
 
 def subir_tiktok(path, d):
     """Content Posting API (Direct Post, subida de archivo). Sin auditar, TikTok solo permite privado."""
-    ck, cs = os.getenv("TT_CLIENT_KEY"), os.getenv("TT_CLIENT_SECRET")
+    ck, cs = (os.getenv("TT_CLIENT_KEY") or "").strip(), (os.getenv("TT_CLIENT_SECRET") or "").strip()
     rt = tt_leer_token() if (ck and cs) else None
     if not (ck and cs and rt):
         print("TikTok: sin configurar"); return
