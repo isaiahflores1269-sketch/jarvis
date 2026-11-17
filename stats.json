@@ -2,37 +2,37 @@
  {
   "id": "xEfdQ44f2V4",
   "titulo": "El animal con sangre azul que salva vidas humanas",
-  "vistas": 1114,
+  "vistas": 1115,
   "likes": 33,
-  "horas": 18,
-  "vph": 62.2,
+  "horas": 21,
+  "vph": 53.4,
   "like_ratio": 3.0
  },
  {
   "id": "bPq8jBHpd2U",
   "titulo": "Tu cerebro corrige tu visión al revés",
-  "vistas": 803,
-  "likes": 28,
-  "horas": 17,
-  "vph": 47.1,
-  "like_ratio": 3.5
+  "vistas": 808,
+  "likes": 29,
+  "horas": 20,
+  "vph": 40.3,
+  "like_ratio": 3.6
  },
  {
   "id": "46bElRUWjOk",
   "titulo": "El oro real que tienes dentro de tu cuerpo",
-  "vistas": 1019,
+  "vistas": 1020,
   "likes": 30,
-  "horas": 27,
-  "vph": 37.8,
+  "horas": 30,
+  "vph": 34.0,
   "like_ratio": 2.9
  },
  {
   "id": "yvE26yXWNIs",
   "titulo": "El impresionante superpoder de las hormigas",
-  "vistas": 1055,
+  "vistas": 1058,
   "likes": 40,
-  "horas": 45,
-  "vph": 23.5,
+  "horas": 48,
+  "vph": 22.1,
   "like_ratio": 3.8
  },
  {
@@ -40,26 +40,35 @@
   "titulo": "El mito del mapa de tu lengua",
   "vistas": 1192,
   "likes": 50,
-  "horas": 51,
-  "vph": 23.4,
+  "horas": 54,
+  "vph": 22.1,
   "like_ratio": 4.2
+ },
+ {
+  "id": "zejx7Yf6kWM",
+  "titulo": "Las bacterias de tu boca superan a la población mundial",
+  "vistas": 172,
+  "likes": 10,
+  "horas": 8,
+  "vph": 21.9,
+  "like_ratio": 5.8
  },
  {
   "id": "boamUXsB7QA",
   "titulo": "El pequeño animal más fuerte del mundo",
   "vistas": 849,
   "likes": 12,
-  "horas": 42,
-  "vph": 20.2,
+  "horas": 45,
+  "vph": 18.9,
   "like_ratio": 1.4
  },
  {
   "id": "DkuaR86ZzRw",
   "titulo": "Este insecto diminuto levanta objetos gigantescos sin esfuerzo",
-  "vistas": 907,
+  "vistas": 908,
   "likes": 22,
-  "horas": 48,
-  "vph": 18.9,
+  "horas": 51,
+  "vph": 17.8,
   "like_ratio": 2.4
  },
  {
@@ -67,44 +76,44 @@
   "titulo": "El diminuto insecto que levanta cincuenta veces su peso",
   "vistas": 1210,
   "likes": 21,
-  "horas": 69,
-  "vph": 17.5,
+  "horas": 72,
+  "vph": 16.8,
   "like_ratio": 1.7
  },
  {
   "id": "zG-RsFaVZdU",
   "titulo": "El sol que ves hoy es luz del pasado",
-  "vistas": 484,
+  "vistas": 488,
   "likes": 13,
-  "horas": 30,
-  "vph": 16.1,
+  "horas": 33,
+  "vph": 14.8,
   "like_ratio": 2.7
  },
  {
   "id": "9oc6wUt2MQM",
   "titulo": "El animal que no tiene corazón ni cerebro",
-  "vistas": 1021,
+  "vistas": 1022,
   "likes": 34,
-  "horas": 66,
-  "vph": 15.5,
+  "horas": 69,
+  "vph": 14.8,
   "like_ratio": 3.3
  },
  {
-  "id": "8otFDU4hXqY",
-  "titulo": "El animal que puede respirar por el trasero",
-  "vistas": 1066,
-  "likes": 28,
-  "horas": 72,
-  "vph": 14.8,
-  "like_ratio": 2.6
+  "id": "nLzvRJGD3u0",
+  "titulo": "La trágica mentira de las chicas del radio",
+  "vistas": 111,
+  "likes": 3,
+  "horas": 9,
+  "vph": 12.4,
+  "like_ratio": 2.7
  },
  {
   "id": "CwWaOFt6Rkk",
   "titulo": "El animal que se congela y revive en invierno",
   "vistas": 166,
   "likes": 2,
-  "horas": 54,
-  "vph": 3.1,
+  "horas": 57,
+  "vph": 2.9,
   "like_ratio": 1.2
  }
 ]

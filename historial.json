@@ -13,7 +13,11 @@
    "retencion": 8.0,
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
-  }
+  },
+  "vistas": 172,
+  "likes": 10,
+  "horas": 8,
+  "vph": 21.9
  },
  {
   "id": "xU08YxI8pxs",
@@ -45,6 +49,22 @@
    "retencion": 9.0,
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
+  }
+ },
+ {
+  "id": "PKxr2amr-uc",
+  "titulo": "El menú oculto de diagnóstico en tu móvil",
+  "fecha": "2026-11-17 17:17",
+  "variante": {
+   "categoria": "tecnología",
+   "gancho": "reto al espectador (apuesto a que no sabías...)",
+   "voz": "es-ES-ElviraNeural"
+  },
+  "revision": {
+   "gancho": 9.0,
+   "retencion": 8.0,
+   "titulo_miniatura": 9.0,
+   "veracidad": 9.0
   }
  }
 ]
