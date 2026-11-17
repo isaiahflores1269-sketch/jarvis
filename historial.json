@@ -57,7 +57,7 @@
   "vistas": 1196,
   "likes": 37,
   "horas": 9,
-  "vph": 128.1
+  "vph": 127.5
  },
  {
   "id": "PKxr2amr-uc",
@@ -77,7 +77,7 @@
   "vistas": 28,
   "likes": 1,
   "horas": 6,
-  "vph": 4.4
+  "vph": 4.3
  },
  {
   "id": "dfKtx8mtd0E",
@@ -92,6 +92,22 @@
    "gancho": 7.0,
    "retencion": 8.0,
    "titulo_miniatura": 9.0,
+   "veracidad": 10.0
+  }
+ },
+ {
+  "id": "aIKbEJ-YcEk",
+  "titulo": "Por qué nunca puedes hacerte cosquillas",
+  "fecha": "2026-11-17 23:47",
+  "variante": {
+   "categoria": "animales",
+   "gancho": "reto al espectador (apuesto a que no sabías...)",
+   "voz": "es-ES-AlvaroNeural"
+  },
+  "revision": {
+   "gancho": 8.0,
+   "retencion": 9.0,
+   "titulo_miniatura": 8.0,
    "veracidad": 10.0
   }
  }
