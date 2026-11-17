@@ -182,10 +182,10 @@ def guion(evitar_extra=(), audiencia="", var=None):
     usados = json.loads(TEMAS.read_text("utf-8")) if TEMAS.exists() else []
     prompt = f"""Eres JARVIS, guionista experto en YouTube Shorts virales en español de España sobre curiosidades y datos sorprendentes (ciencia, animales, historia, cuerpo humano, espacio, tecnología).
 Crea UN Short nuevo pensado para retener y ganar suscriptores. Devuelve SOLO un JSON con estas claves:
-- titulo: 35-55 caracteres, sin hashtags ni emojis. Háblale al espectador en 2ª persona cuando encaje ("tu cuerpo", "lo que te enseñaron"). Crea un hueco de curiosidad (que solo se cierre viendo el vídeo) con una palabra concreta y potente, SIN exagerar ni engañar: debe coincidir con lo que dice el guion. Buenos ejemplos: "Lo que tu lengua no te ha contado", "Por qué nunca puedes hacerte cosquillas".
+- titulo: 35-55 caracteres, sin hashtags ni emojis. Háblale al espectador en 2ª persona cuando encaje ("tu cuerpo", "lo que te enseñaron"). Crea un hueco de curiosidad (que solo se cierre viendo el vídeo) con una palabra concreta y potente, SIN exagerar ni engañar: debe coincidir con lo que dice el guion. Nunca copies títulos de ejemplo ni de vídeos ya publicados.
 - texto_miniatura: 2-4 palabras MUY potentes para la portada (ej: "TE HAN MENTIDO", "NO DEBERÍA EXISTIR"), distinto del título.
 - guion: 85-110 palabras para leer en voz alta (unos 30-40 s).
-  · 1ª frase = GANCHO: máx 10 palabras, en 2ª persona, concreta y sorprendente, que obligue a seguir mirando (ej: "Tu cuerpo fabrica un estómago nuevo cada pocos días."). Nunca empieces con "¿Sabías que...?", "Hoy te cuento" ni saludos.
+  · 1ª frase = GANCHO: máx 10 palabras, en 2ª persona, concreta y sorprendente, que obligue a seguir mirando . Nunca empieces con "¿Sabías que...?", "Hoy te cuento" ni saludos.
   · Si el tema es un mito, desmóntalo: "Te enseñaron que X. Es falso."
   · Frases de 5-12 palabras. Un giro o dato extra a mitad ("Pero lo más raro es...").
   · Penúltima frase: una pregunta concreta al espectador para que comente (ej: "¿Tú lo sabías o te acabas de enterar?").
