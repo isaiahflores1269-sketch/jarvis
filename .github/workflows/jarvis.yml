@@ -42,4 +42,4 @@ jobs:
         run: |
           git config user.name "jarvis-bot"; git config user.email "jarvis@users.noreply.github.com"
           for f in stats.json respondidos.json clips_usados.json historial.json comentarios.json; do [ -f "$f" ] || echo "[]" > "$f"; done
-          git add temas.json stats.json respondidos.json clips_usados.json historial.json comentarios.json && git commit -m "Jarvis: nuevo tema" && (git pull --rebase && git push) || echo "sin cambios"
+          git add -A tiktok_token.enc 2>/dev/null; git add temas.json stats.json respondidos.json clips_usados.json historial.json comentarios.json && git commit -m "Jarvis: nuevo tema" && (git pull --rebase && git push) || echo "sin cambios"
