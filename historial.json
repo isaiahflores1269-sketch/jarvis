@@ -1,1 +1,18 @@
-[]
+[
+ {
+  "id": "zejx7Yf6kWM",
+  "titulo": "Las bacterias de tu boca superan a la población mundial",
+  "fecha": "2026-11-17 09:17",
+  "variante": {
+   "categoria": "cuerpo humano",
+   "gancho": "peligro o miedo",
+   "voz": "es-MX-JorgeNeural"
+  },
+  "revision": {
+   "gancho": 9.0,
+   "retencion": 8.0,
+   "titulo_miniatura": 9.0,
+   "veracidad": 9.0
+  }
+ }
+]
