@@ -32,7 +32,7 @@ jobs:
       - name: Instalar
         if: steps.guard.outputs.skip != 'true'
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core fonts-montserrat
           pip install -q -r requirements.txt
       - name: Jarvis crea y sube el Short
         if: steps.guard.outputs.skip != 'true'
