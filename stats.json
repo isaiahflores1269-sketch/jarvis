@@ -2,19 +2,19 @@
  {
   "id": "xEfdQ44f2V4",
   "titulo": "El animal con sangre azul que salva vidas humanas",
-  "vistas": 1113,
+  "vistas": 1114,
   "likes": 33,
-  "horas": 15,
-  "vph": 74.8,
+  "horas": 18,
+  "vph": 62.2,
   "like_ratio": 3.0
  },
  {
   "id": "bPq8jBHpd2U",
   "titulo": "Tu cerebro corrige tu visión al revés",
-  "vistas": 792,
+  "vistas": 803,
   "likes": 28,
-  "horas": 14,
-  "vph": 56.5,
+  "horas": 17,
+  "vph": 47.1,
   "like_ratio": 3.5
  },
  {
@@ -22,17 +22,17 @@
   "titulo": "El oro real que tienes dentro de tu cuerpo",
   "vistas": 1019,
   "likes": 30,
-  "horas": 24,
-  "vph": 42.5,
+  "horas": 27,
+  "vph": 37.8,
   "like_ratio": 2.9
  },
  {
   "id": "yvE26yXWNIs",
   "titulo": "El impresionante superpoder de las hormigas",
-  "vistas": 1052,
+  "vistas": 1055,
   "likes": 40,
-  "horas": 42,
-  "vph": 25.1,
+  "horas": 45,
+  "vph": 23.5,
   "like_ratio": 3.8
  },
  {
@@ -40,8 +40,8 @@
   "titulo": "El mito del mapa de tu lengua",
   "vistas": 1192,
   "likes": 50,
-  "horas": 48,
-  "vph": 24.8,
+  "horas": 51,
+  "vph": 23.4,
   "like_ratio": 4.2
  },
  {
@@ -49,8 +49,8 @@
   "titulo": "El pequeño animal más fuerte del mundo",
   "vistas": 849,
   "likes": 12,
-  "horas": 39,
-  "vph": 21.8,
+  "horas": 42,
+  "vph": 20.2,
   "like_ratio": 1.4
  },
  {
@@ -58,8 +58,8 @@
   "titulo": "Este insecto diminuto levanta objetos gigantescos sin esfuerzo",
   "vistas": 907,
   "likes": 22,
-  "horas": 45,
-  "vph": 20.2,
+  "horas": 48,
+  "vph": 18.9,
   "like_ratio": 2.4
  },
  {
@@ -67,26 +67,26 @@
   "titulo": "El diminuto insecto que levanta cincuenta veces su peso",
   "vistas": 1210,
   "likes": 21,
-  "horas": 66,
-  "vph": 18.3,
+  "horas": 69,
+  "vph": 17.5,
   "like_ratio": 1.7
  },
  {
   "id": "zG-RsFaVZdU",
   "titulo": "El sol que ves hoy es luz del pasado",
-  "vistas": 448,
+  "vistas": 484,
   "likes": 13,
-  "horas": 27,
-  "vph": 16.6,
-  "like_ratio": 2.9
+  "horas": 30,
+  "vph": 16.1,
+  "like_ratio": 2.7
  },
  {
   "id": "9oc6wUt2MQM",
   "titulo": "El animal que no tiene corazón ni cerebro",
   "vistas": 1021,
   "likes": 34,
-  "horas": 63,
-  "vph": 16.2,
+  "horas": 66,
+  "vph": 15.5,
   "like_ratio": 3.3
  },
  {
@@ -94,26 +94,17 @@
   "titulo": "El animal que puede respirar por el trasero",
   "vistas": 1066,
   "likes": 28,
-  "horas": 69,
-  "vph": 15.5,
-  "like_ratio": 2.6
- },
- {
-  "id": "hM1E-6cp78g",
-  "titulo": "El misterio del lago africano que momifica animales",
-  "vistas": 1020,
-  "likes": 29,
   "horas": 72,
-  "vph": 14.2,
-  "like_ratio": 2.8
+  "vph": 14.8,
+  "like_ratio": 2.6
  },
  {
   "id": "CwWaOFt6Rkk",
   "titulo": "El animal que se congela y revive en invierno",
   "vistas": 166,
   "likes": 2,
-  "horas": 51,
-  "vph": 3.3,
+  "horas": 54,
+  "vph": 3.1,
   "like_ratio": 1.2
  }
 ]

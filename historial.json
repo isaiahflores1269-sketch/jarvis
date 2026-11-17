@@ -30,5 +30,21 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   }
+ },
+ {
+  "id": "eRiD1DwyFs8",
+  "titulo": "El asteroide Apofis y su peligroso paso cercano",
+  "fecha": "2026-11-17 14:20",
+  "variante": {
+   "categoria": "espacio",
+   "gancho": "peligro o miedo",
+   "voz": "es-ES-ElviraNeural"
+  },
+  "revision": {
+   "gancho": 8.0,
+   "retencion": 9.0,
+   "titulo_miniatura": 9.0,
+   "veracidad": 10.0
+  }
  }
 ]
