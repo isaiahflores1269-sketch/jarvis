@@ -1,0 +1,25 @@
+name: Panel TikTok (Netlify)
+on:
+  workflow_dispatch: {}
+  push:
+    paths: ["panel/**"]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: panel } }
+    env:
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: 03ec3bc6-4be4-42b7-91b9-12e0cee35ab5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i -g netlify-cli && npm i
+      - name: Claves de TikTok -> Netlify
+        env:
+          TT_CLIENT_KEY: ${{ secrets.TT_CLIENT_KEY }}
+          TT_CLIENT_SECRET: ${{ secrets.TT_CLIENT_SECRET }}
+        run: |
+          netlify env:set TT_CLIENT_KEY "$TT_CLIENT_KEY" --force
+          netlify env:set TT_CLIENT_SECRET "$TT_CLIENT_SECRET" --secret --force || netlify env:set TT_CLIENT_SECRET "$TT_CLIENT_SECRET" --force
+      - run: netlify deploy --prod --dir public --functions netlify/functions --message "panel"
