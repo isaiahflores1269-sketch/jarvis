@@ -14,5 +14,21 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   }
+ },
+ {
+  "id": "xU08YxI8pxs",
+  "titulo": "El árbol más peligroso del mundo",
+  "fecha": "2026-11-17 11:09",
+  "variante": {
+   "categoria": "naturaleza extrema",
+   "gancho": "afirmación impactante",
+   "voz": "es-ES-ElviraNeural"
+  },
+  "revision": {
+   "gancho": 8.0,
+   "retencion": 9.0,
+   "titulo_miniatura": 9.0,
+   "veracidad": 10.0
+  }
  }
 ]
