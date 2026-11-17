@@ -469,9 +469,33 @@ def _guardar_secreto(nombre, valor):
     print(f"  secreto {nombre} actualizado" if r.ok else f"  fallo guardando {nombre}: {r.status_code}")
 
 
+TT_TOKEN = pathlib.Path("tiktok_token.enc")
+
+
+def _tt_fernet():
+    import base64, hashlib
+    from cryptography.fernet import Fernet
+    return Fernet(base64.urlsafe_b64encode(hashlib.sha256(os.environ["TT_CLIENT_SECRET"].encode()).digest()))
+
+
+def tt_guardar_token(rt):
+    """Guarda el refresh token cifrado (con la clave secreta de TikTok) en el repo: rota solo, sin GH_PAT."""
+    TT_TOKEN.write_bytes(_tt_fernet().encrypt(rt.encode()))
+
+
+def tt_leer_token():
+    if TT_TOKEN.exists():
+        try:
+            return _tt_fernet().decrypt(TT_TOKEN.read_bytes()).decode()
+        except Exception as e:
+            print("token TikTok cifrado ilegible:", e)
+    return os.getenv("TT_REFRESH_TOKEN")
+
+
 def subir_tiktok(path, d):
     """Content Posting API (Direct Post, subida de archivo). Sin auditar, TikTok solo permite privado."""
-    ck, cs, rt = os.getenv("TT_CLIENT_KEY"), os.getenv("TT_CLIENT_SECRET"), os.getenv("TT_REFRESH_TOKEN")
+    ck, cs = os.getenv("TT_CLIENT_KEY"), os.getenv("TT_CLIENT_SECRET")
+    rt = tt_leer_token() if (ck and cs) else None
     if not (ck and cs and rt):
         print("TikTok: sin configurar"); return
     t = requests.post("https://open.tiktokapis.com/v2/oauth/token/", timeout=30, data={
@@ -480,7 +504,7 @@ def subir_tiktok(path, d):
     if "access_token" not in t:
         raise RuntimeError(f"token TikTok: {t}")
     if t.get("refresh_token") and t["refresh_token"] != rt:
-        _guardar_secreto("TT_REFRESH_TOKEN", t["refresh_token"])
+        tt_guardar_token(t["refresh_token"])
     h = {"Authorization": f"Bearer {t['access_token']}", "Content-Type": "application/json; charset=UTF-8"}
     info = requests.post("https://open.tiktokapis.com/v2/post/publish/creator_info/query/", headers=h, timeout=30).json()
     opciones = info.get("data", {}).get("privacy_level_options", ["SELF_ONLY"])
