@@ -2,19 +2,19 @@
  {
   "id": "aIKbEJ-YcEk",
   "titulo": "Por qué nunca puedes hacerte cosquillas",
-  "vistas": 1019,
-  "likes": 28,
-  "horas": 12,
-  "vph": 88.2,
-  "like_ratio": 2.7
+  "vistas": 1020,
+  "likes": 26,
+  "horas": 14,
+  "vph": 71.1,
+  "like_ratio": 2.5
  },
  {
   "id": "eRiD1DwyFs8",
   "titulo": "El asteroide Apofis y su peligroso paso cercano",
   "vistas": 1253,
   "likes": 38,
-  "horas": 21,
-  "vph": 59.7,
+  "horas": 24,
+  "vph": 52.7,
   "like_ratio": 3.0
  },
  {
@@ -22,8 +22,8 @@
   "titulo": "El animal con sangre azul que salva vidas humanas",
   "vistas": 1123,
   "likes": 34,
-  "horas": 39,
-  "vph": 28.7,
+  "horas": 42,
+  "vph": 26.8,
   "like_ratio": 3.0
  },
  {
@@ -31,8 +31,8 @@
   "titulo": "Tu cerebro corrige tu visión al revés",
   "vistas": 833,
   "likes": 30,
-  "horas": 38,
-  "vph": 21.8,
+  "horas": 41,
+  "vph": 20.3,
   "like_ratio": 3.6
  },
  {
@@ -40,8 +40,8 @@
   "titulo": "El oro real que tienes dentro de tu cuerpo",
   "vistas": 1020,
   "likes": 30,
-  "horas": 48,
-  "vph": 21.2,
+  "horas": 51,
+  "vph": 20.0,
   "like_ratio": 2.9
  },
  {
@@ -49,8 +49,8 @@
   "titulo": "El impresionante superpoder de las hormigas",
   "vistas": 1063,
   "likes": 40,
-  "horas": 66,
-  "vph": 16.1,
+  "horas": 69,
+  "vph": 15.4,
   "like_ratio": 3.8
  },
  {
@@ -58,53 +58,44 @@
   "titulo": "El pequeño animal más fuerte del mundo",
   "vistas": 849,
   "likes": 12,
-  "horas": 63,
-  "vph": 13.4,
+  "horas": 66,
+  "vph": 12.9,
   "like_ratio": 1.4
- },
- {
-  "id": "DkuaR86ZzRw",
-  "titulo": "Este insecto diminuto levanta objetos gigantescos sin esfuerzo",
-  "vistas": 909,
-  "likes": 22,
-  "horas": 69,
-  "vph": 13.2,
-  "like_ratio": 2.4
  },
  {
   "id": "dfKtx8mtd0E",
   "titulo": "La realidad sobre las cajas fuertes del Titanic",
   "vistas": 186,
   "likes": 3,
-  "horas": 15,
-  "vph": 12.3,
+  "horas": 18,
+  "vph": 10.4,
   "like_ratio": 1.6
  },
  {
   "id": "zG-RsFaVZdU",
   "titulo": "El sol que ves hoy es luz del pasado",
-  "vistas": 509,
+  "vistas": 511,
   "likes": 14,
-  "horas": 51,
-  "vph": 9.9,
-  "like_ratio": 2.8
+  "horas": 54,
+  "vph": 9.5,
+  "like_ratio": 2.7
  },
  {
   "id": "zejx7Yf6kWM",
   "titulo": "Las bacterias de tu boca superan a la población mundial",
-  "vistas": 237,
+  "vistas": 241,
   "likes": 14,
-  "horas": 26,
-  "vph": 9.1,
-  "like_ratio": 5.9
+  "horas": 29,
+  "vph": 8.4,
+  "like_ratio": 5.8
  },
  {
   "id": "nLzvRJGD3u0",
   "titulo": "La trágica mentira de las chicas del radio",
   "vistas": 144,
   "likes": 3,
-  "horas": 27,
-  "vph": 5.3,
+  "horas": 30,
+  "vph": 4.8,
   "like_ratio": 2.1
  },
  {
@@ -112,8 +103,8 @@
   "titulo": "El menú oculto de diagnóstico en tu móvil",
   "vistas": 42,
   "likes": 1,
-  "horas": 18,
-  "vph": 2.3,
+  "horas": 21,
+  "vph": 2.0,
   "like_ratio": 2.4
  },
  {
@@ -121,7 +112,7 @@
   "titulo": "El árbol más peligroso del mundo",
   "vistas": 6,
   "likes": 1,
-  "horas": 24,
+  "horas": 27,
   "vph": 0.2,
   "like_ratio": 16.7
  }
