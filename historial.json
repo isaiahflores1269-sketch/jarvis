@@ -14,10 +14,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 232,
+  "vistas": 237,
   "likes": 14,
-  "horas": 23,
-  "vph": 10.2
+  "horas": 26,
+  "vph": 9.1
  },
  {
   "id": "xU08YxI8pxs",
@@ -35,9 +35,9 @@
    "veracidad": 10.0
   },
   "vistas": 6,
-  "likes": 0,
-  "horas": 21,
-  "vph": 0.3
+  "likes": 1,
+  "horas": 24,
+  "vph": 0.2
  },
  {
   "id": "eRiD1DwyFs8",
@@ -54,10 +54,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 1243,
-  "likes": 37,
-  "horas": 18,
-  "vph": 69.9
+  "vistas": 1253,
+  "likes": 38,
+  "horas": 21,
+  "vph": 59.7
  },
  {
   "id": "PKxr2amr-uc",
@@ -76,8 +76,8 @@
   },
   "vistas": 42,
   "likes": 1,
-  "horas": 15,
-  "vph": 2.8
+  "horas": 18,
+  "vph": 2.3
  },
  {
   "id": "dfKtx8mtd0E",
@@ -94,10 +94,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 125,
+  "vistas": 186,
   "likes": 3,
-  "horas": 12,
-  "vph": 10.5
+  "horas": 15,
+  "vph": 12.3
  },
  {
   "id": "aIKbEJ-YcEk",
@@ -114,10 +114,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 10.0
   },
-  "vistas": 1009,
+  "vistas": 1019,
   "likes": 28,
-  "horas": 8,
-  "vph": 121.0
+  "horas": 12,
+  "vph": 88.2
  },
  {
   "id": "mVgTeNWCW48",
@@ -132,6 +132,22 @@
    "gancho": 9.0,
    "retencion": 8.0,
    "titulo_miniatura": 8.0,
+   "veracidad": 9.0
+  }
+ },
+ {
+  "id": "zPbQpYg8ZQk",
+  "titulo": "Tu mano esconde un tendón que demuestra tu pasado",
+  "fecha": "2026-11-18 11:21",
+  "variante": {
+   "categoria": "animales",
+   "gancho": "reto al espectador (apuesto a que no sabías...)",
+   "voz": "es-ES-ElviraNeural"
+  },
+  "revision": {
+   "gancho": 9.0,
+   "retencion": 9.0,
+   "titulo_miniatura": 10.0,
    "veracidad": 9.0
   }
  }
