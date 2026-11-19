@@ -4,17 +4,17 @@
   "titulo": "El secreto real detrás de los camaleones",
   "vistas": 905,
   "likes": 18,
-  "horas": 10,
-  "vph": 92.1,
+  "horas": 13,
+  "vph": 70.6,
   "like_ratio": 2.0
  },
  {
   "id": "f57LjM6eqRI",
   "titulo": "Por qué se arrugan tus dedos en el agua",
-  "vistas": 1285,
+  "vistas": 1288,
   "likes": 27,
-  "horas": 18,
-  "vph": 71.9,
+  "horas": 21,
+  "vph": 61.7,
   "like_ratio": 2.1
  },
  {
@@ -22,8 +22,8 @@
   "titulo": "El asteroide Apofis y su peligroso paso cercano",
   "vistas": 1319,
   "likes": 40,
-  "horas": 45,
-  "vph": 29.5,
+  "horas": 48,
+  "vph": 27.6,
   "like_ratio": 3.0
  },
  {
@@ -31,53 +31,44 @@
   "titulo": "Por qué nunca puedes hacerte cosquillas",
   "vistas": 1033,
   "likes": 27,
-  "horas": 35,
-  "vph": 29.2,
+  "horas": 38,
+  "vph": 26.9,
   "like_ratio": 2.6
- },
- {
-  "id": "0fdJmBR4Z1k",
-  "titulo": "La verdad sobre el pelo tras morir",
-  "vistas": 606,
-  "likes": 10,
-  "horas": 21,
-  "vph": 29.1,
-  "like_ratio": 1.7
  },
  {
   "id": "mVgTeNWCW48",
   "titulo": "Tus huesos se renuevan por completo cada 10 años",
-  "vistas": 765,
+  "vistas": 769,
   "likes": 21,
-  "horas": 27,
-  "vph": 28.4,
+  "horas": 30,
+  "vph": 25.7,
   "like_ratio": 2.7
+ },
+ {
+  "id": "0fdJmBR4Z1k",
+  "titulo": "La verdad sobre el pelo tras morir",
+  "vistas": 608,
+  "likes": 10,
+  "horas": 24,
+  "vph": 25.5,
+  "like_ratio": 1.6
  },
  {
   "id": "vK_BVw4LkAQ",
   "titulo": "Por qué ves estrellas al frotarte los ojos",
   "vistas": 387,
   "likes": 8,
-  "horas": 15,
-  "vph": 25.9,
+  "horas": 18,
+  "vph": 21.6,
   "like_ratio": 2.1
- },
- {
-  "id": "bPq8jBHpd2U",
-  "titulo": "Tu cerebro corrige tu visión al revés",
-  "vistas": 841,
-  "likes": 30,
-  "horas": 62,
-  "vph": 13.6,
-  "like_ratio": 3.6
  },
  {
   "id": "zejx7Yf6kWM",
   "titulo": "Las bacterias de tu boca superan a la población mundial",
   "vistas": 262,
   "likes": 15,
-  "horas": 50,
-  "vph": 5.3,
+  "horas": 53,
+  "vph": 5.0,
   "like_ratio": 5.7
  },
  {
@@ -85,8 +76,8 @@
   "titulo": "La realidad sobre las cajas fuertes del Titanic",
   "vistas": 188,
   "likes": 3,
-  "horas": 39,
-  "vph": 4.8,
+  "horas": 42,
+  "vph": 4.5,
   "like_ratio": 1.6
  },
  {
@@ -94,8 +85,8 @@
   "titulo": "La trágica mentira de las chicas del radio",
   "vistas": 145,
   "likes": 3,
-  "horas": 51,
-  "vph": 2.8,
+  "horas": 54,
+  "vph": 2.7,
   "like_ratio": 2.1
  },
  {
@@ -103,8 +94,8 @@
   "titulo": "El menú oculto de diagnóstico en tu móvil",
   "vistas": 59,
   "likes": 1,
-  "horas": 42,
-  "vph": 1.4,
+  "horas": 45,
+  "vph": 1.3,
   "like_ratio": 1.7
  },
  {
@@ -112,8 +103,8 @@
   "titulo": "Tu mano esconde un tendón que demuestra tu pasado",
   "vistas": 9,
   "likes": 0,
-  "horas": 24,
-  "vph": 0.4,
+  "horas": 27,
+  "vph": 0.3,
   "like_ratio": 0.0
  },
  {
@@ -121,7 +112,7 @@
   "titulo": "El árbol más peligroso del mundo",
   "vistas": 16,
   "likes": 1,
-  "horas": 48,
+  "horas": 51,
   "vph": 0.3,
   "like_ratio": 6.2
  }

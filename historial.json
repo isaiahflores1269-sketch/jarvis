@@ -16,8 +16,8 @@
   },
   "vistas": 262,
   "likes": 15,
-  "horas": 50,
-  "vph": 5.3
+  "horas": 53,
+  "vph": 5.0
  },
  {
   "id": "xU08YxI8pxs",
@@ -36,7 +36,7 @@
   },
   "vistas": 16,
   "likes": 1,
-  "horas": 48,
+  "horas": 51,
   "vph": 0.3
  },
  {
@@ -56,8 +56,8 @@
   },
   "vistas": 1319,
   "likes": 40,
-  "horas": 45,
-  "vph": 29.5
+  "horas": 48,
+  "vph": 27.6
  },
  {
   "id": "PKxr2amr-uc",
@@ -76,8 +76,8 @@
   },
   "vistas": 59,
   "likes": 1,
-  "horas": 42,
-  "vph": 1.4
+  "horas": 45,
+  "vph": 1.3
  },
  {
   "id": "dfKtx8mtd0E",
@@ -96,8 +96,8 @@
   },
   "vistas": 188,
   "likes": 3,
-  "horas": 39,
-  "vph": 4.8
+  "horas": 42,
+  "vph": 4.5
  },
  {
   "id": "aIKbEJ-YcEk",
@@ -116,8 +116,8 @@
   },
   "vistas": 1033,
   "likes": 27,
-  "horas": 35,
-  "vph": 29.2
+  "horas": 38,
+  "vph": 26.9
  },
  {
   "id": "mVgTeNWCW48",
@@ -134,10 +134,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 765,
+  "vistas": 769,
   "likes": 21,
-  "horas": 27,
-  "vph": 28.4
+  "horas": 30,
+  "vph": 25.7
  },
  {
   "id": "zPbQpYg8ZQk",
@@ -156,8 +156,8 @@
   },
   "vistas": 9,
   "likes": 0,
-  "horas": 24,
-  "vph": 0.4
+  "horas": 27,
+  "vph": 0.3
  },
  {
   "id": "0fdJmBR4Z1k",
@@ -174,10 +174,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 10.0
   },
-  "vistas": 606,
+  "vistas": 608,
   "likes": 10,
-  "horas": 21,
-  "vph": 29.1
+  "horas": 24,
+  "vph": 25.5
  },
  {
   "id": "f57LjM6eqRI",
@@ -194,10 +194,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 1285,
+  "vistas": 1288,
   "likes": 27,
-  "horas": 18,
-  "vph": 71.9
+  "horas": 21,
+  "vph": 61.7
  },
  {
   "id": "vK_BVw4LkAQ",
@@ -216,8 +216,8 @@
   },
   "vistas": 387,
   "likes": 8,
-  "horas": 15,
-  "vph": 25.9
+  "horas": 18,
+  "vph": 21.6
  },
  {
   "id": "dx-xGP2BOCk",
@@ -236,8 +236,8 @@
   },
   "vistas": 905,
   "likes": 18,
-  "horas": 10,
-  "vph": 92.1
+  "horas": 13,
+  "vph": 70.6
  },
  {
   "id": "gFKgkIRBJME",
@@ -263,6 +263,22 @@
    "categoria": "ciencia cotidiana",
    "gancho": "afirmación impactante",
    "voz": "es-ES-AlvaroNeural"
+  },
+  "revision": {
+   "gancho": 6.0,
+   "retencion": 8.0,
+   "titulo_miniatura": 8.0,
+   "veracidad": 9.0
+  }
+ },
+ {
+  "id": "cHRbc-hEgbk",
+  "titulo": "El día que la historia borró del calendario",
+  "fecha": "2026-11-19 14:14",
+  "variante": {
+   "categoria": "historia",
+   "gancho": "reto al espectador (apuesto a que no sabías...)",
+   "voz": "es-ES-ElviraNeural"
   },
   "revision": {
    "gancho": 6.0,
