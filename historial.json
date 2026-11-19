@@ -14,10 +14,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 254,
-  "likes": 14,
-  "horas": 40,
-  "vph": 6.4
+  "vistas": 261,
+  "likes": 15,
+  "horas": 47,
+  "vph": 5.6
  },
  {
   "id": "xU08YxI8pxs",
@@ -34,10 +34,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 13,
+  "vistas": 16,
   "likes": 1,
-  "horas": 38,
-  "vph": 0.3
+  "horas": 45,
+  "vph": 0.4
  },
  {
   "id": "eRiD1DwyFs8",
@@ -54,10 +54,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 1306,
+  "vistas": 1316,
   "likes": 40,
-  "horas": 35,
-  "vph": 37.4
+  "horas": 42,
+  "vph": 31.4
  },
  {
   "id": "PKxr2amr-uc",
@@ -74,10 +74,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 55,
+  "vistas": 59,
   "likes": 1,
-  "horas": 32,
-  "vph": 1.7
+  "horas": 39,
+  "vph": 1.5
  },
  {
   "id": "dfKtx8mtd0E",
@@ -94,10 +94,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 186,
+  "vistas": 188,
   "likes": 3,
-  "horas": 29,
-  "vph": 6.4
+  "horas": 36,
+  "vph": 5.2
  },
  {
   "id": "aIKbEJ-YcEk",
@@ -114,10 +114,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 10.0
   },
-  "vistas": 1029,
+  "vistas": 1030,
   "likes": 27,
-  "horas": 25,
-  "vph": 40.4
+  "horas": 32,
+  "vph": 31.7
  },
  {
   "id": "mVgTeNWCW48",
@@ -134,10 +134,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 594,
+  "vistas": 736,
   "likes": 21,
-  "horas": 17,
-  "vph": 34.8
+  "horas": 24,
+  "vph": 30.6
  },
  {
   "id": "zPbQpYg8ZQk",
@@ -154,9 +154,9 @@
    "titulo_miniatura": 10.0,
    "veracidad": 9.0
   },
-  "vistas": 6,
+  "vistas": 8,
   "likes": 0,
-  "horas": 14,
+  "horas": 21,
   "vph": 0.4
  },
  {
@@ -174,10 +174,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 10.0
   },
-  "vistas": 557,
-  "likes": 11,
-  "horas": 11,
-  "vph": 50.8
+  "vistas": 606,
+  "likes": 10,
+  "horas": 18,
+  "vph": 33.7
  },
  {
   "id": "f57LjM6eqRI",
@@ -194,10 +194,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 1173,
-  "likes": 28,
-  "horas": 8,
-  "vph": 146.4
+  "vistas": 1278,
+  "likes": 27,
+  "horas": 15,
+  "vph": 85.2
  },
  {
   "id": "vK_BVw4LkAQ",
@@ -213,7 +213,11 @@
    "retencion": 9.0,
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
-  }
+  },
+  "vistas": 387,
+  "likes": 8,
+  "horas": 12,
+  "vph": 32.1
  },
  {
   "id": "dx-xGP2BOCk",
@@ -222,6 +226,26 @@
   "variante": {
    "categoria": "animales",
    "gancho": "contradicción (todo lo que creías sobre X es falso)",
+   "voz": "es-ES-ElviraNeural"
+  },
+  "revision": {
+   "gancho": 6.0,
+   "retencion": 8.0,
+   "titulo_miniatura": 8.0,
+   "veracidad": 9.0
+  },
+  "vistas": 886,
+  "likes": 17,
+  "horas": 7,
+  "vph": 127.6
+ },
+ {
+  "id": "gFKgkIRBJME",
+  "titulo": "Por qué te da tanto sueño después de comer",
+  "fecha": "2026-11-19 08:16",
+  "variante": {
+   "categoria": "ciencia cotidiana",
+   "gancho": "reto al espectador (apuesto a que no sabías...)",
    "voz": "es-ES-ElviraNeural"
   },
   "revision": {
