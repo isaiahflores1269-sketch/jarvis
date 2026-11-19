@@ -2,91 +2,82 @@
  {
   "id": "dx-xGP2BOCk",
   "titulo": "El secreto real detrás de los camaleones",
-  "vistas": 886,
-  "likes": 17,
-  "horas": 7,
-  "vph": 127.6,
-  "like_ratio": 1.9
+  "vistas": 905,
+  "likes": 18,
+  "horas": 10,
+  "vph": 92.1,
+  "like_ratio": 2.0
  },
  {
   "id": "f57LjM6eqRI",
   "titulo": "Por qué se arrugan tus dedos en el agua",
-  "vistas": 1278,
+  "vistas": 1285,
   "likes": 27,
-  "horas": 15,
-  "vph": 85.2,
+  "horas": 18,
+  "vph": 71.9,
   "like_ratio": 2.1
+ },
+ {
+  "id": "eRiD1DwyFs8",
+  "titulo": "El asteroide Apofis y su peligroso paso cercano",
+  "vistas": 1319,
+  "likes": 40,
+  "horas": 45,
+  "vph": 29.5,
+  "like_ratio": 3.0
+ },
+ {
+  "id": "aIKbEJ-YcEk",
+  "titulo": "Por qué nunca puedes hacerte cosquillas",
+  "vistas": 1033,
+  "likes": 27,
+  "horas": 35,
+  "vph": 29.2,
+  "like_ratio": 2.6
  },
  {
   "id": "0fdJmBR4Z1k",
   "titulo": "La verdad sobre el pelo tras morir",
   "vistas": 606,
   "likes": 10,
-  "horas": 18,
-  "vph": 33.7,
+  "horas": 21,
+  "vph": 29.1,
   "like_ratio": 1.7
+ },
+ {
+  "id": "mVgTeNWCW48",
+  "titulo": "Tus huesos se renuevan por completo cada 10 años",
+  "vistas": 765,
+  "likes": 21,
+  "horas": 27,
+  "vph": 28.4,
+  "like_ratio": 2.7
  },
  {
   "id": "vK_BVw4LkAQ",
   "titulo": "Por qué ves estrellas al frotarte los ojos",
   "vistas": 387,
   "likes": 8,
-  "horas": 12,
-  "vph": 32.1,
+  "horas": 15,
+  "vph": 25.9,
   "like_ratio": 2.1
- },
- {
-  "id": "aIKbEJ-YcEk",
-  "titulo": "Por qué nunca puedes hacerte cosquillas",
-  "vistas": 1030,
-  "likes": 27,
-  "horas": 32,
-  "vph": 31.7,
-  "like_ratio": 2.6
- },
- {
-  "id": "eRiD1DwyFs8",
-  "titulo": "El asteroide Apofis y su peligroso paso cercano",
-  "vistas": 1316,
-  "likes": 40,
-  "horas": 42,
-  "vph": 31.4,
-  "like_ratio": 3.0
- },
- {
-  "id": "mVgTeNWCW48",
-  "titulo": "Tus huesos se renuevan por completo cada 10 años",
-  "vistas": 736,
-  "likes": 21,
-  "horas": 24,
-  "vph": 30.6,
-  "like_ratio": 2.9
- },
- {
-  "id": "xEfdQ44f2V4",
-  "titulo": "El animal con sangre azul que salva vidas humanas",
-  "vistas": 1124,
-  "likes": 34,
-  "horas": 60,
-  "vph": 18.7,
-  "like_ratio": 3.0
  },
  {
   "id": "bPq8jBHpd2U",
   "titulo": "Tu cerebro corrige tu visión al revés",
-  "vistas": 839,
+  "vistas": 841,
   "likes": 30,
-  "horas": 59,
-  "vph": 14.2,
+  "horas": 62,
+  "vph": 13.6,
   "like_ratio": 3.6
  },
  {
   "id": "zejx7Yf6kWM",
   "titulo": "Las bacterias de tu boca superan a la población mundial",
-  "vistas": 261,
+  "vistas": 262,
   "likes": 15,
-  "horas": 47,
-  "vph": 5.6,
+  "horas": 50,
+  "vph": 5.3,
   "like_ratio": 5.7
  },
  {
@@ -94,8 +85,8 @@
   "titulo": "La realidad sobre las cajas fuertes del Titanic",
   "vistas": 188,
   "likes": 3,
-  "horas": 36,
-  "vph": 5.2,
+  "horas": 39,
+  "vph": 4.8,
   "like_ratio": 1.6
  },
  {
@@ -103,8 +94,8 @@
   "titulo": "La trágica mentira de las chicas del radio",
   "vistas": 145,
   "likes": 3,
-  "horas": 48,
-  "vph": 3.0,
+  "horas": 51,
+  "vph": 2.8,
   "like_ratio": 2.1
  },
  {
@@ -112,16 +103,16 @@
   "titulo": "El menú oculto de diagnóstico en tu móvil",
   "vistas": 59,
   "likes": 1,
-  "horas": 39,
-  "vph": 1.5,
+  "horas": 42,
+  "vph": 1.4,
   "like_ratio": 1.7
  },
  {
   "id": "zPbQpYg8ZQk",
   "titulo": "Tu mano esconde un tendón que demuestra tu pasado",
-  "vistas": 8,
+  "vistas": 9,
   "likes": 0,
-  "horas": 21,
+  "horas": 24,
   "vph": 0.4,
   "like_ratio": 0.0
  },
@@ -130,8 +121,8 @@
   "titulo": "El árbol más peligroso del mundo",
   "vistas": 16,
   "likes": 1,
-  "horas": 45,
-  "vph": 0.4,
+  "horas": 48,
+  "vph": 0.3,
   "like_ratio": 6.2
  }
 ]

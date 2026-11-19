@@ -14,10 +14,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 261,
+  "vistas": 262,
   "likes": 15,
-  "horas": 47,
-  "vph": 5.6
+  "horas": 50,
+  "vph": 5.3
  },
  {
   "id": "xU08YxI8pxs",
@@ -36,8 +36,8 @@
   },
   "vistas": 16,
   "likes": 1,
-  "horas": 45,
-  "vph": 0.4
+  "horas": 48,
+  "vph": 0.3
  },
  {
   "id": "eRiD1DwyFs8",
@@ -54,10 +54,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 1316,
+  "vistas": 1319,
   "likes": 40,
-  "horas": 42,
-  "vph": 31.4
+  "horas": 45,
+  "vph": 29.5
  },
  {
   "id": "PKxr2amr-uc",
@@ -76,8 +76,8 @@
   },
   "vistas": 59,
   "likes": 1,
-  "horas": 39,
-  "vph": 1.5
+  "horas": 42,
+  "vph": 1.4
  },
  {
   "id": "dfKtx8mtd0E",
@@ -96,8 +96,8 @@
   },
   "vistas": 188,
   "likes": 3,
-  "horas": 36,
-  "vph": 5.2
+  "horas": 39,
+  "vph": 4.8
  },
  {
   "id": "aIKbEJ-YcEk",
@@ -114,10 +114,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 10.0
   },
-  "vistas": 1030,
+  "vistas": 1033,
   "likes": 27,
-  "horas": 32,
-  "vph": 31.7
+  "horas": 35,
+  "vph": 29.2
  },
  {
   "id": "mVgTeNWCW48",
@@ -134,10 +134,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 736,
+  "vistas": 765,
   "likes": 21,
-  "horas": 24,
-  "vph": 30.6
+  "horas": 27,
+  "vph": 28.4
  },
  {
   "id": "zPbQpYg8ZQk",
@@ -154,9 +154,9 @@
    "titulo_miniatura": 10.0,
    "veracidad": 9.0
   },
-  "vistas": 8,
+  "vistas": 9,
   "likes": 0,
-  "horas": 21,
+  "horas": 24,
   "vph": 0.4
  },
  {
@@ -176,8 +176,8 @@
   },
   "vistas": 606,
   "likes": 10,
-  "horas": 18,
-  "vph": 33.7
+  "horas": 21,
+  "vph": 29.1
  },
  {
   "id": "f57LjM6eqRI",
@@ -194,10 +194,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 1278,
+  "vistas": 1285,
   "likes": 27,
-  "horas": 15,
-  "vph": 85.2
+  "horas": 18,
+  "vph": 71.9
  },
  {
   "id": "vK_BVw4LkAQ",
@@ -216,8 +216,8 @@
   },
   "vistas": 387,
   "likes": 8,
-  "horas": 12,
-  "vph": 32.1
+  "horas": 15,
+  "vph": 25.9
  },
  {
   "id": "dx-xGP2BOCk",
@@ -234,10 +234,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 886,
-  "likes": 17,
-  "horas": 7,
-  "vph": 127.6
+  "vistas": 905,
+  "likes": 18,
+  "horas": 10,
+  "vph": 92.1
  },
  {
   "id": "gFKgkIRBJME",
@@ -247,6 +247,22 @@
    "categoria": "ciencia cotidiana",
    "gancho": "reto al espectador (apuesto a que no sabías...)",
    "voz": "es-ES-ElviraNeural"
+  },
+  "revision": {
+   "gancho": 6.0,
+   "retencion": 8.0,
+   "titulo_miniatura": 8.0,
+   "veracidad": 9.0
+  }
+ },
+ {
+  "id": "dWqJ0sYSti0",
+  "titulo": "El poder secreto de tu olfato",
+  "fecha": "2026-11-19 11:10",
+  "variante": {
+   "categoria": "ciencia cotidiana",
+   "gancho": "afirmación impactante",
+   "voz": "es-ES-AlvaroNeural"
   },
   "revision": {
    "gancho": 6.0,
