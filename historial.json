@@ -16,8 +16,8 @@
   },
   "vistas": 262,
   "likes": 15,
-  "horas": 53,
-  "vph": 5.0
+  "horas": 56,
+  "vph": 4.7
  },
  {
   "id": "xU08YxI8pxs",
@@ -36,7 +36,7 @@
   },
   "vistas": 16,
   "likes": 1,
-  "horas": 51,
+  "horas": 54,
   "vph": 0.3
  },
  {
@@ -54,10 +54,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 1319,
+  "vistas": 1326,
   "likes": 40,
-  "horas": 48,
-  "vph": 27.6
+  "horas": 51,
+  "vph": 26.1
  },
  {
   "id": "PKxr2amr-uc",
@@ -74,9 +74,9 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 59,
+  "vistas": 60,
   "likes": 1,
-  "horas": 45,
+  "horas": 48,
   "vph": 1.3
  },
  {
@@ -96,8 +96,8 @@
   },
   "vistas": 188,
   "likes": 3,
-  "horas": 42,
-  "vph": 4.5
+  "horas": 45,
+  "vph": 4.2
  },
  {
   "id": "aIKbEJ-YcEk",
@@ -116,8 +116,8 @@
   },
   "vistas": 1033,
   "likes": 27,
-  "horas": 38,
-  "vph": 26.9
+  "horas": 41,
+  "vph": 25.0
  },
  {
   "id": "mVgTeNWCW48",
@@ -134,10 +134,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 769,
-  "likes": 21,
-  "horas": 30,
-  "vph": 25.7
+  "vistas": 776,
+  "likes": 22,
+  "horas": 33,
+  "vph": 23.6
  },
  {
   "id": "zPbQpYg8ZQk",
@@ -156,7 +156,7 @@
   },
   "vistas": 9,
   "likes": 0,
-  "horas": 27,
+  "horas": 30,
   "vph": 0.3
  },
  {
@@ -176,8 +176,8 @@
   },
   "vistas": 608,
   "likes": 10,
-  "horas": 24,
-  "vph": 25.5
+  "horas": 27,
+  "vph": 22.7
  },
  {
   "id": "f57LjM6eqRI",
@@ -194,10 +194,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 1288,
+  "vistas": 1298,
   "likes": 27,
-  "horas": 21,
-  "vph": 61.7
+  "horas": 24,
+  "vph": 54.4
  },
  {
   "id": "vK_BVw4LkAQ",
@@ -214,10 +214,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 387,
+  "vistas": 389,
   "likes": 8,
-  "horas": 18,
-  "vph": 21.6
+  "horas": 21,
+  "vph": 18.6
  },
  {
   "id": "dx-xGP2BOCk",
@@ -234,10 +234,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 905,
-  "likes": 18,
-  "horas": 13,
-  "vph": 70.6
+  "vistas": 910,
+  "likes": 19,
+  "horas": 16,
+  "vph": 57.5
  },
  {
   "id": "gFKgkIRBJME",
@@ -253,7 +253,11 @@
    "retencion": 8.0,
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
-  }
+  },
+  "vistas": 80,
+  "likes": 1,
+  "horas": 9,
+  "vph": 9.0
  },
  {
   "id": "dWqJ0sYSti0",
@@ -285,6 +289,22 @@
    "retencion": 8.0,
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
+  }
+ },
+ {
+  "id": "xs3m_hJl1ro",
+  "titulo": "El mito del 10% del cerebro que sigues creyendo",
+  "fecha": "2026-11-19 17:25",
+  "variante": {
+   "categoria": "cuerpo humano",
+   "gancho": "contradicción (todo lo que creías sobre X es falso)",
+   "voz": "es-ES-AlvaroNeural"
+  },
+  "revision": {
+   "gancho": 6.0,
+   "retencion": 8.0,
+   "titulo_miniatura": 9.0,
+   "veracidad": 10.0
   }
  }
 ]
