@@ -14,10 +14,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 252,
+  "vistas": 254,
   "likes": 14,
-  "horas": 35,
-  "vph": 7.2
+  "horas": 40,
+  "vph": 6.4
  },
  {
   "id": "xU08YxI8pxs",
@@ -34,10 +34,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 8,
+  "vistas": 13,
   "likes": 1,
-  "horas": 33,
-  "vph": 0.2
+  "horas": 38,
+  "vph": 0.3
  },
  {
   "id": "eRiD1DwyFs8",
@@ -54,10 +54,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 1284,
-  "likes": 38,
-  "horas": 30,
-  "vph": 43.1
+  "vistas": 1306,
+  "likes": 40,
+  "horas": 35,
+  "vph": 37.4
  },
  {
   "id": "PKxr2amr-uc",
@@ -74,10 +74,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 47,
+  "vistas": 55,
   "likes": 1,
-  "horas": 27,
-  "vph": 1.8
+  "horas": 32,
+  "vph": 1.7
  },
  {
   "id": "dfKtx8mtd0E",
@@ -96,8 +96,8 @@
   },
   "vistas": 186,
   "likes": 3,
-  "horas": 24,
-  "vph": 7.8
+  "horas": 29,
+  "vph": 6.4
  },
  {
   "id": "aIKbEJ-YcEk",
@@ -114,10 +114,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 10.0
   },
-  "vistas": 1024,
-  "likes": 26,
-  "horas": 20,
-  "vph": 50.4
+  "vistas": 1029,
+  "likes": 27,
+  "horas": 25,
+  "vph": 40.4
  },
  {
   "id": "mVgTeNWCW48",
@@ -134,10 +134,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 524,
-  "likes": 20,
-  "horas": 12,
-  "vph": 43.9
+  "vistas": 594,
+  "likes": 21,
+  "horas": 17,
+  "vph": 34.8
  },
  {
   "id": "zPbQpYg8ZQk",
@@ -156,8 +156,8 @@
   },
   "vistas": 6,
   "likes": 0,
-  "horas": 9,
-  "vph": 0.7
+  "horas": 14,
+  "vph": 0.4
  },
  {
   "id": "0fdJmBR4Z1k",
@@ -173,7 +173,11 @@
    "retencion": 9.0,
    "titulo_miniatura": 8.0,
    "veracidad": 10.0
-  }
+  },
+  "vistas": 557,
+  "likes": 11,
+  "horas": 11,
+  "vph": 50.8
  },
  {
   "id": "f57LjM6eqRI",
@@ -189,7 +193,11 @@
    "retencion": 9.0,
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
-  }
+  },
+  "vistas": 1173,
+  "likes": 28,
+  "horas": 8,
+  "vph": 146.4
  },
  {
   "id": "vK_BVw4LkAQ",
@@ -205,6 +213,22 @@
    "retencion": 9.0,
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
+  }
+ },
+ {
+  "id": "dx-xGP2BOCk",
+  "titulo": "El secreto real detrás de los camaleones",
+  "fecha": "2026-11-19 01:17",
+  "variante": {
+   "categoria": "animales",
+   "gancho": "contradicción (todo lo que creías sobre X es falso)",
+   "voz": "es-ES-ElviraNeural"
+  },
+  "revision": {
+   "gancho": 6.0,
+   "retencion": 8.0,
+   "titulo_miniatura": 8.0,
+   "veracidad": 9.0
   }
  }
 ]
