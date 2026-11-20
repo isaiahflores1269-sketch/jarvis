@@ -2,28 +2,28 @@
  {
   "id": "f57LjM6eqRI",
   "titulo": "Por qué se arrugan tus dedos en el agua",
-  "vistas": 1359,
+  "vistas": 1406,
   "likes": 27,
-  "horas": 39,
-  "vph": 35.0,
-  "like_ratio": 2.0
+  "horas": 42,
+  "vph": 33.6,
+  "like_ratio": 1.9
  },
  {
   "id": "dx-xGP2BOCk",
   "titulo": "El secreto real detrás de los camaleones",
-  "vistas": 948,
-  "likes": 19,
-  "horas": 31,
-  "vph": 30.8,
-  "like_ratio": 2.0
+  "vistas": 955,
+  "likes": 20,
+  "horas": 34,
+  "vph": 28.2,
+  "like_ratio": 2.1
  },
  {
   "id": "eRiD1DwyFs8",
   "titulo": "El asteroide Apofis y su peligroso paso cercano",
   "vistas": 1329,
   "likes": 41,
-  "horas": 66,
-  "vph": 20.2,
+  "horas": 69,
+  "vph": 19.3,
   "like_ratio": 3.1
  },
  {
@@ -31,26 +31,26 @@
   "titulo": "Por qué nunca puedes hacerte cosquillas",
   "vistas": 1034,
   "likes": 27,
-  "horas": 56,
-  "vph": 18.4,
+  "horas": 59,
+  "vph": 17.4,
   "like_ratio": 2.6
  },
  {
   "id": "mVgTeNWCW48",
   "titulo": "Tus huesos se renuevan por completo cada 10 años",
-  "vistas": 845,
+  "vistas": 857,
   "likes": 27,
-  "horas": 48,
-  "vph": 17.6,
+  "horas": 51,
+  "vph": 16.8,
   "like_ratio": 3.2
  },
  {
   "id": "0fdJmBR4Z1k",
   "titulo": "La verdad sobre el pelo tras morir",
-  "vistas": 612,
+  "vistas": 613,
   "likes": 10,
-  "horas": 42,
-  "vph": 14.6,
+  "horas": 45,
+  "vph": 13.7,
   "like_ratio": 1.6
  },
  {
@@ -58,17 +58,17 @@
   "titulo": "Por qué ves estrellas al frotarte los ojos",
   "vistas": 431,
   "likes": 8,
-  "horas": 36,
-  "vph": 12.0,
+  "horas": 39,
+  "vph": 11.1,
   "like_ratio": 1.9
  },
  {
   "id": "gFKgkIRBJME",
   "titulo": "Por qué te da tanto sueño después de comer",
-  "vistas": 114,
+  "vistas": 115,
   "likes": 1,
-  "horas": 24,
-  "vph": 4.8,
+  "horas": 27,
+  "vph": 4.3,
   "like_ratio": 0.9
  },
  {
@@ -76,8 +76,8 @@
   "titulo": "El mito del 10% del cerebro que sigues creyendo",
   "vistas": 55,
   "likes": 2,
-  "horas": 15,
-  "vph": 3.7,
+  "horas": 18,
+  "vph": 3.1,
   "like_ratio": 3.6
  },
  {
@@ -85,17 +85,8 @@
   "titulo": "El día que la historia borró del calendario",
   "vistas": 64,
   "likes": 0,
-  "horas": 18,
-  "vph": 3.6,
-  "like_ratio": 0.0
- },
- {
-  "id": "dWqJ0sYSti0",
-  "titulo": "El poder secreto de tu olfato",
-  "vistas": 70,
-  "likes": 0,
   "horas": 21,
-  "vph": 3.3,
+  "vph": 3.1,
   "like_ratio": 0.0
  },
  {
@@ -103,35 +94,44 @@
   "titulo": "La realidad sobre las cajas fuertes del Titanic",
   "vistas": 187,
   "likes": 3,
-  "horas": 60,
-  "vph": 3.1,
+  "horas": 63,
+  "vph": 3.0,
   "like_ratio": 1.6
+ },
+ {
+  "id": "dWqJ0sYSti0",
+  "titulo": "El poder secreto de tu olfato",
+  "vistas": 70,
+  "likes": 0,
+  "horas": 24,
+  "vph": 2.9,
+  "like_ratio": 0.0
  },
  {
   "id": "foBfe1Ag9TA",
   "titulo": "El secreto que tu nariz oculta sobre tu memoria",
   "vistas": 32,
   "likes": 0,
-  "horas": 12,
-  "vph": 2.7,
+  "horas": 15,
+  "vph": 2.1,
   "like_ratio": 0.0
  },
  {
   "id": "PKxr2amr-uc",
   "titulo": "El menú oculto de diagnóstico en tu móvil",
-  "vistas": 60,
-  "likes": 1,
-  "horas": 63,
-  "vph": 1.0,
-  "like_ratio": 1.7
+  "vistas": 61,
+  "likes": 2,
+  "horas": 66,
+  "vph": 0.9,
+  "like_ratio": 3.3
  },
  {
   "id": "zPbQpYg8ZQk",
   "titulo": "Tu mano esconde un tendón que demuestra tu pasado",
-  "vistas": 17,
-  "likes": 0,
-  "horas": 45,
+  "vistas": 21,
+  "likes": 1,
+  "horas": 48,
   "vph": 0.4,
-  "like_ratio": 0.0
+  "like_ratio": 4.8
  }
 ]
