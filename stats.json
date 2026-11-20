@@ -2,19 +2,19 @@
  {
   "id": "f57LjM6eqRI",
   "titulo": "Por qué se arrugan tus dedos en el agua",
-  "vistas": 1409,
+  "vistas": 1422,
   "likes": 27,
-  "horas": 45,
-  "vph": 31.4,
+  "horas": 48,
+  "vph": 29.7,
   "like_ratio": 1.9
  },
  {
   "id": "dx-xGP2BOCk",
   "titulo": "El secreto real detrás de los camaleones",
-  "vistas": 957,
+  "vistas": 954,
   "likes": 20,
-  "horas": 37,
-  "vph": 26.0,
+  "horas": 40,
+  "vph": 23.9,
   "like_ratio": 2.1
  },
  {
@@ -22,35 +22,35 @@
   "titulo": "Por qué nunca puedes hacerte cosquillas",
   "vistas": 1035,
   "likes": 27,
-  "horas": 62,
-  "vph": 16.6,
+  "horas": 65,
+  "vph": 15.8,
   "like_ratio": 2.6
  },
  {
   "id": "mVgTeNWCW48",
   "titulo": "Tus huesos se renuevan por completo cada 10 años",
-  "vistas": 858,
+  "vistas": 860,
   "likes": 27,
-  "horas": 54,
-  "vph": 15.9,
+  "horas": 57,
+  "vph": 15.1,
   "like_ratio": 3.1
  },
  {
   "id": "0fdJmBR4Z1k",
   "titulo": "La verdad sobre el pelo tras morir",
-  "vistas": 615,
+  "vistas": 613,
   "likes": 10,
-  "horas": 48,
-  "vph": 12.9,
+  "horas": 51,
+  "vph": 12.0,
   "like_ratio": 1.6
  },
  {
   "id": "vK_BVw4LkAQ",
   "titulo": "Por qué ves estrellas al frotarte los ojos",
-  "vistas": 435,
+  "vistas": 436,
   "likes": 8,
-  "horas": 42,
-  "vph": 10.4,
+  "horas": 45,
+  "vph": 9.7,
   "like_ratio": 1.8
  },
  {
@@ -58,8 +58,8 @@
   "titulo": "Por qué te da tanto sueño después de comer",
   "vistas": 121,
   "likes": 1,
-  "horas": 30,
-  "vph": 4.1,
+  "horas": 33,
+  "vph": 3.7,
   "like_ratio": 0.8
  },
  {
@@ -67,17 +67,26 @@
   "titulo": "La realidad sobre las cajas fuertes del Titanic",
   "vistas": 189,
   "likes": 3,
-  "horas": 66,
-  "vph": 2.9,
+  "horas": 69,
+  "vph": 2.7,
   "like_ratio": 1.6
  },
  {
   "id": "dWqJ0sYSti0",
   "titulo": "El poder secreto de tu olfato",
-  "vistas": 75,
+  "vistas": 76,
+  "likes": 0,
+  "horas": 30,
+  "vph": 2.5,
+  "like_ratio": 0.0
+ },
+ {
+  "id": "cHRbc-hEgbk",
+  "titulo": "El día que la historia borró del calendario",
+  "vistas": 64,
   "likes": 0,
   "horas": 27,
-  "vph": 2.8,
+  "vph": 2.4,
   "like_ratio": 0.0
  },
  {
@@ -85,44 +94,44 @@
   "titulo": "El mito del 10% del cerebro que sigues creyendo",
   "vistas": 55,
   "likes": 2,
-  "horas": 21,
-  "vph": 2.7,
-  "like_ratio": 3.6
- },
- {
-  "id": "cHRbc-hEgbk",
-  "titulo": "El día que la historia borró del calendario",
-  "vistas": 64,
-  "likes": 0,
   "horas": 24,
-  "vph": 2.7,
-  "like_ratio": 0.0
+  "vph": 2.3,
+  "like_ratio": 3.6
  },
  {
   "id": "foBfe1Ag9TA",
   "titulo": "El secreto que tu nariz oculta sobre tu memoria",
   "vistas": 32,
   "likes": 0,
-  "horas": 18,
-  "vph": 1.8,
+  "horas": 21,
+  "vph": 1.5,
+  "like_ratio": 0.0
+ },
+ {
+  "id": "V9UREYT38uw",
+  "titulo": "Tu cerebro te miente cuando parpadeas",
+  "vistas": 8,
+  "likes": 0,
+  "horas": 6,
+  "vph": 1.3,
   "like_ratio": 0.0
  },
  {
   "id": "PKxr2amr-uc",
   "titulo": "El menú oculto de diagnóstico en tu móvil",
-  "vistas": 61,
+  "vistas": 63,
   "likes": 2,
-  "horas": 69,
+  "horas": 72,
   "vph": 0.9,
-  "like_ratio": 3.3
+  "like_ratio": 3.2
  },
  {
   "id": "zPbQpYg8ZQk",
   "titulo": "Tu mano esconde un tendón que demuestra tu pasado",
-  "vistas": 21,
+  "vistas": 24,
   "likes": 1,
-  "horas": 51,
+  "horas": 54,
   "vph": 0.4,
-  "like_ratio": 4.8
+  "like_ratio": 4.2
  }
 ]
