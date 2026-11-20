@@ -56,8 +56,8 @@
   },
   "vistas": 1327,
   "likes": 40,
-  "horas": 54,
-  "vph": 24.7
+  "horas": 59,
+  "vph": 22.5
  },
  {
   "id": "PKxr2amr-uc",
@@ -74,10 +74,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 60,
+  "vistas": 61,
   "likes": 1,
-  "horas": 51,
-  "vph": 1.2
+  "horas": 56,
+  "vph": 1.1
  },
  {
   "id": "dfKtx8mtd0E",
@@ -96,8 +96,8 @@
   },
   "vistas": 188,
   "likes": 3,
-  "horas": 48,
-  "vph": 3.9
+  "horas": 53,
+  "vph": 3.5
  },
  {
   "id": "aIKbEJ-YcEk",
@@ -114,10 +114,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 10.0
   },
-  "vistas": 1033,
+  "vistas": 1036,
   "likes": 27,
-  "horas": 44,
-  "vph": 23.3
+  "horas": 50,
+  "vph": 20.9
  },
  {
   "id": "mVgTeNWCW48",
@@ -134,10 +134,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 787,
-  "likes": 22,
-  "horas": 36,
-  "vph": 21.9
+  "vistas": 810,
+  "likes": 25,
+  "horas": 41,
+  "vph": 19.7
  },
  {
   "id": "zPbQpYg8ZQk",
@@ -154,10 +154,10 @@
    "titulo_miniatura": 10.0,
    "veracidad": 9.0
   },
-  "vistas": 10,
+  "vistas": 16,
   "likes": 0,
-  "horas": 33,
-  "vph": 0.3
+  "horas": 38,
+  "vph": 0.4
  },
  {
   "id": "0fdJmBR4Z1k",
@@ -174,10 +174,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 10.0
   },
-  "vistas": 608,
+  "vistas": 610,
   "likes": 10,
-  "horas": 30,
-  "vph": 20.4
+  "horas": 35,
+  "vph": 17.4
  },
  {
   "id": "f57LjM6eqRI",
@@ -194,10 +194,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 1324,
+  "vistas": 1342,
   "likes": 27,
-  "horas": 27,
-  "vph": 49.3
+  "horas": 32,
+  "vph": 41.9
  },
  {
   "id": "vK_BVw4LkAQ",
@@ -214,10 +214,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 395,
+  "vistas": 421,
   "likes": 8,
-  "horas": 24,
-  "vph": 16.5
+  "horas": 29,
+  "vph": 14.5
  },
  {
   "id": "dx-xGP2BOCk",
@@ -234,10 +234,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 920,
+  "vistas": 923,
   "likes": 19,
-  "horas": 19,
-  "vph": 48.9
+  "horas": 24,
+  "vph": 38.5
  },
  {
   "id": "gFKgkIRBJME",
@@ -254,10 +254,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 85,
+  "vistas": 94,
   "likes": 1,
-  "horas": 12,
-  "vph": 7.2
+  "horas": 17,
+  "vph": 5.5
  },
  {
   "id": "dWqJ0sYSti0",
@@ -274,10 +274,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 63,
+  "vistas": 64,
   "likes": 0,
-  "horas": 9,
-  "vph": 7.0
+  "horas": 14,
+  "vph": 4.5
  },
  {
   "id": "cHRbc-hEgbk",
@@ -293,7 +293,11 @@
    "retencion": 8.0,
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
-  }
+  },
+  "vistas": 59,
+  "likes": 0,
+  "horas": 11,
+  "vph": 5.3
  },
  {
   "id": "xs3m_hJl1ro",
@@ -309,7 +313,11 @@
    "retencion": 8.0,
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
-  }
+  },
+  "vistas": 33,
+  "likes": 2,
+  "horas": 8,
+  "vph": 4.2
  },
  {
   "id": "foBfe1Ag9TA",
