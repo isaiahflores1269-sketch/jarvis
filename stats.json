@@ -5,7 +5,7 @@
   "vistas": 994,
   "likes": 8,
   "horas": 16,
-  "vph": 62.2,
+  "vph": 61.1,
   "like_ratio": 0.8
  },
  {
@@ -14,16 +14,16 @@
   "vistas": 950,
   "likes": 8,
   "horas": 24,
-  "vph": 40.3,
+  "vph": 39.8,
   "like_ratio": 0.8
  },
  {
   "id": "f57LjM6eqRI",
   "titulo": "Por qué se arrugan tus dedos en el agua",
-  "vistas": 1441,
+  "vistas": 1438,
   "likes": 27,
   "horas": 72,
-  "vph": 20.1,
+  "vph": 20.0,
   "like_ratio": 1.9
  },
  {
@@ -32,7 +32,7 @@
   "vistas": 965,
   "likes": 20,
   "horas": 64,
-  "vph": 15.2,
+  "vph": 15.1,
   "like_ratio": 2.1
  },
  {
@@ -47,10 +47,10 @@
  {
   "id": "vK_BVw4LkAQ",
   "titulo": "Por qué ves estrellas al frotarte los ojos",
-  "vistas": 436,
+  "vistas": 435,
   "likes": 8,
   "horas": 69,
-  "vph": 6.4,
+  "vph": 6.3,
   "like_ratio": 1.8
  },
  {
@@ -59,7 +59,7 @@
   "vistas": 37,
   "likes": 0,
   "horas": 9,
-  "vph": 4.3,
+  "vph": 4.1,
   "like_ratio": 0.0
  },
  {
@@ -103,7 +103,7 @@
   "titulo": "El mito del 10% del cerebro que sigues creyendo",
   "vistas": 63,
   "likes": 2,
-  "horas": 47,
+  "horas": 48,
   "vph": 1.3,
   "like_ratio": 3.2
  },
@@ -124,14 +124,5 @@
   "horas": 30,
   "vph": 0.6,
   "like_ratio": 0.0
- },
- {
-  "id": "zPbQpYg8ZQk",
-  "titulo": "Tu mano esconde un tendón que demuestra tu pasado",
-  "vistas": 24,
-  "likes": 1,
-  "horas": 77,
-  "vph": 0.3,
-  "like_ratio": 4.2
  }
 ]

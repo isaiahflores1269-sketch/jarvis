@@ -194,10 +194,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 1441,
+  "vistas": 1438,
   "likes": 27,
   "horas": 72,
-  "vph": 20.1
+  "vph": 20.0
  },
  {
   "id": "vK_BVw4LkAQ",
@@ -214,10 +214,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 436,
+  "vistas": 435,
   "likes": 8,
   "horas": 69,
-  "vph": 6.4
+  "vph": 6.3
  },
  {
   "id": "dx-xGP2BOCk",
@@ -237,7 +237,7 @@
   "vistas": 965,
   "likes": 20,
   "horas": 64,
-  "vph": 15.2
+  "vph": 15.1
  },
  {
   "id": "gFKgkIRBJME",
@@ -316,7 +316,7 @@
   },
   "vistas": 63,
   "likes": 2,
-  "horas": 47,
+  "horas": 48,
   "vph": 1.3
  },
  {
@@ -377,7 +377,7 @@
   "vistas": 950,
   "likes": 8,
   "horas": 24,
-  "vph": 40.3
+  "vph": 39.8
  },
  {
   "id": "ntNnF2pag3U",
@@ -417,7 +417,7 @@
   "vistas": 994,
   "likes": 8,
   "horas": 16,
-  "vph": 62.2
+  "vph": 61.1
  },
  {
   "id": "yLaYEx0U3T0",
@@ -437,7 +437,7 @@
   "vistas": 37,
   "likes": 0,
   "horas": 9,
-  "vph": 4.3
+  "vph": 4.1
  },
  {
   "id": "6u1OJ4PieUk",
@@ -452,6 +452,22 @@
    "gancho": 9.0,
    "retencion": 8.0,
    "titulo_miniatura": 8.0,
+   "veracidad": 10.0
+  }
+ },
+ {
+  "id": "52xZlbciZX4",
+  "titulo": "¿Por qué el pulpo tiene tres corazones?",
+  "fecha": "2026-11-21 17:10",
+  "variante": {
+   "categoria": "naturaleza extrema",
+   "gancho": "reto al espectador (apuesto a que no sabías...)",
+   "voz": "es-ES-ElviraNeural"
+  },
+  "revision": {
+   "gancho": 6.0,
+   "retencion": 8.0,
+   "titulo_miniatura": 9.0,
    "veracidad": 10.0
   }
  }
