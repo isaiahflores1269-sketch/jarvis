@@ -116,8 +116,8 @@
   },
   "vistas": 1035,
   "likes": 27,
-  "horas": 68,
-  "vph": 15.1
+  "horas": 73,
+  "vph": 14.4
  },
  {
   "id": "mVgTeNWCW48",
@@ -134,10 +134,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 860,
+  "vistas": 861,
   "likes": 27,
-  "horas": 60,
-  "vph": 14.3
+  "horas": 65,
+  "vph": 13.3
  },
  {
   "id": "zPbQpYg8ZQk",
@@ -156,7 +156,7 @@
   },
   "vistas": 24,
   "likes": 1,
-  "horas": 57,
+  "horas": 61,
   "vph": 0.4
  },
  {
@@ -176,8 +176,8 @@
   },
   "vistas": 613,
   "likes": 10,
-  "horas": 54,
-  "vph": 11.4
+  "horas": 59,
+  "vph": 10.5
  },
  {
   "id": "f57LjM6eqRI",
@@ -194,10 +194,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 1426,
+  "vistas": 1441,
   "likes": 27,
-  "horas": 51,
-  "vph": 28.0
+  "horas": 56,
+  "vph": 25.9
  },
  {
   "id": "vK_BVw4LkAQ",
@@ -216,8 +216,8 @@
   },
   "vistas": 436,
   "likes": 8,
-  "horas": 48,
-  "vph": 9.1
+  "horas": 53,
+  "vph": 8.3
  },
  {
   "id": "dx-xGP2BOCk",
@@ -234,10 +234,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 954,
+  "vistas": 961,
   "likes": 20,
-  "horas": 43,
-  "vph": 22.3
+  "horas": 48,
+  "vph": 20.2
  },
  {
   "id": "gFKgkIRBJME",
@@ -254,10 +254,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 121,
+  "vistas": 123,
   "likes": 1,
-  "horas": 36,
-  "vph": 3.4
+  "horas": 41,
+  "vph": 3.0
  },
  {
   "id": "dWqJ0sYSti0",
@@ -274,10 +274,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 75,
+  "vistas": 77,
   "likes": 0,
-  "horas": 33,
-  "vph": 2.3
+  "horas": 38,
+  "vph": 2.0
  },
  {
   "id": "cHRbc-hEgbk",
@@ -294,10 +294,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 64,
-  "likes": 0,
-  "horas": 30,
-  "vph": 2.1
+  "vistas": 69,
+  "likes": 1,
+  "horas": 35,
+  "vph": 2.0
  },
  {
   "id": "xs3m_hJl1ro",
@@ -314,10 +314,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 56,
+  "vistas": 58,
   "likes": 2,
-  "horas": 27,
-  "vph": 2.1
+  "horas": 31,
+  "vph": 1.8
  },
  {
   "id": "foBfe1Ag9TA",
@@ -334,9 +334,9 @@
    "titulo_miniatura": 8.0,
    "veracidad": 10.0
   },
-  "vistas": 32,
+  "vistas": 36,
   "likes": 0,
-  "horas": 24,
+  "horas": 29,
   "vph": 1.3
  },
  {
@@ -356,8 +356,8 @@
   },
   "vistas": 8,
   "likes": 0,
-  "horas": 9,
-  "vph": 0.9
+  "horas": 14,
+  "vph": 0.6
  },
  {
   "id": "eLOZVCUcpgw",
@@ -373,7 +373,11 @@
    "retencion": 8.0,
    "titulo_miniatura": 7.0,
    "veracidad": 10.0
-  }
+  },
+  "vistas": 890,
+  "likes": 8,
+  "horas": 8,
+  "vph": 117.7
  },
  {
   "id": "ntNnF2pag3U",
@@ -388,6 +392,22 @@
    "gancho": 6.0,
    "retencion": 8.0,
    "titulo_miniatura": 9.0,
+   "veracidad": 10.0
+  }
+ },
+ {
+  "id": "ndEjzU95H8I",
+  "titulo": "Por qué ruge realmente tu estómago",
+  "fecha": "2026-11-21 00:51",
+  "variante": {
+   "categoria": "misterios sin resolver",
+   "gancho": "reto al espectador (apuesto a que no sabías...)",
+   "voz": "es-ES-AlvaroNeural"
+  },
+  "revision": {
+   "gancho": 6.0,
+   "retencion": 8.0,
+   "titulo_miniatura": 8.0,
    "veracidad": 10.0
   }
  }
