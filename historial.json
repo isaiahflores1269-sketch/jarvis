@@ -134,10 +134,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 861,
+  "vistas": 867,
   "likes": 27,
-  "horas": 65,
-  "vph": 13.3
+  "horas": 72,
+  "vph": 12.1
  },
  {
   "id": "zPbQpYg8ZQk",
@@ -156,8 +156,8 @@
   },
   "vistas": 24,
   "likes": 1,
-  "horas": 61,
-  "vph": 0.4
+  "horas": 69,
+  "vph": 0.3
  },
  {
   "id": "0fdJmBR4Z1k",
@@ -174,10 +174,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 10.0
   },
-  "vistas": 613,
+  "vistas": 615,
   "likes": 10,
-  "horas": 59,
-  "vph": 10.5
+  "horas": 66,
+  "vph": 9.3
  },
  {
   "id": "f57LjM6eqRI",
@@ -196,8 +196,8 @@
   },
   "vistas": 1441,
   "likes": 27,
-  "horas": 56,
-  "vph": 25.9
+  "horas": 63,
+  "vph": 22.9
  },
  {
   "id": "vK_BVw4LkAQ",
@@ -216,8 +216,8 @@
   },
   "vistas": 436,
   "likes": 8,
-  "horas": 53,
-  "vph": 8.3
+  "horas": 60,
+  "vph": 7.3
  },
  {
   "id": "dx-xGP2BOCk",
@@ -234,10 +234,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 961,
+  "vistas": 965,
   "likes": 20,
-  "horas": 48,
-  "vph": 20.2
+  "horas": 55,
+  "vph": 17.6
  },
  {
   "id": "gFKgkIRBJME",
@@ -254,10 +254,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 123,
+  "vistas": 125,
   "likes": 1,
-  "horas": 41,
-  "vph": 3.0
+  "horas": 48,
+  "vph": 2.6
  },
  {
   "id": "dWqJ0sYSti0",
@@ -274,10 +274,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 77,
+  "vistas": 81,
   "likes": 0,
-  "horas": 38,
-  "vph": 2.0
+  "horas": 45,
+  "vph": 1.8
  },
  {
   "id": "cHRbc-hEgbk",
@@ -294,10 +294,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 69,
-  "likes": 1,
-  "horas": 35,
-  "vph": 2.0
+  "vistas": 73,
+  "likes": 0,
+  "horas": 42,
+  "vph": 1.7
  },
  {
   "id": "xs3m_hJl1ro",
@@ -314,10 +314,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 58,
+  "vistas": 62,
   "likes": 2,
-  "horas": 31,
-  "vph": 1.8
+  "horas": 39,
+  "vph": 1.6
  },
  {
   "id": "foBfe1Ag9TA",
@@ -334,10 +334,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 10.0
   },
-  "vistas": 36,
+  "vistas": 37,
   "likes": 0,
-  "horas": 29,
-  "vph": 1.3
+  "horas": 36,
+  "vph": 1.0
  },
  {
   "id": "V9UREYT38uw",
@@ -354,10 +354,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
   },
-  "vistas": 8,
+  "vistas": 16,
   "likes": 0,
-  "horas": 14,
-  "vph": 0.6
+  "horas": 21,
+  "vph": 0.8
  },
  {
   "id": "eLOZVCUcpgw",
@@ -374,10 +374,10 @@
    "titulo_miniatura": 7.0,
    "veracidad": 10.0
   },
-  "vistas": 890,
+  "vistas": 950,
   "likes": 8,
-  "horas": 8,
-  "vph": 117.7
+  "horas": 15,
+  "vph": 64.0
  },
  {
   "id": "ntNnF2pag3U",
@@ -393,7 +393,11 @@
    "retencion": 8.0,
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
-  }
+  },
+  "vistas": 36,
+  "likes": 0,
+  "horas": 12,
+  "vph": 3.0
  },
  {
   "id": "ndEjzU95H8I",
@@ -408,6 +412,26 @@
    "gancho": 6.0,
    "retencion": 8.0,
    "titulo_miniatura": 8.0,
+   "veracidad": 10.0
+  },
+  "vistas": 977,
+  "likes": 8,
+  "horas": 7,
+  "vph": 134.4
+ },
+ {
+  "id": "yLaYEx0U3T0",
+  "titulo": "Tu móvil gastando batería aunque esté apagado",
+  "fecha": "2026-11-21 08:10",
+  "variante": {
+   "categoria": "tecnología",
+   "gancho": "dato con número sorprendente",
+   "voz": "es-ES-ElviraNeural"
+  },
+  "revision": {
+   "gancho": 7.0,
+   "retencion": 8.0,
+   "titulo_miniatura": 9.0,
    "veracidad": 10.0
   }
  }
