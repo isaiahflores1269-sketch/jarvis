@@ -1,31 +1,97 @@
 {
  "pesos": {
-  "categoria": {"cuerpo humano": 2.2, "animales": 1.6, "ciencia cotidiana": 1.5, "espacio": 1.0, "misterios sin resolver": 1.0, "tecnología": 0.9, "naturaleza extrema": 0.6, "historia": 0.5},
-  "gancho": {"contradicción (todo lo que creías sobre X es falso)": 1.8, "reto al espectador (apuesto a que no sabías...)": 1.5, "dato con número sorprendente": 1.3, "afirmación impactante": 1.0, "peligro o miedo": 0.7},
-  "voz": {"es-ES-AlvaroNeural": 1.0, "es-ES-ElviraNeural": 1.0}
+  "categoria": {
+   "animales": 1.47,
+   "cuerpo humano": 0.72,
+   "espacio": 1.0,
+   "historia": 1.65,
+   "ciencia cotidiana": 0.68,
+   "tecnología": 1.0,
+   "naturaleza extrema": 1.02,
+   "misterios sin resolver": 0.3
+  },
+  "gancho": {
+   "afirmación impactante": 0.71,
+   "dato con número sorprendente": 1.63,
+   "reto al espectador (apuesto a que no sabías...)": 0.5,
+   "contradicción (todo lo que creías sobre X es falso)": 0.91,
+   "peligro o miedo": 1.57
+  },
+  "voz": {
+   "es-ES-AlvaroNeural": 0.99,
+   "es-ES-ElviraNeural": 1.08
+  }
  },
  "lecciones": [
-  "Habla al espectador en 2ª persona: los títulos con 'tu/tienes' (tu cerebro, tu cuerpo, tu lengua) son los que más vistas por hora consiguen (~26/h frente a ~15/h del resto).",
-  "Lo que mejor funciona: algo del propio cuerpo o del día a día que el espectador puede comprobar o sentir ahora mismo.",
-  "Los mitos desmontados ('El mito del mapa de tu lengua') tienen el mejor % de likes y siguen sumando vistas días después: usa más 'lo que te enseñaron es falso'.",
-  "Animales raros funcionan si hay un beneficio o giro sorprendente para el humano ('sangre azul que salva vidas'), no solo 'el más fuerte'.",
-  "No repitas el mismo animal o idea: las hormigas salieron 3 veces y cada vídeo rindió menos. Tampoco repitas 'tu cerebro' más de una vez por semana.",
-  "Evita por ahora historia trágica y plantas/árboles: han sido los que peor han funcionado.",
-  "La primera frase debe ser una pregunta o afirmación en 2ª persona de menos de 10 palabras que obligue a seguir mirando.",
-  "Termina con una pregunta concreta al espectador para generar comentarios (los comentarios hacen que YouTube empuje el Short)."
+  "Priorizar categorías de alto rendimiento como cuerpo humano, espacio y naturaleza extrema frente a tecnología o historia abstracta.",
+  "Utilizar exclusivamente la voz 'es-ES-ElviraNeural' para la narración, ya que domina abrumadoramente en los videos mejor posicionados.",
+  "Implementar ganchos basados en 'dato con número sorprendente' o 'peligro o miedo', evitando el gancho de 'reto al espectador' que domina en los peores vídeos.",
+  "Evitar los títulos basados en desafíos o preguntas retóricas tipo 'apuesto a que no sabías', ya que generan el peor CTR y retención.",
+  "Diseñar textos de portada cortos y directos que apelen a la curiosidad biológica o cósmica inmediata.",
+  "Mantener una duración de contenido ágil enfocada en revelaciones rápidas sobre el cuerpo humano y fenómenos cotidianos extraños."
  ],
  "ideas": [
-  "Por qué te da sueño después de comer",
-  "Tus huesos se renuevan por completo cada 10 años",
-  "El mito de que solo usas el 10% de tu cerebro",
-  "Por qué no puedes hacerte cosquillas a ti mismo",
-  "Tu nariz puede distinguir un billón de olores",
-  "El mito de que los camaleones cambian de color para camuflarse",
-  "Por qué tus dedos se arrugan en el agua",
-  "El pulpo tiene tres corazones y sangre azul",
-  "El mito de que el pelo y las uñas siguen creciendo tras la muerte",
-  "Por qué ves 'estrellitas' al frotarte los ojos"
+  {
+   "tema": "La basura espacial en la órbita terrestre y el peligro real de colisión",
+   "categoria": "espacio",
+   "gancho": "peligro o miedo",
+   "voz": "es-ES-ElviraNeural"
+  },
+  {
+   "tema": "Asteroides ocultos que la NASA apenas descubre a pocos días de pasar",
+   "categoria": "espacio",
+   "gancho": "peligro o miedo",
+   "voz": "es-ES-ElviraNeural"
+  },
+  {
+   "tema": "Cuántos litros de saliva produce tu cuerpo a lo largo de toda tu vida",
+   "categoria": "cuerpo humano",
+   "gancho": "dato con número sorprendente",
+   "voz": "es-ES-ElviraNeural"
+  },
+  {
+   "tema": "El tiempo exacto que el cuerpo humano puede sobrevivir sin parpadear",
+   "categoria": "cuerpo humano",
+   "gancho": "reto al espectador (apuesto a que no sabías...)",
+   "voz": "es-ES-ElviraNeural"
+  },
+  {
+   "tema": "Por qué tus ojos ven monstruos en la oscuridad absoluta",
+   "categoria": "cuerpo humano",
+   "gancho": "peligro o miedo",
+   "voz": "es-ES-ElviraNeural"
+  },
+  {
+   "tema": "El extraño animal marino que es técnicamente inmortal",
+   "categoria": "naturaleza extrema",
+   "gancho": "dato con número sorprendente",
+   "voz": "es-ES-ElviraNeural"
+  },
+  {
+   "tema": "Lo que realmente le ocurre a tu cerebro cuando te mareas en un coche",
+   "categoria": "ciencia cotidiana",
+   "gancho": "afirmación impactante",
+   "voz": "es-ES-ElviraNeural"
+  },
+  {
+   "tema": "La parte del cuerpo que sigue creciendo incluso después de que dejas de crecer",
+   "categoria": "cuerpo humano",
+   "gancho": "dato con número sorprendente",
+   "voz": "es-ES-ElviraNeural"
+  },
+  {
+   "tema": "El misterioso sonido que capta la Tierra y que los científicos no pueden explicar",
+   "categoria": "misterios sin resolver",
+   "gancho": "peligro o miedo",
+   "voz": "es-ES-ElviraNeural"
+  },
+  {
+   "tema": "Por qué tu corazón se acelera antes de que te des cuenta del peligro",
+   "categoria": "cuerpo humano",
+   "gancho": "contradicción (todo lo que creías sobre X es falso)",
+   "voz": "es-ES-ElviraNeural"
+  }
  ],
- "actualizado": "2026-11-17",
+ "actualizado": "2026-11-22",
  "fuente": "estudio manual 17/11: 13 Shorts, vistas/hora"
 }
