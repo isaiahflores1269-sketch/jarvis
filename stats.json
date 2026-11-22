@@ -4,8 +4,8 @@
   "titulo": "¿Por qué el pulpo tiene tres corazones?",
   "vistas": 1063,
   "likes": 10,
-  "horas": 15,
-  "vph": 71.1,
+  "horas": 18,
+  "vph": 59.3,
   "like_ratio": 0.9
  },
  {
@@ -13,43 +13,34 @@
   "titulo": "Por qué ruge realmente tu estómago",
   "vistas": 1009,
   "likes": 8,
-  "horas": 31,
-  "vph": 32.3,
+  "horas": 34,
+  "vph": 29.4,
   "like_ratio": 0.8
  },
  {
   "id": "eLOZVCUcpgw",
   "titulo": "Tu cuerpo produce algo insólito cada día",
   "vistas": 925,
-  "likes": 8,
-  "horas": 39,
-  "vph": 23.8,
-  "like_ratio": 0.9
+  "likes": 9,
+  "horas": 42,
+  "vph": 22.1,
+  "like_ratio": 1.0
  },
  {
   "id": "6u1OJ4PieUk",
   "titulo": "Tu cuerpo produce una cantidad insólita de saliva",
   "vistas": 346,
   "likes": 1,
-  "horas": 15,
-  "vph": 22.7,
+  "horas": 18,
+  "vph": 19.0,
   "like_ratio": 0.3
- },
- {
-  "id": "f57LjM6eqRI",
-  "titulo": "Por qué se arrugan tus dedos en el agua",
-  "vistas": 1438,
-  "likes": 27,
-  "horas": 87,
-  "vph": 20.0,
-  "like_ratio": 1.9
  },
  {
   "id": "dx-xGP2BOCk",
   "titulo": "El secreto real detrás de los camaleones",
   "vistas": 965,
   "likes": 20,
-  "horas": 79,
+  "horas": 82,
   "vph": 13.4,
   "like_ratio": 2.1
  },
@@ -58,7 +49,7 @@
   "titulo": "Por qué ves estrellas al frotarte los ojos",
   "vistas": 435,
   "likes": 8,
-  "horas": 84,
+  "horas": 87,
   "vph": 6.0,
   "like_ratio": 1.8
  },
@@ -67,8 +58,8 @@
   "titulo": "Tu móvil gastando batería aunque esté apagado",
   "vistas": 48,
   "likes": 0,
-  "horas": 24,
-  "vph": 2.0,
+  "horas": 27,
+  "vph": 1.8,
   "like_ratio": 0.0
  },
  {
@@ -76,25 +67,16 @@
   "titulo": "Por qué te da tanto sueño después de comer",
   "vistas": 126,
   "likes": 1,
-  "horas": 72,
+  "horas": 75,
   "vph": 1.8,
   "like_ratio": 0.8
- },
- {
-  "id": "dWqJ0sYSti0",
-  "titulo": "El poder secreto de tu olfato",
-  "vistas": 82,
-  "likes": 0,
-  "horas": 69,
-  "vph": 1.2,
-  "like_ratio": 0.0
  },
  {
   "id": "ntNnF2pag3U",
   "titulo": "El animal microscópico que resiste al espacio",
   "vistas": 41,
   "likes": 0,
-  "horas": 36,
+  "horas": 39,
   "vph": 1.1,
   "like_ratio": 0.0
  },
@@ -103,7 +85,16 @@
   "titulo": "El día que la historia borró del calendario",
   "vistas": 73,
   "likes": 0,
-  "horas": 66,
+  "horas": 69,
+  "vph": 1.1,
+  "like_ratio": 0.0
+ },
+ {
+  "id": "dWqJ0sYSti0",
+  "titulo": "El poder secreto de tu olfato",
+  "vistas": 82,
+  "likes": 0,
+  "horas": 72,
   "vph": 1.1,
   "like_ratio": 0.0
  },
@@ -112,7 +103,7 @@
   "titulo": "El mito del 10% del cerebro que sigues creyendo",
   "vistas": 63,
   "likes": 2,
-  "horas": 63,
+  "horas": 66,
   "vph": 1.0,
   "like_ratio": 3.2
  },
@@ -121,7 +112,7 @@
   "titulo": "El secreto que tu nariz oculta sobre tu memoria",
   "vistas": 37,
   "likes": 0,
-  "horas": 60,
+  "horas": 63,
   "vph": 0.6,
   "like_ratio": 0.0
  },
@@ -130,7 +121,7 @@
   "titulo": "Tu cerebro te miente cuando parpadeas",
   "vistas": 18,
   "likes": 0,
-  "horas": 45,
+  "horas": 48,
   "vph": 0.4,
   "like_ratio": 0.0
  }
