@@ -236,7 +236,7 @@
   },
   "vistas": 965,
   "likes": 20,
-  "horas": 85,
+  "horas": 88,
   "vph": 13.4
  },
  {
@@ -256,7 +256,7 @@
   },
   "vistas": 126,
   "likes": 1,
-  "horas": 78,
+  "horas": 81,
   "vph": 1.8
  },
  {
@@ -276,7 +276,7 @@
   },
   "vistas": 82,
   "likes": 0,
-  "horas": 75,
+  "horas": 78,
   "vph": 1.1
  },
  {
@@ -296,7 +296,7 @@
   },
   "vistas": 73,
   "likes": 0,
-  "horas": 72,
+  "horas": 75,
   "vph": 1.0
  },
  {
@@ -316,7 +316,7 @@
   },
   "vistas": 63,
   "likes": 2,
-  "horas": 69,
+  "horas": 72,
   "vph": 0.9
  },
  {
@@ -336,8 +336,8 @@
   },
   "vistas": 37,
   "likes": 0,
-  "horas": 66,
-  "vph": 0.6
+  "horas": 69,
+  "vph": 0.5
  },
  {
   "id": "V9UREYT38uw",
@@ -356,8 +356,8 @@
   },
   "vistas": 18,
   "likes": 0,
-  "horas": 51,
-  "vph": 0.4
+  "horas": 54,
+  "vph": 0.3
  },
  {
   "id": "eLOZVCUcpgw",
@@ -376,8 +376,8 @@
   },
   "vistas": 996,
   "likes": 9,
-  "horas": 45,
-  "vph": 22.2
+  "horas": 48,
+  "vph": 20.8
  },
  {
   "id": "ntNnF2pag3U",
@@ -396,8 +396,8 @@
   },
   "vistas": 41,
   "likes": 0,
-  "horas": 42,
-  "vph": 1.0
+  "horas": 45,
+  "vph": 0.9
  },
  {
   "id": "ndEjzU95H8I",
@@ -416,8 +416,8 @@
   },
   "vistas": 1009,
   "likes": 8,
-  "horas": 37,
-  "vph": 27.1
+  "horas": 40,
+  "vph": 25.1
  },
  {
   "id": "yLaYEx0U3T0",
@@ -436,8 +436,8 @@
   },
   "vistas": 48,
   "likes": 0,
-  "horas": 30,
-  "vph": 1.6
+  "horas": 33,
+  "vph": 1.5
  },
  {
   "id": "6u1OJ4PieUk",
@@ -456,8 +456,8 @@
   },
   "vistas": 346,
   "likes": 1,
-  "horas": 21,
-  "vph": 16.3
+  "horas": 24,
+  "vph": 14.3
  },
  {
   "id": "52xZlbciZX4",
@@ -474,10 +474,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 1064,
+  "vistas": 1055,
   "likes": 10,
-  "horas": 21,
-  "vph": 50.8
+  "horas": 24,
+  "vph": 44.1
  },
  {
   "id": "5NEK1AaE5hY",
@@ -493,7 +493,11 @@
    "retencion": 9.0,
    "titulo_miniatura": 9.0,
    "veracidad": 9.0
-  }
+  },
+  "vistas": 56,
+  "likes": 2,
+  "horas": 9,
+  "vph": 6.2
  },
  {
   "id": "hhB7PO5jZjk",
@@ -509,6 +513,22 @@
    "retencion": 8.0,
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
+  }
+ },
+ {
+  "id": "b8R7m1FEzu8",
+  "titulo": "El peligro oculto de frotarte los ojos",
+  "fecha": "2026-11-22 17:09",
+  "variante": {
+   "categoria": "ciencia cotidiana",
+   "gancho": "peligro o miedo",
+   "voz": "es-ES-AlvaroNeural"
+  },
+  "revision": {
+   "gancho": 9.0,
+   "retencion": 9.0,
+   "titulo_miniatura": 8.0,
+   "veracidad": 9.0
   }
  }
 ]
