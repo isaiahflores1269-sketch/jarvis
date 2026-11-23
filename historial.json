@@ -256,7 +256,7 @@
   },
   "vistas": 126,
   "likes": 1,
-  "horas": 96,
+  "horas": 99,
   "vph": 1.8
  },
  {
@@ -276,7 +276,7 @@
   },
   "vistas": 81,
   "likes": 0,
-  "horas": 93,
+  "horas": 96,
   "vph": 1.1
  },
  {
@@ -296,7 +296,7 @@
   },
   "vistas": 79,
   "likes": 0,
-  "horas": 90,
+  "horas": 93,
   "vph": 1.1
  },
  {
@@ -316,7 +316,7 @@
   },
   "vistas": 63,
   "likes": 2,
-  "horas": 87,
+  "horas": 90,
   "vph": 0.9
  },
  {
@@ -336,7 +336,7 @@
   },
   "vistas": 34,
   "likes": 0,
-  "horas": 84,
+  "horas": 87,
   "vph": 0.5
  },
  {
@@ -356,7 +356,7 @@
   },
   "vistas": 18,
   "likes": 0,
-  "horas": 69,
+  "horas": 72,
   "vph": 0.3
  },
  {
@@ -376,8 +376,8 @@
   },
   "vistas": 996,
   "likes": 9,
-  "horas": 63,
-  "vph": 15.8
+  "horas": 66,
+  "vph": 15.1
  },
  {
   "id": "ntNnF2pag3U",
@@ -396,7 +396,7 @@
   },
   "vistas": 42,
   "likes": 0,
-  "horas": 60,
+  "horas": 63,
   "vph": 0.7
  },
  {
@@ -416,8 +416,8 @@
   },
   "vistas": 1009,
   "likes": 8,
-  "horas": 55,
-  "vph": 18.3
+  "horas": 58,
+  "vph": 17.3
  },
  {
   "id": "yLaYEx0U3T0",
@@ -434,9 +434,9 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 48,
+  "vistas": 49,
   "likes": 0,
-  "horas": 48,
+  "horas": 51,
   "vph": 1.0
  },
  {
@@ -456,8 +456,8 @@
   },
   "vistas": 348,
   "likes": 1,
-  "horas": 39,
-  "vph": 8.9
+  "horas": 42,
+  "vph": 8.2
  },
  {
   "id": "52xZlbciZX4",
@@ -476,8 +476,8 @@
   },
   "vistas": 1056,
   "likes": 10,
-  "horas": 39,
-  "vph": 27.1
+  "horas": 42,
+  "vph": 25.2
  },
  {
   "id": "5NEK1AaE5hY",
@@ -496,8 +496,8 @@
   },
   "vistas": 173,
   "likes": 3,
-  "horas": 24,
-  "vph": 7.2
+  "horas": 27,
+  "vph": 6.4
  },
  {
   "id": "hhB7PO5jZjk",
@@ -514,10 +514,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 373,
+  "vistas": 375,
   "likes": 1,
-  "horas": 21,
-  "vph": 17.8
+  "horas": 24,
+  "vph": 15.7
  },
  {
   "id": "b8R7m1FEzu8",
@@ -534,9 +534,9 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 8,
+  "vistas": 9,
   "likes": 0,
-  "horas": 15,
+  "horas": 18,
   "vph": 0.5
  }
 ]
