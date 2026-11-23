@@ -4,8 +4,8 @@
   "titulo": "¿Por qué el pulpo tiene tres corazones?",
   "vistas": 1055,
   "likes": 10,
-  "horas": 30,
-  "vph": 34.7,
+  "horas": 31,
+  "vph": 33.9,
   "like_ratio": 0.9
  },
  {
@@ -13,8 +13,8 @@
   "titulo": "El murciélago vampiro que corre como un perro",
   "vistas": 371,
   "likes": 1,
-  "horas": 12,
-  "vph": 30.0,
+  "horas": 13,
+  "vph": 28.2,
   "like_ratio": 0.3
  },
  {
@@ -23,7 +23,7 @@
   "vistas": 1009,
   "likes": 8,
   "horas": 47,
-  "vph": 21.6,
+  "vph": 21.2,
   "like_ratio": 0.8
  },
  {
@@ -31,8 +31,8 @@
   "titulo": "Tu cuerpo produce algo insólito cada día",
   "vistas": 996,
   "likes": 9,
-  "horas": 54,
-  "vph": 18.3,
+  "horas": 55,
+  "vph": 18.1,
   "like_ratio": 0.9
  },
  {
@@ -41,7 +41,7 @@
   "vistas": 348,
   "likes": 1,
   "horas": 31,
-  "vph": 11.3,
+  "vph": 11.1,
   "like_ratio": 0.3
  },
  {
@@ -49,8 +49,8 @@
   "titulo": "Tu cuerpo genera más energía de la que imaginas",
   "vistas": 116,
   "likes": 3,
-  "horas": 15,
-  "vph": 7.5,
+  "horas": 16,
+  "vph": 7.2,
   "like_ratio": 2.6
  },
  {
@@ -58,7 +58,7 @@
   "titulo": "Por qué te da tanto sueño después de comer",
   "vistas": 126,
   "likes": 1,
-  "horas": 87,
+  "horas": 88,
   "vph": 1.8,
   "like_ratio": 0.8
  },
@@ -67,7 +67,7 @@
   "titulo": "Tu móvil gastando batería aunque esté apagado",
   "vistas": 47,
   "likes": 0,
-  "horas": 39,
+  "horas": 40,
   "vph": 1.2,
   "like_ratio": 0.0
  },
@@ -76,7 +76,7 @@
   "titulo": "El poder secreto de tu olfato",
   "vistas": 81,
   "likes": 0,
-  "horas": 84,
+  "horas": 85,
   "vph": 1.1,
   "like_ratio": 0.0
  },
@@ -85,17 +85,8 @@
   "titulo": "El día que la historia borró del calendario",
   "vistas": 73,
   "likes": 0,
-  "horas": 81,
+  "horas": 82,
   "vph": 1.0,
-  "like_ratio": 0.0
- },
- {
-  "id": "b8R7m1FEzu8",
-  "titulo": "El peligro oculto de frotarte los ojos",
-  "vistas": 6,
-  "likes": 0,
-  "horas": 6,
-  "vph": 0.9,
   "like_ratio": 0.0
  },
  {
@@ -103,16 +94,25 @@
   "titulo": "El mito del 10% del cerebro que sigues creyendo",
   "vistas": 63,
   "likes": 2,
-  "horas": 78,
+  "horas": 79,
   "vph": 0.9,
   "like_ratio": 3.2
+ },
+ {
+  "id": "b8R7m1FEzu8",
+  "titulo": "El peligro oculto de frotarte los ojos",
+  "vistas": 6,
+  "likes": 0,
+  "horas": 7,
+  "vph": 0.8,
+  "like_ratio": 0.0
  },
  {
   "id": "ntNnF2pag3U",
   "titulo": "El animal microscópico que resiste al espacio",
   "vistas": 42,
   "likes": 0,
-  "horas": 51,
+  "horas": 52,
   "vph": 0.8,
   "like_ratio": 0.0
  },
@@ -121,7 +121,7 @@
   "titulo": "El secreto que tu nariz oculta sobre tu memoria",
   "vistas": 34,
   "likes": 0,
-  "horas": 75,
+  "horas": 76,
   "vph": 0.5,
   "like_ratio": 0.0
  },
@@ -130,7 +130,7 @@
   "titulo": "Tu cerebro te miente cuando parpadeas",
   "vistas": 18,
   "likes": 0,
-  "horas": 60,
+  "horas": 61,
   "vph": 0.3,
   "like_ratio": 0.0
  }
