@@ -256,7 +256,7 @@
   },
   "vistas": 126,
   "likes": 1,
-  "horas": 108,
+  "horas": 120,
   "vph": 1.8
  },
  {
@@ -274,10 +274,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 81,
+  "vistas": 84,
   "likes": 0,
-  "horas": 105,
-  "vph": 1.1
+  "horas": 117,
+  "vph": 1.2
  },
  {
   "id": "cHRbc-hEgbk",
@@ -294,10 +294,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 79,
+  "vistas": 84,
   "likes": 0,
-  "horas": 102,
-  "vph": 1.1
+  "horas": 114,
+  "vph": 1.2
  },
  {
   "id": "xs3m_hJl1ro",
@@ -316,7 +316,7 @@
   },
   "vistas": 63,
   "likes": 2,
-  "horas": 99,
+  "horas": 111,
   "vph": 0.9
  },
  {
@@ -336,7 +336,7 @@
   },
   "vistas": 34,
   "likes": 0,
-  "horas": 96,
+  "horas": 108,
   "vph": 0.5
  },
  {
@@ -356,7 +356,7 @@
   },
   "vistas": 18,
   "likes": 0,
-  "horas": 81,
+  "horas": 93,
   "vph": 0.2
  },
  {
@@ -374,9 +374,9 @@
    "titulo_miniatura": 7.0,
    "veracidad": 10.0
   },
-  "vistas": 996,
+  "vistas": 995,
   "likes": 9,
-  "horas": 75,
+  "horas": 87,
   "vph": 13.8
  },
  {
@@ -396,7 +396,7 @@
   },
   "vistas": 42,
   "likes": 0,
-  "horas": 72,
+  "horas": 84,
   "vph": 0.6
  },
  {
@@ -414,10 +414,10 @@
    "titulo_miniatura": 8.0,
    "veracidad": 10.0
   },
-  "vistas": 1009,
+  "vistas": 1007,
   "likes": 8,
-  "horas": 67,
-  "vph": 15.0
+  "horas": 79,
+  "vph": 14.0
  },
  {
   "id": "yLaYEx0U3T0",
@@ -434,10 +434,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 49,
+  "vistas": 50,
   "likes": 0,
-  "horas": 60,
-  "vph": 0.8
+  "horas": 72,
+  "vph": 0.7
  },
  {
   "id": "6u1OJ4PieUk",
@@ -456,8 +456,8 @@
   },
   "vistas": 348,
   "likes": 1,
-  "horas": 51,
-  "vph": 6.8
+  "horas": 63,
+  "vph": 5.5
  },
  {
   "id": "52xZlbciZX4",
@@ -476,8 +476,8 @@
   },
   "vistas": 1056,
   "likes": 10,
-  "horas": 51,
-  "vph": 20.7
+  "horas": 63,
+  "vph": 16.8
  },
  {
   "id": "5NEK1AaE5hY",
@@ -496,8 +496,8 @@
   },
   "vistas": 170,
   "likes": 3,
-  "horas": 36,
-  "vph": 4.7
+  "horas": 48,
+  "vph": 3.5
  },
  {
   "id": "hhB7PO5jZjk",
@@ -514,10 +514,10 @@
    "titulo_miniatura": 9.0,
    "veracidad": 10.0
   },
-  "vistas": 372,
+  "vistas": 374,
   "likes": 1,
-  "horas": 33,
-  "vph": 11.3
+  "horas": 45,
+  "vph": 8.3
  },
  {
   "id": "b8R7m1FEzu8",
@@ -534,9 +534,9 @@
    "titulo_miniatura": 8.0,
    "veracidad": 9.0
   },
-  "vistas": 9,
+  "vistas": 11,
   "likes": 0,
-  "horas": 27,
+  "horas": 39,
   "vph": 0.3
  }
 ]
