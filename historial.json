@@ -256,7 +256,7 @@
   },
   "vistas": 126,
   "likes": 1,
-  "horas": 120,
+  "horas": 123,
   "vph": 1.8
  },
  {
@@ -276,7 +276,7 @@
   },
   "vistas": 84,
   "likes": 0,
-  "horas": 117,
+  "horas": 120,
   "vph": 1.2
  },
  {
@@ -296,7 +296,7 @@
   },
   "vistas": 84,
   "likes": 0,
-  "horas": 114,
+  "horas": 117,
   "vph": 1.2
  },
  {
@@ -316,7 +316,7 @@
   },
   "vistas": 63,
   "likes": 2,
-  "horas": 111,
+  "horas": 114,
   "vph": 0.9
  },
  {
@@ -336,7 +336,7 @@
   },
   "vistas": 34,
   "likes": 0,
-  "horas": 108,
+  "horas": 111,
   "vph": 0.5
  },
  {
@@ -356,7 +356,7 @@
   },
   "vistas": 18,
   "likes": 0,
-  "horas": 93,
+  "horas": 96,
   "vph": 0.2
  },
  {
@@ -376,7 +376,7 @@
   },
   "vistas": 995,
   "likes": 9,
-  "horas": 87,
+  "horas": 90,
   "vph": 13.8
  },
  {
@@ -396,7 +396,7 @@
   },
   "vistas": 42,
   "likes": 0,
-  "horas": 84,
+  "horas": 87,
   "vph": 0.6
  },
  {
@@ -416,7 +416,7 @@
   },
   "vistas": 1007,
   "likes": 8,
-  "horas": 79,
+  "horas": 82,
   "vph": 14.0
  },
  {
@@ -436,7 +436,7 @@
   },
   "vistas": 50,
   "likes": 0,
-  "horas": 72,
+  "horas": 75,
   "vph": 0.7
  },
  {
@@ -456,8 +456,8 @@
   },
   "vistas": 348,
   "likes": 1,
-  "horas": 63,
-  "vph": 5.5
+  "horas": 66,
+  "vph": 5.3
  },
  {
   "id": "52xZlbciZX4",
@@ -476,8 +476,8 @@
   },
   "vistas": 1056,
   "likes": 10,
-  "horas": 63,
-  "vph": 16.8
+  "horas": 66,
+  "vph": 16.0
  },
  {
   "id": "5NEK1AaE5hY",
@@ -496,8 +496,8 @@
   },
   "vistas": 170,
   "likes": 3,
-  "horas": 48,
-  "vph": 3.5
+  "horas": 51,
+  "vph": 3.3
  },
  {
   "id": "hhB7PO5jZjk",
@@ -516,8 +516,8 @@
   },
   "vistas": 374,
   "likes": 1,
-  "horas": 45,
-  "vph": 8.3
+  "horas": 48,
+  "vph": 7.8
  },
  {
   "id": "b8R7m1FEzu8",
@@ -536,7 +536,7 @@
   },
   "vistas": 11,
   "likes": 0,
-  "horas": 39,
+  "horas": 42,
   "vph": 0.3
  }
 ]
