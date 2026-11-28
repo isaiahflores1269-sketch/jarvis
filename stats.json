@@ -4,7 +4,7 @@
   "titulo": "¿Por qué el pulpo tiene tres corazones?",
   "vistas": 1056,
   "likes": 10,
-  "horas": 147,
+  "horas": 153,
   "vph": 14.7,
   "like_ratio": 0.9
  },
@@ -13,7 +13,7 @@
   "titulo": "Por qué ruge realmente tu estómago",
   "vistas": 1011,
   "likes": 8,
-  "horas": 163,
+  "horas": 169,
   "vph": 14.0,
   "like_ratio": 0.8
  },
@@ -22,17 +22,17 @@
   "titulo": "Tu cuerpo produce algo insólito cada día",
   "vistas": 995,
   "likes": 9,
-  "horas": 171,
+  "horas": 177,
   "vph": 13.8,
   "like_ratio": 0.9
  },
  {
   "id": "hhB7PO5jZjk",
   "titulo": "El murciélago vampiro que corre como un perro",
-  "vistas": 376,
+  "vistas": 379,
   "likes": 1,
-  "horas": 129,
-  "vph": 5.2,
+  "horas": 135,
+  "vph": 5.3,
   "like_ratio": 0.3
  },
  {
@@ -40,7 +40,7 @@
   "titulo": "Tu cuerpo produce una cantidad insólita de saliva",
   "vistas": 347,
   "likes": 1,
-  "horas": 147,
+  "horas": 153,
   "vph": 4.8,
   "like_ratio": 0.3
  },
@@ -49,7 +49,7 @@
   "titulo": "Tu cuerpo genera más energía de la que imaginas",
   "vistas": 173,
   "likes": 3,
-  "horas": 132,
+  "horas": 138,
   "vph": 2.4,
   "like_ratio": 1.7
  },
@@ -58,7 +58,7 @@
   "titulo": "Por qué te da tanto sueño después de comer",
   "vistas": 126,
   "likes": 1,
-  "horas": 204,
+  "horas": 210,
   "vph": 1.8,
   "like_ratio": 0.8
  },
@@ -67,7 +67,7 @@
   "titulo": "El día que la historia borró del calendario",
   "vistas": 91,
   "likes": 0,
-  "horas": 198,
+  "horas": 204,
   "vph": 1.3,
   "like_ratio": 0.0
  },
@@ -76,7 +76,7 @@
   "titulo": "El poder secreto de tu olfato",
   "vistas": 85,
   "likes": 0,
-  "horas": 201,
+  "horas": 207,
   "vph": 1.2,
   "like_ratio": 0.0
  },
@@ -85,16 +85,16 @@
   "titulo": "El mito del 10% del cerebro que sigues creyendo",
   "vistas": 63,
   "likes": 2,
-  "horas": 195,
+  "horas": 201,
   "vph": 0.9,
   "like_ratio": 3.2
  },
  {
   "id": "yLaYEx0U3T0",
   "titulo": "Tu móvil gastando batería aunque esté apagado",
-  "vistas": 50,
+  "vistas": 51,
   "likes": 0,
-  "horas": 156,
+  "horas": 162,
   "vph": 0.7,
   "like_ratio": 0.0
  },
@@ -103,7 +103,7 @@
   "titulo": "El animal microscópico que resiste al espacio",
   "vistas": 42,
   "likes": 0,
-  "horas": 168,
+  "horas": 174,
   "vph": 0.6,
   "like_ratio": 0.0
  },
@@ -112,7 +112,7 @@
   "titulo": "El secreto que tu nariz oculta sobre tu memoria",
   "vistas": 35,
   "likes": 0,
-  "horas": 192,
+  "horas": 198,
   "vph": 0.5,
   "like_ratio": 0.0
  },
@@ -121,7 +121,7 @@
   "titulo": "El peligro oculto de frotarte los ojos",
   "vistas": 11,
   "likes": 0,
-  "horas": 123,
+  "horas": 129,
   "vph": 0.2,
   "like_ratio": 0.0
  },
@@ -130,7 +130,7 @@
   "titulo": "Tu cerebro te miente cuando parpadeas",
   "vistas": 18,
   "likes": 0,
-  "horas": 177,
+  "horas": 183,
   "vph": 0.2,
   "like_ratio": 0.0
  }
